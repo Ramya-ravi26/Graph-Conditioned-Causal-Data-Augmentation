@@ -486,34 +486,23 @@ orientation ambiguity rather than a recovery failure.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[
-  node distance=1.6cm,
-  every node/.style={circle, draw, minimum size=7mm, font=\small},
+  node distance=1.0cm,
+  var/.style={circle, draw, minimum size=7mm, inner sep=0pt, font=\small},
+  lab/.style={rectangle, draw=none, inner sep=1pt, font=\footnotesize, anchor=north},
   arr/.style={-{Latex[length=2mm]}, thick}
 ]
-\begin{scope}
-  \node (a1) {$A$};
-  \node[right=of a1] (b1) {$B$};
-  \node[right=of b1] (c1) {$C$};
-  \draw[arr] (a1) -- (b1);
-  \draw[arr] (b1) -- (c1);
-  \node[draw=none, below=0.4cm of b1, font=\small] {(a) chain};
-\end{scope}
-\begin{scope}[xshift=5.5cm]
-  \node (a2) {$A$};
-  \node[right=of a2] (b2) {$B$};
-  \node[right=of b2] (c2) {$C$};
-  \draw[arr] (b2) -- (a2);
-  \draw[arr] (b2) -- (c2);
-  \node[draw=none, below=0.4cm of b2, font=\small] {(b) common cause};
-\end{scope}
-\begin{scope}[xshift=11cm]
-  \node (a3) {$A$};
-  \node[right=of a3] (b3) {$B$};
-  \node[right=of b3] (c3) {$C$};
-  \draw[arr] (a3) -- (b3);
-  \draw[arr] (c3) -- (b3);
-  \node[draw=none, below=0.4cm of b3, font=\small] {(c) common effect (collider)};
-\end{scope}
+\foreach \x/\i/\name in {0/1/{(a) chain}, 4.8/2/{(b) common cause}, 9.6/3/{(c) common effect (collider)}} {
+  \node[var] (a\i) at (\x, 0) {$A$};
+  \node[var, right=of a\i] (b\i) {$B$};
+  \node[var, right=of b\i] (c\i) {$C$};
+  \node[lab] at ([yshift=-0.5cm]b\i.south) {\name};
+}
+\draw[arr] (a1) -- (b1);
+\draw[arr] (b1) -- (c1);
+\draw[arr] (b2) -- (a2);
+\draw[arr] (b2) -- (c2);
+\draw[arr] (a3) -- (b3);
+\draw[arr] (c3) -- (b3);
 \end{tikzpicture}
 \caption{Three DAGs with identical conditional-independence implications
 except one: (a) and (b) both imply $A \perp C \mid B$ and are Markov
@@ -1279,9 +1268,10 @@ what a fix in this kind of pipeline actually looks like at the code level.
 
 \section{Module Structure}
 Figure~\ref{fig:module-diagram} shows how the core packages under
-\texttt{gcda/} depend on each other; \texttt{gcda.experiments} (the
+\texttt{gcda/} depend on each other. Two further modules,
+\texttt{gcda.experiments} (the
 held-out, multi-seed experiments of Chapter~\ref{chap:results}) and
-\texttt{gcda.provenance} (run metadata attached to every output) sit on top
+\texttt{gcda.provenance} (run metadata attached to every output), sit on top
 of all of them and are omitted from the figure. The dependency direction is
 deliberately one-way: \texttt{generation} (the sampler) depends on
 \texttt{dependency} (the library) but not vice versa, and neither depends
@@ -2758,10 +2748,14 @@ principled one.
 The codebase is organized as an installable package (\texttt{gcda/}) plus a
 set of narrated, single-purpose scripts (\texttt{scripts/}) that mirror the
 same operations as the composable \texttt{gcda} command-line interface,
-described below.
+described below. The repository is available at
+\url{https://github.com/Ramya-ravi26/Graph-Conditioned-Causal-Data-Augmentation}.
+Every result file in \texttt{outputs/} is accompanied by a
+\texttt{.meta.json} file with the package versions, the arguments and the
+commit of the development repository in which the result was produced.
 
 \begin{table}[ht]
-\caption{Top-level repository structure (repository \texttt{ramya-ravi26/Graph-Conditioned-Causal-Data-Augmentation}; the commit used for this thesis is recorded in every output's \texttt{.meta.json} file).}
+\caption{Top-level repository structure.}
 \label{tab:repo-layout}
 \centering
 \small
@@ -2791,7 +2785,8 @@ described below.
 \label{sec:cli}
 \begin{verbatim}
 gcda build-library --dataset sachs --output lib_sachs.json
-gcda build-library --dataset asia --discrete-mode native --output lib_asia.json
+gcda build-library --dataset asia --discrete-mode native \
+    --output lib_asia.json
 gcda generate --dag graph.json --library lib_sachs.json \
     --library lib_asia.json --n 5000 --output data.csv [--strict]
 gcda evaluate --true-csv true.csv --sim-csv data.csv --distances
@@ -2907,7 +2902,7 @@ throughout that chapter:
   \item \path{python scripts/run_experiments.py <name>} with \texttt{<name>} one
     of \texttt{rq1}, \texttt{rq2}, \texttt{rq4}, \texttt{rq5},
     \texttt{composition}, \texttt{rq6}, \texttt{discrete-native},
-    \texttt{learned-indegree} -- the held-out, multi-seed experiments added
+    \texttt{learned-indegree}, \texttt{rf} -- the held-out, multi-seed experiments added
     to Chapter~\ref{chap:results}; the large-seed versions are run on the
     Lichtenberg cluster with the job scripts in \texttt{slurm/} as described
     in \texttt{docs/HPC\_RUNBOOK.md}.

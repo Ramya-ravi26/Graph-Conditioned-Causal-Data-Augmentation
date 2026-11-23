@@ -1,0 +1,4 @@
+source,energy_p,mmd_p
+baseline_fixed_rho,0.4,0.4
+gaussian_copula_fitted,0.0,0.0
+learned,0.0,0.0

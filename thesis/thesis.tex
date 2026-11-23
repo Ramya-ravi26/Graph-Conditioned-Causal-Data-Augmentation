@@ -1,0 +1,2955 @@
+% Pass geometry options before the class loads them:
+%\PassOptionsToPackage{letterpaper, margin=1in}{geometry}
+
+\documentclass[
+  english,
+  class=report,
+  accentcolor=2c,
+  %custommargins=geometry,  % Let geometry manage margins
+  marginpar=false,
+  parskip=half-,
+  fontsize=11pt,
+  ruledheaders=false,
+  pdfa=false,
+  IMRAD=false,
+  thesis={type=master}
+]{tudapub}
+
+% -------------------------------------------------------------------
+% Let TUDa load geometry once with our options:
+%\usepackage{geometry}
+
+% Math support (must load before anything uses \text, \binom, etc.):
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Language / microtype:
+\usepackage[english, main=english]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{scrlayer-scrpage}       % If not already loaded
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  xleftmargin=1.8em,
+  language=Python,
+}
+\usepackage{url}
+\KOMAoptions{
+  headsepline=false,  % or false if you want to remove the line entirely
+  footsepline=false, % same for the footer
+  headwidth=text,    % match the rule width to the text width
+  footwidth=text
+}
+\pagestyle{scrheadings}
+
+% -------------------------------------------------------------------
+% 1) Times-like fonts (common in conference style)
+%\usepackage{newtxtext,newtxmath}   % tudapub already sets up its own fonts — this clashes
+%\usepackage[T1]{fontenc}    % ensure proper accent/symbol encoding
+%\usepackage[utf8]{inputenc} % for UTF-8 input (not always needed nowadays)
+% 2) Tighter heading layout with `titlesec`:
+
+\setkomafont{chapter}{\Large\bfseries}
+\setkomafont{section}{\large\bfseries}
+\setkomafont{subsection}{\bfseries}
+\setkomafont{subsubsection}{\bfseries}
+
+\RedeclareSectionCommand[
+  beforeskip=2ex plus .2ex,
+  afterskip=1ex plus .2ex
+]{chapter}
+\renewcommand*\chapterformat{\thechapter.}
+
+\RedeclareSectionCommand[
+  beforeskip=1.5ex plus .2ex,
+  afterskip=1ex plus .2ex
+]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=1.3ex plus .2ex,
+  afterskip=0.8ex plus .2ex
+]{subsection}
+
+\RedeclareSectionCommand[
+  beforeskip=1.2ex plus .2ex,
+  afterskip=0.7ex plus .2ex
+]{subsubsection}
+
+% 3) Prevent vertical stretching:
+\raggedbottom
+
+\newenvironment{centeredabstract}[1][Abstract]{%
+  \clearpage
+  \thispagestyle{empty}
+  \begin{center}
+    {\Large \bfseries #1}\\[1em]
+    \begin{minipage}{0.8\textwidth}
+      \normalsize
+}{%
+    \end{minipage}
+  \end{center}
+  \clearpage
+}
+
+% -------------------------------------------------------------------
+% Bibliography
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+% -------------------------------------------------------------------
+\begin{document}
+
+\title{Graph-Conditioned Causal Data Augmentation: Reusable Local Dependencies for Synthetic Data Generation}
+\author{Ramya Ravichandran}
+\studentID{2729732}
+\reviewer{Prof. Dr. Heinz Koeppl \and M. Sc. Philipp Fröhlich}
+
+\department{etit}
+\group{Self-Organizing Systems Lab}
+
+\submissiondate{01.12.2026}
+
+\maketitle
+\affidavit
+
+\begin{centeredabstract}
+Causal discovery algorithms are usually evaluated and trained on a handful of small,
+hand-curated datasets, simply because realistic data with a known ground-truth
+graph is scarce. This thesis builds a tool that manufactures such data on
+demand. Rather than sampling from a single fixed parametric structural causal
+model, as most existing generators do, the approach learns a library of local
+dependencies -- one bivariate copula per variable pair, and one small vine
+copula per two-parent relationship -- directly from real datasets, and treats
+this library as a set of reusable building blocks. Given any user-specified
+directed acyclic graph, with a node in-degree bounded by two in the core
+setting and up to four in an extension, the sampler composes the corresponding
+building blocks in topological order to synthesize a full dataset. The method is
+validated on held-out data in four steps. First, the strongest fitted
+pairwise dependencies on the Sachs protein-signaling data are predominantly
+known causal edges (all nine strongest pairs on the observational data;
+AUROC 0.75 against the consensus network). Second, resampling a graph with
+the learned models reproduces its non-uniform per-edge dependence, where a
+generic Gaussian baseline collapses every edge to the same strength.
+Third, the learned building blocks transfer to graphs that never existed
+in the source data: one-parent edges reproduce the dependence of the
+copula they were built from to within $\Delta\tau \le 0.006$, a dependence
+learned on one dataset can be transplanted onto an edge between variables
+of another, and the generated data cannot be gamed by sorting variables by
+their variance. Fourth, on the Asia network a structure-learning algorithm (PC) recovers
+the true graph from the generated data significantly better than from a
+fixed-correlation baseline or a fitted Gaussian copula and as well as from
+real data, but a score-based algorithm (GES) does markedly worse on the
+generated data than on real data, and on the larger Insurance and Alarm
+networks both algorithms fall far short of real data, so this usefulness
+does not yet extend to large discrete networks. In a prototype that
+replaces the copula conditionals with random-forest conditionals fitted on
+the same training data, both algorithms reach about the level of real data
+on Insurance and Alarm ($97$--$120\%$ of the gap between the
+baseline and real data closed), at the price that these conditionals are
+tied to one graph and dataset rather than being reusable building blocks. The
+pipeline extends to discrete and mixed variables; continuizing categorical
+columns by jittering dilutes Kendall's $\tau$ to its $\tau_a$ value, which
+severely weakens dependence for skewed binary variables, and fitting the
+copulas with the native discrete likelihood instead reduces the error of
+reproduced edge dependence by up to two orders of magnitude on mixed data.
+The result is a tested, reproducible generator of benchmark data for
+user-specified graphs whose local dependencies are learned from real
+data rather than assumed.
+\end{centeredabstract}
+
+\begin{centeredabstract}[Kurzfassung]
+\begin{otherlanguage}{german}
+Kausale Entdeckungsalgorithmen werden üblicherweise anhand einer Handvoll
+kleiner, von Hand kuratierter Datensätze evaluiert und trainiert, einfach
+weil realistische Daten mit bekanntem Ground-Truth-Graphen rar sind. Diese
+Arbeit entwickelt ein Werkzeug, das solche Daten bei Bedarf erzeugt.
+Anstatt aus einem einzigen fest vorgegebenen parametrischen strukturellen
+Kausalmodell zu ziehen, wie es die meisten bestehenden Generatoren tun,
+lernt der vorgestellte Ansatz eine Bibliothek lokaler Abhängigkeiten --
+eine bivariate Copula pro Variablenpaar sowie eine kleine Vine-Copula pro
+Zwei-Eltern-Beziehung -- direkt aus realen Datensätzen und behandelt diese
+Bibliothek als eine Menge wiederverwendbarer Bausteine. Für einen
+beliebigen, vom Nutzer vorgegebenen gerichteten azyklischen Graphen (DAG),
+dessen Knoten-Ingrad im Kernumfang auf zwei und in einer Erweiterung auf
+bis zu vier begrenzt ist, setzt der Sampler die entsprechenden Bausteine in
+topologischer Reihenfolge zusammen, um einen vollständigen Datensatz zu
+synthetisieren. Die Methode wird auf zur\"uckgehaltenen Daten in vier Schritten
+validiert. Erstens sind die st\"arksten angepassten paarweisen
+Abh\"angigkeiten der Sachs-Daten \"uberwiegend bekannte kausale Kanten (alle
+neun st\"arksten Paare der Beobachtungsdaten; AUROC 0{,}75 gegen\"uber dem
+Konsensnetzwerk). Zweitens reproduziert das erneute Abtasten eines Graphen
+mit den gelernten Modellen dessen ungleichm\"a{\ss}iges Abh\"angigkeitsmuster,
+w\"ahrend eine generische Gau{\ss}-Baseline jede Kante auf dieselbe St\"arke
+reduziert. Drittens lassen sich die gelernten Bausteine auf Graphen
+\"ubertragen, die in den Ausgangsdaten nicht existieren: Kanten mit einem
+Elternknoten reproduzieren die Abh\"angigkeit ihrer Copula bis auf
+$\Delta\tau \le 0{,}006$, eine auf einem Datensatz gelernte Abh\"angigkeit
+kann auf eine Kante zwischen Variablen eines anderen Datensatzes
+\"ubertragen werden, und die erzeugten Daten lassen sich nicht durch
+Sortieren nach der Varianz \"uberlisten. Viertens rekonstruiert der
+PC-Algorithmus das Asia-Netzwerk aus den erzeugten Daten signifikant besser
+als aus einer Baseline mit fester Korrelation oder einer angepassten
+Gau{\ss}-Copula und ebenso gut wie aus echten Daten; ein scorebasierter
+Algorithmus (GES) schneidet auf den erzeugten Daten jedoch deutlich
+schlechter ab als auf echten Daten, und bei den gr\"o{\ss}eren Netzwerken
+Insurance und Alarm bleiben beide Algorithmen deutlich hinter echten Daten
+zur\"uck. Ersetzt man in einem Prototyp die Copula-Bedingungsmodelle durch
+auf denselben Trainingsdaten angepasste Random-Forest-Modelle, erreichen
+beide Algorithmen auf Insurance und Alarm etwa das Niveau echter Daten
+($97$--$120\,\%$ der L\"ucke zwischen Baseline und echten Daten
+geschlossen); diese Modelle sind jedoch an einen Graphen und Datensatz
+gebunden und keine wiederverwendbaren Bausteine. Die Pipeline
+wird auf diskrete und gemischte Variablen erweitert; das Kontinuisieren
+kategorialer Spalten durch Jittering verd\"unnt Kendalls $\tau$ auf seinen
+$\tau_a$-Wert, w\"ahrend die Anpassung mit der nativen diskreten Likelihood
+den Fehler der reproduzierten Kantenabh\"angigkeit bei gemischten Daten um
+bis zu zwei Gr\"o{\ss}enordnungen senkt. Das Ergebnis ist ein getesteter,
+reproduzierbarer Generator von Benchmarkdaten f\"ur vom Nutzer vorgegebene
+Graphen, dessen lokale Abh\"angigkeiten aus echten Daten gelernt statt
+angenommen werden.
+\end{otherlanguage}
+\end{centeredabstract}
+
+\KOMAoptions{DIV=15, BCOR=12mm}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\listofalgorithms
+
+\chapter*{List of Acronyms}
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\begin{description}
+  \item[AIC] Akaike Information Criterion
+  \item[BIC] Bayesian Information Criterion
+  \item[CPDAG] Completed Partially Directed Acyclic Graph
+  \item[CPT] Conditional Probability Table
+  \item[DAG] Directed Acyclic Graph
+  \item[gcda] Graph-Conditioned Causal Data Augmentation (this thesis's software package)
+  \item[MEC] Markov Equivalence Class
+  \item[MMD] Maximum Mean Discrepancy
+  \item[NMI] Normalized Mutual Information
+  \item[PC (algorithm)] Peter--Clark algorithm (constraint-based causal discovery)
+  \item[SCM] Structural Causal Model
+  \item[SHD] Structural Hamming Distance
+  \item[TVD] Total Variation Distance
+\end{description}
+
+\chapter*{Notation}
+\addcontentsline{toc}{chapter}{Notation}
+\begin{description}
+  \item[$x, y, \dots$] a raw variable / dataset column, on its original scale
+  \item[$u, v \in (0,1)$] a pseudo-observation (rank-transformed variable), Equation~\ref{eq:pseudo-obs}
+  \item[$C(\cdot,\cdot;\theta)$] a bivariate copula CDF with parameter(s) $\theta$
+  \item[$c(\cdot,\cdot;\theta)$] the corresponding copula density
+  \item[$\tau$] Kendall's rank correlation coefficient
+  \item[$\rho$] linear (Pearson) or Gaussian-copula correlation parameter
+  \item[$h_1(u_1,u_2;\theta)$] a copula's $h$-function, Equation~\ref{eq:hfunc}
+  \item[$T(\cdot), T^{-1}(\cdot)$] the (inverse) Rosenblatt transform, Equation~\ref{eq:rosenblatt}
+  \item[$G = (V,E)$] a directed acyclic graph with nodes $V$ and edges $E$
+  \item[$\text{pa}(v)$] the parent set of node $v$ in a DAG
+  \item[$n$] number of observations (rows) in a dataset or sample
+  \item[$p$] number of variables (columns) in a dataset
+  \item[$t_x$] the tie probability of a (discrete) variable $x$: the chance two independent draws of $x$ share a category
+  \item[$\mathcal{L}$] a \texttt{DependencyLibrary} instance
+\end{description}
+
+\chapter{Introduction}
+\label{chap:intro}
+
+\section{Motivation}
+Causal discovery methods -- algorithms that infer a directed acyclic graph
+(DAG) of cause-and-effect relationships from purely observational data --
+are usually benchmarked on a small, recycled set of datasets. The
+protein-signaling network of \textcite{sachs2005} and the medical
+Bayesian networks distributed with graphical-model toolkits such as
+\emph{Asia} \parencite{lauritzen1988} and \emph{Insurance}
+\parencite{binder1997} appear, in one form or another, in the majority of
+papers on the topic. This is not because the field lacks appetite for more
+data: it is because collecting a dataset with a \emph{known, verified} causal
+graph attached to it is expensive, slow, or simply impossible for most
+domains. Structure-learning methods that could otherwise benefit from more
+training examples, more diverse graph topologies, or systematic stress-tests
+against specific dependency strengths are left working with whatever handful
+of graphs the literature happens to provide.
+
+The usual workaround is to simulate data from a hand-specified structural
+causal model (SCM): pick a DAG, attach a linear or additively-noisy equation
+to every edge, and sample. This is cheap and flexible in principle, but it
+throws away exactly the property that makes real benchmark datasets valuable
+in the first place -- realistic, dataset-specific dependence structure. A
+linear-Gaussian SCM cannot reproduce the fact that two proteins in a
+signaling cascade are tied together by a strongly asymmetric, tail-dependent
+relationship rather than a linear one, or that a binary risk factor and a
+categorical outcome interact in a way no additive-noise model captures
+cleanly.
+
+This thesis asks whether the two approaches can be combined: keep the
+flexibility of simulating for \emph{any} graph, but ground the local
+dependencies in models that were actually fitted to real data.
+
+\subsection{A Concrete Illustration}
+Concretely, imagine a researcher developing a new constraint-independence
+test for structure learning, who wants to check it specifically against
+graphs with three-parent nodes -- a topology none of the standard
+benchmarks exercises thoroughly: the Sachs consensus network has a single
+three-parent node (Mek), Asia's largest indegree is 2, and Insurance reaches
+indegree 3 at only five of its 27 nodes. Two options exist today. The first is to hand-write a
+three-parent linear-Gaussian SCM: fast, but the resulting data has exactly
+the generic dependence shape every other linear-Gaussian benchmark has,
+so a good result says only that the new test handles \emph{that one
+dependence shape} at that indegree, not that it handles three-parent nodes
+in general. The second is to search for a real dataset with a known,
+verified three-parent causal structure -- which, per the motivation above,
+may simply not exist for the researcher's domain of interest. The tool
+built in this thesis offers a third option: fit a dependency library from
+whatever real datasets \emph{are} available (Sachs, UCI diabetes, Asia,
+whatever domain-relevant data the researcher already has), then generate
+data for the specific three-parent graph the researcher actually wants to
+test against, with each edge's dependence grounded in a real fitted
+relationship rather than a generic assumption. The sampler supports such
+nodes: the baseline sampler hits its theoretical dependence up to six
+parents, and learned conditional vines run without a single fallback up to
+the four-parent nodes of the Alarm network (Section~\ref{sec:rq3}).
+
+\section{Goal and Objective}
+The goal of this thesis is a software tool that generates realistic
+synthetic datasets for a user-specified graph structure by learning how
+variables depend on each other from real data, rather than assuming a fixed
+generic dependence model. Concretely, the tool
+\begin{itemize}
+  \item learns local dependencies -- primarily pairwise, and additionally
+    conditional on up to two parents -- from real datasets, using copulas to
+    separate each variable's marginal distribution from the way it co-varies
+    with its neighbors, and
+  \item reuses these learned dependencies as interchangeable building blocks
+    to sample data for any DAG the user supplies, including graphs that
+    combine building blocks learned from different source datasets and graph
+    topologies that never occurred in any of them, with a node in-degree
+    bounded by a small constant (two in the core scope, extended to three or
+    four).
+\end{itemize}
+Copulas are the natural tool for this separation: by Sklar's theorem
+\parencite{sklar1959}, any multivariate distribution can be decomposed into
+its marginals and a copula function that captures dependence alone, on a
+common $(0,1)$ scale that is invariant to how each individual variable is
+distributed. This is precisely the decomposition the tool needs, since it
+must reuse a dependence pattern learned on one variable pair for a
+structurally analogous pair with entirely different marginal statistics.
+
+\section{Contributions}
+Concretely, this thesis makes the following contributions:
+\begin{enumerate}
+  \item A reusable \emph{dependency library} abstraction that stores fitted
+    pairwise and conditional (multi-parent) copula models as a validated,
+    JSON-serializable object with provenance metadata, indexed by dataset
+    and variable and decoupled from any particular graph; libraries learned
+    on different datasets can be merged (Section~\ref{sec:pairwise-math} and
+    Chapter~\ref{chap:method}).
+  \item A graph sampler that consumes such a library and any user-specified
+    DAG and produces a synthetic dataset by composing the corresponding
+    building blocks in topological order: fitted vines where a parent set
+    was observed, multi-parent models composed from pairwise copulas where
+    it was not, copulas transplanted onto edges between variables of
+    different datasets, and a counted, reported fallback for numerically
+    unstable models (Section~\ref{sec:sampler}).
+  \item An extension of the pipeline to discrete and mixed
+    continuous/discrete variables, first by per-observation jittering with
+    no change to the fitting or sampling code, and then by the native
+    discrete copula likelihood, which removes most of the dependence loss
+    caused by jittering (Sections~\ref{sec:discrete-method}
+    and~\ref{sec:rq4}).
+  \item A quantitative account of that dependence loss: jittering measures
+    Kendall's $\tau_a$ rather than $\tau_b$, a known identity which here
+    explains the per-edge degradation observed on Asia, Insurance and the
+    mixed SCM (Section~\ref{sec:rq4}).
+  \item A held-out, multi-seed evaluation with two structure-learning
+    algorithms (PC and GES, 100 seeds per graph), showing that on the Asia
+    network the learned generator's data supports both significantly better
+    than a fixed-correlation baseline and a fitted Gaussian copula, and PC
+    as well as real data, while on the larger Insurance and Alarm networks
+    it falls clearly short of real data (Section~\ref{sec:closing-loop}).
+  \item A demonstration, on a graph built from two datasets and on 200 novel
+    graphs, that learned dependencies transfer to graph structures that
+    never existed in any source dataset, reproducing the transplanted
+    copulas and yielding benchmarks that are not variance-sortable
+    (Section~\ref{sec:composition}).
+  \item A prototype of random-forest conditionals that work in the same
+    pseudo-observation space and plug into the same sampler, which brings
+    structure recovery on Insurance and Alarm to about the level of real
+    data and thereby supports the explanation that the remaining gap stems
+    from non-monotone and interaction dependence that copula conditionals
+    cannot represent (Sections~\ref{sec:forest-method}
+    and~\ref{sec:rq6-forest}).
+\end{enumerate}
+
+\section{Scope}
+The work is split into two phases. Phase 1 targets continuous variables
+exclusively and establishes the full pipeline -- data loading, pairwise and
+conditional dependency fitting, graph-conditioned sampling, and evaluation
+against both statistical-realism and downstream-usability criteria. Phase 2
+extends the same pipeline to binary, ordinal, and categorical variables,
+without redesigning any of the Phase 1 machinery. Throughout, the core
+target for graph complexity is two parents per node, with a controlled
+extension to three and four parents to test how far the approach scales
+before conditional vine fitting becomes unreliable. All experiments use a
+combination of real datasets (Sachs, UCI diabetes, Asia, Insurance,
+Alarm) and
+synthetic ones with a known ground-truth DAG, so that recovered dependence
+structure and downstream discovery performance can be checked against a
+verifiable target rather than taken on faith.
+
+\section{Thesis Structure}
+Chapter~\ref{chap:background} introduces the statistical and causal-discovery
+background the method builds on. Chapter~\ref{chap:method} describes the
+pipeline itself and, importantly, the design decisions behind it --
+several of which were not obvious from the tooling's documentation and had to
+be reverse-engineered and validated before being trusted.
+Chapter~\ref{chap:implementation} maps that design onto the actual codebase
+and walks through two representative bugs at the code level.
+Chapter~\ref{chap:setup} lays out the datasets, metrics, and experimental
+protocol. Chapter~\ref{chap:results} answers six concrete research questions
+with the corresponding experiments. Chapter~\ref{chap:discussion} reflects on
+the bugs found along the way, the limitations that turned out to be
+fundamental rather than fixable, and threats to validity.
+Chapter~\ref{chap:conclusion} closes with a summary and directions for future
+work.
+
+
+\chapter{Background}
+\label{chap:background}
+
+\section{Causal Discovery and Structure Learning}
+Causal discovery methods aim to recover a DAG over a set of variables from
+observational data alone, typically by testing conditional independence
+relations implied by the graph. The PC algorithm \parencite{spirtes2000} is
+the canonical constraint-based method: it starts from a fully connected
+undirected graph, removes an edge between two variables whenever some subset
+of the other variables renders them conditionally independent, and then
+orients the remaining edges using a small set of graphical rules. Its output
+is generally a Markov equivalence class -- a completed partially directed
+acyclic graph (CPDAG) -- rather than a single fully oriented DAG, since some
+edges cannot be oriented from observational data alone regardless of how much
+data is available.
+
+The standard way to score how well a discovered graph matches the truth is
+the Structural Hamming Distance (SHD): the number of edge insertions,
+deletions, or reversals needed to turn one graph into the other, with zero
+meaning an exact match. Formally, writing $E$ and $\hat{E}$ for the edge
+sets (with direction) of the true and recovered graphs over the same
+variable set,
+\begin{equation}
+\text{SHD}(E, \hat{E}) = |E \setminus \hat{E}| + |\hat{E} \setminus E| -
+|\{(i,j) : (i,j) \in E,\, (j,i) \in \hat{E}\}|,
+\label{eq:shd}
+\end{equation}
+i.e.\ the count of edges present in one graph but not the other, minus a
+correction so that a reversed edge (present in both, but pointing opposite
+ways) counts once rather than twice.
+
+Figure~\ref{fig:mec-example} illustrates why SHD, rather than exact-match
+accuracy, is the right metric here, and why even a perfect method can have
+a nonzero SHD. The chain (a) and the common cause (b) encode the same
+conditional-independence relations -- neither implies $A \perp C$
+unconditionally, both imply $A \perp C \mid B$ -- and are therefore Markov
+equivalent: no amount of observational data can tell a constraint-based
+method such as PC which of the two generated the data, which is why PC
+returns the completed partially directed acyclic graph (CPDAG) $A - B - C$
+with both edges undirected for either of them. The collider (c) is
+different: it implies $A \perp C$ marginally but \emph{not} $A \perp C \mid
+B$, so it is distinguishable from (a) and (b) and PC can orient both of its
+edges. If the true graph is the chain $A \to B \to C$ and a method returns
+the equivalent common-cause structure $A \leftarrow B \to C$, only the
+$A$--$B$ edge is reversed ($B \to C$ is identical), giving $\text{SHD} = 1$
+by Equation~\ref{eq:shd} although both graphs make identical independence
+claims. The SHD implementation used in this thesis (causal-learn) likewise
+counts every undirected CPDAG edge whose true counterpart is directed as
+one error -- a reminder that a low nonzero SHD, like the continuous-graph
+results in Section~\ref{sec:closing-loop}, can reflect unavoidable
+orientation ambiguity rather than a recovery failure.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node distance=1.6cm,
+  every node/.style={circle, draw, minimum size=7mm, font=\small},
+  arr/.style={-{Latex[length=2mm]}, thick}
+]
+\begin{scope}
+  \node (a1) {$A$};
+  \node[right=of a1] (b1) {$B$};
+  \node[right=of b1] (c1) {$C$};
+  \draw[arr] (a1) -- (b1);
+  \draw[arr] (b1) -- (c1);
+  \node[draw=none, below=0.4cm of b1, font=\small] {(a) chain};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+  \node (a2) {$A$};
+  \node[right=of a2] (b2) {$B$};
+  \node[right=of b2] (c2) {$C$};
+  \draw[arr] (b2) -- (a2);
+  \draw[arr] (b2) -- (c2);
+  \node[draw=none, below=0.4cm of b2, font=\small] {(b) common cause};
+\end{scope}
+\begin{scope}[xshift=11cm]
+  \node (a3) {$A$};
+  \node[right=of a3] (b3) {$B$};
+  \node[right=of b3] (c3) {$C$};
+  \draw[arr] (a3) -- (b3);
+  \draw[arr] (c3) -- (b3);
+  \node[draw=none, below=0.4cm of b3, font=\small] {(c) common effect (collider)};
+\end{scope}
+\end{tikzpicture}
+\caption{Three DAGs with identical conditional-independence implications
+except one: (a) and (b) both imply $A \perp C \mid B$ and are Markov
+equivalent (indistinguishable from observational data); (c) does not imply
+$A \perp C \mid B$ and is therefore distinguishable from the other two,
+since conditioning on a collider \emph{induces} rather than removes
+dependence between its parents.}
+\label{fig:mec-example}
+\end{figure}
+
+SHD is the metric this thesis ultimately uses to answer whether synthetic
+data is \emph{useful}, as opposed to merely \emph{realistic} -- a
+distinction the experimental design in Chapter~\ref{chap:results} is built
+around.
+
+\section{Copulas}
+A copula is a multivariate cumulative distribution function whose marginals
+are all uniform on $(0,1)$. Sklar's theorem \parencite{sklar1959} states
+that any joint distribution $F(x_1,\dots,x_p)$ can be written as
+$F(x_1,\dots,x_p) = C(F_1(x_1),\dots,F_p(x_p))$ for some copula $C$, where
+$F_i$ are the marginal distributions. This factorization is exactly what the
+tool needs: it lets marginal shape (a protein's expression level, a
+patient's BMI) be modeled and stored completely separately from dependence
+structure, so that a dependence pattern learned from one dataset can, in
+principle, be attached to a variable with entirely different marginal
+statistics in another.
+
+Bivariate copula families differ in the \emph{shape} of dependence they can
+represent: the Gaussian copula is symmetric and has no tail dependence, the
+Student-t copula adds symmetric tail dependence via a degrees-of-freedom
+parameter, and Archimedean families such as Clayton, Gumbel, and Joe
+\parencite{joe1997} capture asymmetric lower- or upper-tail dependence that
+linear-Gaussian models cannot represent at all. Kendall's $\tau$
+\parencite{kendall1938}, a rank-based dependence measure invariant to
+monotonic transformations of the marginals, is the natural summary statistic
+for comparing dependence strength across families and across the raw-versus-copula
+divide, and is used throughout this thesis for exactly that reason.
+
+For more than two variables, a \emph{vine copula} builds a full joint
+dependence structure out of a cascade of bivariate copulas arranged in a tree
+sequence, using conditional distributions computed via bivariate copulas'
+$h$-functions. \textcite{nagler2016} give the general construction; this
+thesis only needs the special case of a three-variable vine (one child, two
+parents), used to sample a variable conditional on both of its parents at
+once.
+
+Figure~\ref{fig:vine-tree} shows the three-variable case exactly as it is
+built in the code: a D-vine \parencite{bedford2002,aas2009,czado2019} whose
+variables are listed in the order $C, P_1, P_2$, so that the first tree is
+the \emph{path} $C - P_1 - P_2$. Tree $T_1$ contains the copulas of the
+pairs $(C,P_1)$ and $(P_1,P_2)$; tree $T_2$ contains one copula for $C$
+and $P_2$ \emph{conditional on} $P_1$, fitted not to the raw
+pseudo-observations but to the $h$-function residuals $h(u_C \mid
+u_{P_1})$ and $h(u_{P_2} \mid u_{P_1})$ from $T_1$. The joint density
+factorizes as
+\begin{equation}
+c(u_C, u_{P_1}, u_{P_2}) = c_{C,P_1}(u_C, u_{P_1}) \cdot c_{P_1,P_2}(u_{P_1},
+u_{P_2}) \cdot c_{C,P_2 \mid P_1}\bigl(h(u_C \mid u_{P_1}), h(u_{P_2}
+\mid u_{P_1})\bigr),
+\label{eq:vine-density}
+\end{equation}
+i.e.\ three bivariate copula densities multiplied together rather than one
+trivariate density estimated directly -- the practical appeal of the vine
+construction. Because $C$ is a leaf of the path, the conditional density
+of the child given both parents is $c(u_C \mid u_{P_1}, u_{P_2}) =
+c_{C,P_1}(u_C,u_{P_1}) \cdot c_{C,P_2\mid P_1}(h(u_C\mid u_{P_1}),
+h(u_{P_2}\mid u_{P_1}))$: the parent--parent copula $c_{P_1,P_2}$ enters
+the child's conditional distribution only through the conditioning
+argument $h(u_{P_2}\mid u_{P_1})$. For $k$ parents the same construction
+uses the path $C - P_1 - \dots - P_k$, again with the child as a leaf. A
+D-vine and a C-vine coincide for three variables; for four or more they
+differ, and only the D-vine path keeps the child a leaf in every tree,
+which is what the sampling recipe of Section~\ref{sec:conditional} needs.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node/.style={circle, draw, minimum size=7mm, font=\small},
+  edgelabel/.style={font=\scriptsize, fill=white, inner sep=1pt}
+]
+\node[node] (c) at (0,0) {$C$};
+\node[node] (p1) at (2.4,0) {$P_1$};
+\node[node] (p2) at (4.8,0) {$P_2$};
+\draw (c) -- node[edgelabel] {$c_{C,P_1}$} (p1);
+\draw (p1) -- node[edgelabel] {$c_{P_1,P_2}$} (p2);
+\node[font=\small] at (2.4,0.7) {$T_1$};
+
+\node[node, minimum size=9mm] (cp1) at (1.2,-2.2) {$C,P_1$};
+\node[node, minimum size=9mm] (p1p2) at (3.6,-2.2) {$P_1,P_2$};
+\draw (cp1) -- node[edgelabel] {$c_{C,P_2\mid P_1}$} (p1p2);
+\node[font=\small] at (2.4,-1.5) {$T_2$};
+\end{tikzpicture}
+\caption{D-vine tree sequence used for a two-parent child $C$ (variable
+order $C, P_1, P_2$). Tree $T_1$ is the path $C - P_1 - P_2$ with copulas
+$c_{C,P_1}$ and $c_{P_1,P_2}$; tree $T_2$ joins its two edges with the
+conditional copula $c_{C,P_2\mid P_1}$, fitted to the $h$-function
+residuals of $T_1$. The child is a leaf, so it can be sampled conditional
+on both parents by inverting the Rosenblatt transform
+(Algorithm~\ref{alg:conditional}).}
+\label{fig:vine-tree}
+\end{figure}
+
+\subsection{Copula Family Reference}
+\label{sec:copula-glossary}
+The candidate set offered to the AIC/BIC selection step in
+Section~\ref{sec:pairwise-math} contains seven families: independence,
+Gaussian, Student-$t$, Clayton, Gumbel, Frank and Joe. Clayton, Gumbel and
+Joe additionally enter in their $90^\circ$, $180^\circ$ and $270^\circ$
+rotations, so that negative dependence and the opposite tail can be
+represented as well (12 of the 55 Sachs pairs select a $90^\circ$ or
+$270^\circ$ rotation). The non-trivial families are defined here for
+reference, since the results chapters name them without restating their
+densities. All are written in terms of pseudo-observations $u,v \in
+(0,1)$; the independence copula is $C(u,v) = uv$.
+
+\textbf{Gaussian.} $C(u,v;\rho) = \Phi_2(\Phi^{-1}(u), \Phi^{-1}(v); \rho)$,
+where $\Phi_2$ is the bivariate standard normal CDF with correlation $\rho
+\in (-1,1)$ and $\Phi^{-1}$ the standard normal quantile function.
+Symmetric, no tail dependence: extreme values in one variable carry no
+extra information about extreme values in the other beyond what the bulk
+of the distribution already implies.
+
+\textbf{Student-t.} Same construction as Gaussian but with the
+bivariate Student-$t$ CDF, adding a degrees-of-freedom parameter $\nu > 0$
+that controls symmetric tail dependence in both directions -- lower $\nu$
+means heavier joint tails. Reduces to the Gaussian copula as $\nu \to
+\infty$.
+
+\textbf{Clayton.} $C(u,v;\theta) = \bigl(u^{-\theta} + v^{-\theta} -
+1\bigr)^{-1/\theta}$ for $\theta > 0$. Asymmetric: strong \emph{lower}-tail
+dependence (joint small values are more likely than a Gaussian copula with
+the same $\tau$ would predict) but no upper-tail dependence.
+
+\textbf{Gumbel.} $C(u,v;\theta) = \exp\bigl(-\bigl[(-\log
+u)^{\theta} + (-\log v)^{\theta}\bigr]^{1/\theta}\bigr)$ for $\theta \ge 1$.
+The mirror image of Clayton: strong \emph{upper}-tail dependence, none in
+the lower tail.
+
+\textbf{Joe.} $C(u,v;\theta) = 1 - \bigl[(1-u)^{\theta} + (1-v)^{\theta}
+- (1-u)^{\theta}(1-v)^{\theta}\bigr]^{1/\theta}$ for $\theta \ge 1$. Also
+upper-tail dependent, with a different tail shape than Gumbel; it is Joe
+that the pairwise fitting step in Section~\ref{sec:rq1} selects for
+\emph{praf}--\emph{pmek} on the pooled Sachs data (Gumbel on the 853-row
+observational subset).
+
+\textbf{Frank.} $C(u,v;\theta) = -\frac{1}{\theta}\log\Bigl(1 +
+\frac{(e^{-\theta u}-1)(e^{-\theta v}-1)}{e^{-\theta}-1}\Bigr)$ for $\theta
+\ne 0$. Symmetric like Gaussian, but with \emph{no} tail dependence at all
+in either direction, and can represent both positive and negative
+dependence directly (Clayton, Gumbel and Joe cover negative dependence only
+through their $90^\circ$/$270^\circ$ rotations). Frank is selected for all
+three copulas of the Insurance conditional vine and for one of the three
+Asia copulas in Table~\ref{tab:sweep}. Across \emph{all} pairwise fits,
+however, independence, Clayton and Frank are the most frequent selections
+on Insurance (149, 80 and 66 of 351 pairs), independence and Clayton on Asia
+(14 and 6 of 28), and Frank is also the most frequent family on the
+continuous UCI diabetes data (24 of 55 pairs); its prevalence therefore
+cannot be attributed to jittering alone.
+
+\section{Related Approaches to Synthetic Causal Data}
+\label{sec:related-work}
+
+\subsection{Structural-Causal-Model Simulators}
+The dominant alternative to the approach in this thesis is to specify a
+structural causal model directly: pick a DAG, and for every node write down a
+function of its parents plus independent noise, most commonly a linear
+combination with additive Gaussian noise. This is the generation method
+behind most synthetic benchmarks used to evaluate continuous-optimization
+structure-learning methods such as NOTEARS \parencite{zheng2018}, and it is
+simple to implement and guarantees a known ground truth, which is why it
+remains the default choice in benchmark suites for structure-learning
+methods generally. Its weakness is exactly what this thesis addresses: every
+edge in such a model has the same generic dependence shape regardless of
+what the variables actually represent, so data generated this way is easy
+for structure-learning methods to fit but does not stress-test them against
+the kind of dependence patterns, such as tail asymmetry or bounded/discrete
+support, that real data actually exhibits. A method that performs well on a
+thousand linear-Gaussian SCMs has not necessarily been tested against
+anything resembling the Sachs signaling network's own dependence structure,
+which Section~\ref{sec:rq3} shows is predominantly non-Gaussian. Simulated
+additive-noise benchmarks can moreover be ``gamed'': with generically
+sampled edge weights the marginal variance tends to increase along the
+causal order (high \emph{varsortability}), so that a trivial
+sort-by-variance baseline competes with sophisticated methods
+\parencite{reisach2021}. Section~\ref{sec:composition} checks this property
+for the data generated in this thesis.
+
+\subsection{Copula-Based Synthetic Data Generators}
+Copula-based generation of synthetic tabular data is not new in itself: the
+Synthetic Data Vault \parencite{patki2016} popularized fitting a copula (or a
+Gaussian-mixture-copula hybrid) to an entire real table and resampling from
+it, and the pure-Python \texttt{copulas} package this thesis considered and
+rejected in favor of \texttt{pyvinecopulib} (Section~\ref{sec:pairwise-math}
+below) grew out of that line of work. The key difference is what the fitted
+dependence structure is \emph{for}. SDV-style tools fit a single joint model
+to reproduce one table's own row-level statistics as faithfully as possible,
+with the graph, if any, being incidental to the fitting procedure. This
+thesis instead treats the pairwise and conditional copulas as detachable
+building blocks, stored independently of any particular graph, so the same
+learned dependence can be attached to a different edge, in a different DAG,
+possibly built from a different dataset entirely -- the composability
+demonstrated in Section~\ref{sec:composition}. Copula-based graphical
+models with one copula per local family of a DAG have been proposed for
+density estimation \parencite{elidan2010}; none of the generators surveyed
+here exposes the recombination of fitted local dependencies across graphs
+and datasets as a first-class, evaluated capability, which is the
+methodological contribution this thesis aims at.
+
+\subsection{Benchmark Suites and Toolkits for Causal Discovery}
+On the discovery side, toolkits such as the Causal Discovery Toolbox
+\parencite{kalainathan2020} and the \texttt{bnlearn} ecosystem
+\parencite{scutari2010} -- the latter being the origin of the Asia and
+Insurance networks used throughout this thesis -- standardize how discovery
+algorithms are run and scored, but they consume benchmark datasets as given
+rather than providing a way to manufacture new ones with controllable
+dependence realism. This thesis's contribution sits upstream of that
+tooling: \texttt{gcda}'s output is deliberately just another CSV that any of
+these downstream toolkits, causal-learn included, can consume unmodified.
+
+\subsection{Deep Generative Tabular Synthesizers}
+A fourth line of work generates synthetic tabular data with deep generative
+models rather than copulas: CTGAN \parencite{xu2019} adapts a conditional
+GAN to mixed continuous/categorical tables, using a mode-specific
+normalization scheme to handle multimodal continuous columns and a
+training-by-sampling procedure to handle imbalanced categorical ones. These
+methods can capture dependence structure copulas cannot easily express
+(high-order, nonlinear interactions among many variables at once) and have
+no explicit per-pair or per-edge structure to speak of -- which is
+precisely their limitation for this thesis's purposes: a trained CTGAN
+model reproduces one table's joint distribution as a monolithic whole, with
+no natural notion of a reusable, edge-level building block, and no
+mechanism for attaching a subset of its learned dependence to a different,
+user-specified graph. They also typically need substantially more training
+rows than copula fitting to train reliably, which cuts against small
+benchmark datasets such as Sachs (a few thousand rows) or the synthetic
+SCM used throughout this thesis.
+
+\subsection{Realistic Benchmark Generators Fitted to Real Data}
+\label{sec:realistic-generators}
+The closest prior work fits a generator to real data and uses it to produce
+benchmark datasets with a known ground truth. RealCause
+\parencite{neal2020} fits generative models to real treatment--outcome data
+so that causal-effect estimators can be benchmarked on realistic data with
+known effects. CausalTime \parencite{cheng2024} fits neural models with
+normalizing flows to real multivariate time series, derives a hypothesised
+causal graph and generates time series from the fitted model.
+causalAssembly \parencite{goebler2024} uses a production line whose causal
+structure is known from the physical process, estimates each node's
+conditional distribution with distributional random forests and samples
+from the resulting joint distribution, which is Markov with respect to the
+ground truth. All three reproduce the \emph{source system's own} graph (or
+subgraphs of it); none of them is designed to transplant a fitted local
+dependence onto a different graph or to combine local models fitted on
+different datasets, which is the focus of this thesis.
+
+\subsection{Comparison Summary}
+Table~\ref{tab:related-comparison} summarizes where each line of work
+stands on the three properties Section~\ref{sec:related-work} identifies as
+jointly necessary: learning dependence from real data rather than assuming
+a fixed form, exposing that dependence as building blocks reusable across
+graphs, and validating against a downstream discovery task rather than
+distributional realism alone.
+
+\begin{table}[ht]
+\caption{Comparison against related approaches to synthetic data for causal-discovery-adjacent use cases.}
+\label{tab:related-comparison}
+\centering
+\small
+\begin{tabular}{p{2.6cm}p{2.3cm}p{2.9cm}p{3.1cm}}
+\toprule
+\textbf{Approach} & \textbf{Learns from real data} & \textbf{Composable building blocks} & \textbf{Downstream-validated} \\
+\midrule
+Linear-Gaussian SCM \parencite{zheng2018} & No & Yes (trivially: fixed form) & Sometimes \\
+SDV / copula-fit table \parencite{patki2016} & Yes & No & No \\
+CTGAN / deep generative \parencite{xu2019} & Yes & No & Rarely \\
+RealCause / CausalTime / causalAssembly \parencite{neal2020,cheng2024,goebler2024} & Yes & No (source graph only) & Yes (benchmarks) \\
+\textbf{This thesis} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} (Section~\ref{sec:closing-loop}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Positioning of This Thesis}
+Put together, the gap this thesis targets is the combination none of the
+above lines of work covers on its own: dependence learned from real
+data (unlike SCM simulators), organized as reusable building blocks rather
+than a single fitted table or trained model (unlike SDV-style generators
+and deep generative synthesizers alike), and evaluated against the actual
+downstream discovery task rather than only against realism metrics (unlike
+most copula-fitting work, which stops at distributional comparison).
+Chapter~\ref{chap:results} is structured specifically to demonstrate all
+three properties rather than assume they follow from each other.
+
+
+\chapter{Method}
+\label{chap:method}
+
+\section{Pipeline Overview}
+The pipeline has two stages that are deliberately kept independent: a
+\emph{fitting} stage that turns a real dataset into a library of reusable
+dependency models, and a \emph{sampling} stage that consumes any such
+library (or several, merged) together with a user-specified DAG and produces
+a new dataset. Figure~\ref{fig:pipeline} sketches the data flow. Keeping the
+two stages separate, with a serializable library object as the sole
+interface between them, is what makes cross-dataset composition in
+Section~\ref{sec:composition} possible: the sampler never needs to know
+which dataset a given pairwise model came from.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners, minimum width=2.6cm, minimum height=1cm, align=center, font=\small},
+  arr/.style={-{Latex[length=2mm]}, thick}
+]
+\node[box] (data) {Real dataset};
+\node[box, right=1.4cm of data] (prep) {Preprocessing\\(pseudo-obs.)};
+\node[box, right=1.4cm of prep] (fit) {Pairwise +\\conditional fitting};
+\node[box, right=1.4cm of fit] (lib) {Dependency\\Library (JSON)};
+\node[box, below=1.2cm of lib] (graph) {User-specified\\DAG};
+\node[box, below=1.2cm of fit] (sampler) {GraphSampler};
+\node[box, below=1.2cm of prep] (out) {Synthetic\\dataset};
+\node[box, below=1.2cm of data] (eval) {Evaluation};
+
+\draw[arr] (data) -- (prep);
+\draw[arr] (prep) -- (fit);
+\draw[arr] (fit) -- (lib);
+\draw[arr] (lib) -- (sampler);
+\draw[arr] (graph) -- (sampler);
+\draw[arr] (sampler) -- (out);
+\draw[arr] (out) -- (eval);
+\draw[arr] (data) -- (eval);
+\end{tikzpicture}
+\caption{Pipeline overview. Fitting (top row) and sampling (bottom row)
+communicate only through the serialized dependency library, so a graph can
+be sampled using models learned from a different dataset than the one it
+was originally observed in, or from several datasets merged together.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Preprocessing: Pseudo-Observations}
+Copula fitting requires each column to be transformed to a uniform
+$(0,1)$ scale first. Formally, for a column of $n$ observations
+$x_1,\dots,x_n$, the pseudo-observation for $x_i$ is
+\begin{equation}
+\hat{u}_i = \frac{\operatorname{rank}(x_i)}{n+1},
+\label{eq:pseudo-obs}
+\end{equation}
+where $\operatorname{rank}(x_i) \in \{1,\dots,n\}$ is $x_i$'s position in
+the sorted column. Fitting copulas to such rank-based pseudo-observations by maximum likelihood
+is the standard semiparametric approach \parencite{genest1995}. Using
+$(n+1)$ rather than $n$ as the denominator, the
+standard plotting-position convention for empirical CDFs, guarantees
+$\hat{u}_i \in (0,1)$ strictly, so no pseudo-observation ever lands exactly
+on the boundary $0$ or $1$, where several copula densities (Clayton's and
+Joe's among them) are undefined or infinite. The transform is wrapped in an
+\texttt{EmpiricalMarginal} object that also stores the inverse mapping
+$\hat{u} \mapsto x$ via linear interpolation between order statistics, so
+that samples drawn on the copula scale can be mapped back to the original
+variable's units after generation.
+
+This preprocessing step produced the most consequential bug of the project.
+An early version of the transform function accepted no explicit argument for
+which values to transform and defaulted to transforming the array's own
+\emph{sorted} order rather than the caller's original row order. Every
+pairwise fit downstream was therefore silently computed on scrambled data.
+The bug was not caught by code inspection; it surfaced only because a sanity
+check reported Kendall's $\tau \approx 0.999$ for every variable pair,
+regardless of which variables were involved -- a value no real dataset
+should plausibly produce across the board. This is worth dwelling on
+because it illustrates a general point about this kind of pipeline: a silent
+data-alignment bug does not throw an exception, and generic unit tests that
+check shapes and types would not have caught it. What caught it was a
+domain-informed sanity check on the \emph{output distribution} of a
+statistic that should vary. The fix was to require every caller to pass the
+original values explicitly, removing the ambiguity, and a regression test
+now checks that transforming a permuted copy of a column and then inverting
+it recovers the original order.
+
+\section{Pairwise Dependency Fitting}
+\label{sec:pairwise-math}
+For every unordered pair of variables in a dataset, a bivariate copula
+density $c(\hat{u},\hat{v};\theta)$ is fit to the pair's pseudo-observations
+by maximum likelihood, separately for each candidate family $\mathcal{F} \in
+\{\text{independence}, \text{Gaussian}, \text{Student-}t, \text{Clayton},
+\text{Gumbel}, \text{Frank}, \text{Joe}\}$, the last three families also in
+their rotated versions (Section~\ref{sec:copula-glossary}):
+\begin{equation}
+\hat{\theta}_{\mathcal{F}} = \arg\max_{\theta} \sum_{i=1}^{n} \log
+c_{\mathcal{F}}(\hat{u}_i, \hat{v}_i; \theta).
+\label{eq:mle}
+\end{equation}
+The family itself is then selected by whichever of Akaike Information
+Criterion (AIC) or Bayesian Information Criterion (BIC) is being used for
+that experiment,
+\begin{align}
+\text{AIC}_{\mathcal{F}} &= 2k_{\mathcal{F}} - 2\log
+L_{\mathcal{F}}(\hat{\theta}_{\mathcal{F}}), \\
+\text{BIC}_{\mathcal{F}} &= k_{\mathcal{F}} \log n - 2\log
+L_{\mathcal{F}}(\hat{\theta}_{\mathcal{F}}),
+\label{eq:aicbic}
+\end{align}
+where $k_{\mathcal{F}}$ is the number of free parameters in family
+$\mathcal{F}$ (zero for independence; one for Gaussian, Clayton, Gumbel,
+Frank and Joe; two for Student-$t$) and $L_{\mathcal{F}}$ is the
+likelihood at the fitted parameters. The library builder uses BIC by
+default; Section~\ref{sec:rq3} compares it with AIC. The family minimizing
+the chosen criterion is kept, along with its rotation, its parameters, its
+Kendall's $\tau$, and
+both $\text{AIC}_{\mathcal{F}}$ and $\text{BIC}_{\mathcal{F}}$, as
+JSON-serializable metadata for that pair -- so a later re-analysis (such as
+the AIC-versus-BIC comparison in Section~\ref{sec:rq3}) does not require
+refitting anything. \texttt{pyvinecopulib} was chosen as the underlying
+library over the pure-Python \texttt{copulas} package because it exposes
+this exact AIC/BIC family selection natively -- needed regardless for the
+conditional case below -- has a C++ backend for the larger sweeps, and
+includes vine-copula support out of the box.
+
+Before trusting the library for anything beyond a toy example, its core
+fit/sample round trip was validated on data with a known ground truth:
+Gaussian, Student-t, and Clayton copulas with fixed parameters were sampled,
+refit, and checked to recover the correct family, parameters, and $\tau$;
+samples drawn from the \emph{fitted} (not the true) copula were then checked
+to match the same dependence statistics as the original data. All three
+families passed, with one expected wrinkle: the Student-t copula's
+degrees-of-freedom parameter converges far more slowly than its correlation
+parameter and was still 7.6\% off ($\hat\nu = 4.30$ for $\nu = 4$) at the
+$n = 3{,}000$ used by the validation script (\path{t3_validation.py}), which
+is a known property of that parameter rather than a fitting defect, and is
+handled by
+giving it a looser relative tolerance in the validation test than the
+absolute tolerance used for the correlation parameter.
+
+\section{Conditional Sampling for Two-Parent Nodes}
+\label{sec:conditional}
+A node with two parents cannot be sampled from a single bivariate copula;
+it needs a distribution for the child conditional on both parents at once.
+This is implemented with a three-variable D-vine and the inverse Rosenblatt
+transform. For a bivariate copula $C(u_1,u_2;\theta)$, the $h$-function
+\begin{equation}
+h_1(u_1,u_2;\theta) = \frac{\partial C(u_1,u_2;\theta)}{\partial u_1} =
+P(U_2 \le u_2 \mid U_1 = u_1)
+\label{eq:hfunc}
+\end{equation}
+gives the conditional distribution of one variable given the other, and its
+inverse $h_1^{-1}(u_1,w;\theta)$ maps a fresh uniform draw $w$ to a sample
+from that conditional distribution. For the path-shaped D-vine of
+Figure~\ref{fig:vine-tree} (variable order $C, P_1, P_2$), the forward
+Rosenblatt transform \parencite{rosenblatt1952} as computed by
+\texttt{pyvinecopulib} maps a joint sample to independent uniforms,
+processing the variables from the end of the path,
+\begin{equation}
+T(u_C, u_{P_1}, u_{P_2}) = \bigl(h(u_C \mid u_{P_1}, u_{P_2}),\;
+h(u_{P_1} \mid u_{P_2}),\; u_{P_2}\bigr),
+\label{eq:rosenblatt}
+\end{equation}
+with $h(u_C \mid u_{P_1}, u_{P_2}) = h_{C \mid P_2; P_1}\bigl(h(u_C \mid
+u_{P_1}) \,\big|\, h(u_{P_2} \mid u_{P_1})\bigr)$ computed from the copulas
+$c_{C,P_1}$, $c_{P_1,P_2}$ and $c_{C,P_2\mid P_1}$. The two parent
+coordinates of $T$ do not depend on $u_C$, which is what makes the
+following recipe valid. Sampling a leaf of a D-vine conditional on the
+remaining variables in this way is standard, e.g.\ in D-vine quantile
+regression \parencite{kraus2017}; what had to be established empirically
+before it could be trusted was \texttt{pyvinecopulib}'s ordering
+convention. The recipe for sampling $C \mid P_1{=}p_1, P_2{=}p_2$ is: forward-transform the triple $(\cdot, p_1, p_2)$, with a
+placeholder in the child's slot, through Equation~\ref{eq:rosenblatt};
+overwrite that transformed placeholder with a fresh draw $w \sim
+\text{Unif}(0,1)$; and apply the inverse Rosenblatt transform $T^{-1}$ to
+obtain a joint sample whose child coordinate is the desired conditional
+draw. Listing the child \emph{first} in the vine's variable order is what
+makes it the fully-conditioned variable in $T$'s processing order --
+confirmed empirically by fixing one column at a time and observing which
+transformed coordinates changed as a result. Algorithm~\ref{alg:conditional}
+summarizes the procedure. Before using this in the pipeline, it was checked
+against the closed-form conditional mean and variance of a known trivariate
+Gaussian correlation matrix and matched to within Monte Carlo noise. The
+same conditional-sampler component is reused, unmodified, for the three-parent
+extension tested in Section~\ref{sec:sweep}, with the corresponding
+closed-form Gaussian check committed as a regression test.
+
+\begin{algorithm}
+\caption{Conditional sampling of a two-parent child via a D-vine}
+\label{alg:conditional}
+\begin{algorithmic}[1]
+\Require fitted D-vine with child $C$ listed first, parent values $p_1, p_2 \in (0,1)$
+\Ensure a draw $u_C$ from $C \mid P_1{=}p_1, P_2{=}p_2$
+\State $w \gets$ fresh draw from $\text{Unif}(0,1)$
+\State $(\cdot, v_1, v_2) \gets T(w, p_1, p_2)$ \Comment{forward Rosenblatt, Eq.~\ref{eq:rosenblatt}; child slot is a placeholder}
+\State $(u_C, p_1', p_2') \gets T^{-1}(w, v_1, v_2)$ \Comment{inverse Rosenblatt with parent coordinates unchanged}
+\State \Return $u_C$
+\end{algorithmic}
+\end{algorithm}
+
+The direction of the $h$-function inverse used for the simpler one-parent
+case raised the same kind of ambiguity -- which of $h_1(u_1,u_2)$'s two
+arguments is the conditioning value -- and was resolved the same way: a
+large sample from a Clayton copula with a known parameter was binned near a
+fixed conditioning value, and the empirical conditional quantiles of the
+other variable were compared against the library's output before the
+function was trusted for real data. This check is now part of the test
+suite
+(\path{test_hinv1_direction_matches_empirical_conditional_quantiles_of_clayton}).
+
+\section{The Dependency Library}
+The dependency library is the interface between fitting and sampling: a
+JSON-serializable container holding every pairwise model, every fitted
+conditional (two-parent) model, and every marginal transform, indexed by
+dataset and variable name. Making this an explicit, serializable object
+rather than passing fitted model objects around in memory was a deliberate
+design choice: it is what allows two libraries fit on entirely different
+datasets to be merged into one before sampling
+(\texttt{DependencyLibrary.merge}, which refuses colliding dataset
+namespaces), which is the mechanism behind the cross-dataset composition
+experiment in Section~\ref{sec:composition}. Every library also stores
+provenance metadata (package versions, git commit, arguments) and a schema
+version, and is validated when loaded.
+
+Reconstructing a stored copula from its serialized parameters surfaced a
+second bug. For a pair where the independence family was selected -- no
+dependence at all -- the fitted copula's parameter array has shape
+$(0,0)$; converting it to a plain list and back with \texttt{numpy} collapses
+that to shape $(0,)$, which the copula constructor rejects. This went
+unnoticed through several demos because none of them \emph{sampled} a
+one-parent edge whose stored copula was the independence family:
+independence was selected for six UCI-diabetes pairs and one synthetic-SCM
+pair, but none of these pairs was an edge of a sampled graph. It surfaced
+when reconstructing the full Asia network in Phase 2, which does contain
+such edges. It was fixed with an explicit reshape guard and a regression test
+covering the independence-family case specifically -- a reminder that a
+pipeline validated end-to-end on a handful of examples has, at best,
+validated those examples, not the space of cases the data can produce.
+
+\section{Graph Sampler}
+\label{sec:sampler}
+Given a DAG (a \texttt{networkx.DiGraph}, indegree bounded at two by default
+and configurably higher) and a dependency library, \texttt{GraphSampler}
+draws an $n \times p$ dataset one node at a time in topological order.
+Root nodes (indegree zero) are drawn from a marginal -- the library's fitted
+\texttt{EmpiricalMarginal} if available, or a standard normal baseline
+otherwise. Indegree-one nodes are sampled via the corresponding pairwise
+copula's $h$-function inverse, falling back to a fixed-correlation Gaussian
+copula if no learned model exists for that pair. Indegree-two-or-more nodes
+use the conditional vine sampler from Section~\ref{sec:conditional} when a
+vine has been fitted for exactly that parent set (looked up by the
+\emph{set} of parents, so the order in which a user lists the edges does
+not matter). For a parent set that never occurred together in a source
+dataset, the child's conditional density is instead composed from the
+learned pairwise copulas of its incoming edges,
+$c(u_C \mid u_{P_1},\dots,u_{P_k}) \propto \prod_j c_{C,P_j}(u_C, u_{P_j})$,
+and sampled by numerical inversion of its CDF on a fixed grid; this is
+exact when the parents are conditionally independent given the child in
+copula space and otherwise an approximation (it is the local density of a
+copula Bayesian network, \cite{elidan2010}). If neither is available, a
+Gaussian vine with correlation $\rho$ between the child and each parent is
+used as the baseline; since that correlation matrix is positive definite
+only if $k\rho^2 < 1$, $\rho$ is capped at $\sqrt{0.9/k}$ (unchanged for
+$\rho = 0.5$ and $k \le 3$). Algorithm~\ref{alg:sampler} lays out the full
+loop, including where each fallback triggers.
+
+\begin{algorithm}
+\caption{\texttt{GraphSampler}: sampling a dataset for an arbitrary DAG}
+\label{alg:sampler}
+\begin{algorithmic}[1]
+\Require DAG $G$ with indegree $\le d_{\max}$, dependency library $\mathcal{L}$, sample size $n$
+\Ensure synthetic dataset $D \in \mathbb{R}^{n \times p}$
+\For{node $v$ in topological order of $G$}
+  \State $\text{parents} \gets$ parents of $v$ in $G$
+  \State $\text{ok} \gets \textbf{false}$
+  \If{no exception occurs while sampling $v$ \textbf{and} the result is finite} \Comment{conceptually a try/except block}
+    \If{$|\text{parents}| = 0$}
+      \State draw column $v$ from $\mathcal{L}$'s marginal for $v$, or $\mathcal{N}(0,1)$ if none
+    \ElsIf{$|\text{parents}| = 1$}
+      \State draw column $v$ via the pairwise copula's $h^{-1}$ (Eq.~\ref{eq:hfunc}), or a fixed-correlation Gaussian fallback
+    \Else
+      \State draw column $v$ via Algorithm~\ref{alg:conditional} using $\mathcal{L}$'s conditional model, or a Gaussian-vine fallback
+    \EndIf
+    \State $\text{ok} \gets \textbf{true}$
+  \EndIf
+  \If{\textbf{not} $\text{ok}$}
+    \State draw column $v$ independently from $\text{Unif}(0,1)$
+    \State increment the fallback counter for $v$
+  \EndIf
+\EndFor
+\State \Return $D$, the assembled columns, mapped back to original units via each node's marginal inverse
+\end{algorithmic}
+\end{algorithm}
+
+Every node's sampling step is wrapped in a try/except block with an explicit
+non-finite check, and falls back immediately to an independent uniform draw
+on failure rather than retrying. This design choice -- fail fast and move
+on, rather than retry -- was made deliberately: a single unstable fit (for
+instance a near-degenerate conditional vine on a highly skewed discrete
+variable, the exact case surfaced in Phase 2) should not be allowed to abort
+generation of an otherwise-usable $n \times p$ dataset, and a silent retry
+loop would obscure exactly how often instability occurs. Instead, every
+fallback draw is counted per node (\texttt{GraphSampler.fallback\_counts\_})
+and announced with a dedicated warning class, which is what makes the
+stability comparisons in Section~\ref{sec:discrete-results} possible: the
+number of fallback draws is a measurable quantity, not a hidden
+implementation detail.
+
+A second diagnostic concerns compatibility. A multi-parent model is fitted
+under the parent distribution of its source data; if the parents generated
+in a new graph are distributed differently, the child's generated uniforms
+are no longer uniform and mapping them through the stored marginal does not
+reproduce that marginal. The sampler therefore measures, for every node,
+the Kolmogorov--Smirnov distance of its generated uniforms from $U(0,1)$
+and warns when it exceeds both 0.05 and the 0.1\% critical value. With the
+option \texttt{calibrate\_margins}, each node's uniforms are replaced by
+their normalized ranks before use: ranks, and hence the generated copula,
+are unchanged, but every node's marginal is reproduced exactly.
+
+\section{Worked Example: Sampling a Three-Node Graph}
+\label{sec:worked-example}
+To make Algorithms~\ref{alg:conditional} and~\ref{alg:sampler} concrete
+rather than abstract, this section traces one full sample through a
+three-node graph $A \to C$, $B \to C$ by hand, with illustrative (not
+data-derived) numbers chosen to be easy to follow rather than realistic.
+
+\textbf{Setup.} Suppose the dependency library holds: a Gaussian marginal
+$\mathcal{N}(0,1)$ for $A$, a Gaussian marginal $\mathcal{N}(5,2)$ for $B$,
+a Clayton copula with $\theta=2$ (Kendall's $\tau \approx 0.5$) for the pair
+$(A,C)$, a Gaussian copula with $\rho=0.3$ ($\tau \approx 0.19$) for the
+pair $(B,C)$, and a conditional vine for $C \mid A, B$ with the path
+structure of Figure~\ref{fig:vine-tree} ($C - A - B$). For simplicity
+assume its first tree uses a Clayton copula with $\theta=2$ for $(C,A)$ and
+independence for $(A,B)$ (the two roots are independent), and its second
+tree a Gaussian copula with $\rho=0.3$ for $(C,B \mid A)$. Note that the
+vine's copulas are selected jointly when the vine is fitted
+(\texttt{Vinecop.select}); they are not copied from the pairwise library,
+which is used only for one-parent nodes.
+
+\textbf{Step 1 -- root nodes ($A$, $B$).} Both have indegree zero, so
+Algorithm~\ref{alg:sampler} draws them directly from their marginals. Say
+this draw produces $a = 0.84$ (a slightly-above-average draw from
+$\mathcal{N}(0,1)$) and $b = 6.1$ (slightly-above-average from
+$\mathcal{N}(5,2)$). Their pseudo-observations, via each marginal's CDF,
+are $u_A = \Phi(0.84) \approx 0.80$ and $u_B \approx \Phi((6.1-5)/2)
+\approx 0.71$.
+
+\textbf{Step 2 -- the two-parent node ($C$).} $C$ has indegree two, so
+Algorithm~\ref{alg:sampler} delegates to Algorithm~\ref{alg:conditional}.
+A fresh uniform draw, say $w = 0.62$, takes the place of $C$'s first
+Rosenblatt coordinate $h(u_C \mid u_A, u_B)$ (Equation~\ref{eq:rosenblatt}).
+Inverting the transform for this coordinate with the parents held fixed
+first inverts the second tree, $v = h^{-1}_{C\mid B; A}\bigl(w \mid
+h(u_B\mid u_A)\bigr)$, which with independent $A,B$ gives $h(u_B \mid u_A) =
+u_B = 0.71$, and then the first tree, $u_C = h^{-1}_{C\mid A}(v \mid u_A)$.
+Because the Clayton copula linking $C$ and $A$ is the stronger dependence
+($\tau \approx 0.5$ versus $\tau \approx 0.19$ for the second-tree Gaussian
+copula), $u_C$ is pulled further toward $u_A = 0.80$ than toward $u_B$ --
+an asymmetric pull determined by each fitted copula rather than a fixed
+blend, which is exactly what Section~\ref{sec:rq2} shows a
+Gaussian-everywhere baseline cannot reproduce, since one fixed correlation
+on every edge weights both parents identically.
+
+\textbf{Step 3 -- inverse marginal transform.} Whatever pseudo-observation
+$u_C \in (0,1)$ results is finally mapped back to $C$'s own units via its
+\texttt{EmpiricalMarginal} inverse (or a standard normal quantile if $C$
+has no library marginal), completing one row of the synthetic dataset.
+Repeating Steps 1--3 $n$ times, independently, produces the full $n \times
+3$ table.
+
+\textbf{Where fallbacks bite.} If the $T_2$ copula's fitted parameters
+happened to be numerically degenerate for this particular draw of $w$ --
+the scenario Section~\ref{sec:discrete-results} shows is common for highly
+skewed discrete children -- Algorithm~\ref{alg:sampler}'s non-finite check
+would catch the resulting \texttt{NaN} and substitute an independent
+$\text{Unif}(0,1)$ draw for $u_C$ instead, incrementing $C$'s fallback
+counter but allowing generation of the remaining $n-1$ rows (and the rest
+of the graph, in a larger example) to proceed unaffected.
+
+\section{Extension to Discrete and Mixed Data}
+\label{sec:discrete-method}
+Extending the pipeline to binary, ordinal, and categorical variables was
+approached by continuizing discrete columns rather than building a
+parallel discrete-specific pipeline. Every discrete column is mapped to
+$(0,1)$ by \emph{jittering}: each individual observation of a given category
+receives an independent uniform draw on that category's slice of the
+empirical CDF, rather than a single shared rank for the whole category. This
+matters because a shared rank would make every observation of, say,
+``smoker = yes'' identical on the copula scale, silently destroying any
+information a copula fit could use and making the transform non-invertible
+per observation; the per-observation jitter keeps it invertible and keeps
+ties from collapsing the pseudo-observations onto a handful of points. Once
+continuized, a discrete column is indistinguishable, as far as any copula
+fitting or sampling code is concerned, from a genuinely continuous one --
+which is exactly the point: none of Sections~\ref{sec:conditional}
+through~\ref{sec:sampler} needed to change to support discrete data.
+
+For variables whose categories have a natural order -- Insurance's
+socio-economic status (\emph{Prole} $<$ \emph{Middle} $<$ \emph{UpperMiddle}
+$<$ \emph{Wealthy}) is one of several such cases -- the category order used
+for the jittering slices must reflect that true order rather than
+alphabetical order, since fitting a copula against the wrong order corrupts
+concordance for any pair involving that variable. This was missed in an
+initial pass and caught during an explicit audit against the original task
+plan (Section~\ref{sec:audit}); the fix threads each dataset's true
+category order through to the jittering transform. \texttt{Asia}'s eight
+binary variables \parencite{lauritzen1988} and \texttt{Insurance}'s
+twenty-seven categorical variables with a maximum indegree of three
+\parencite{binder1997} are both sampled from their bundled conditional
+probability tables via \texttt{pgmpy} \parencite{ankan2015}, which ships the
+same networks distributed by the reference source as local files and needs
+no network access.
+
+The jittering approach is a documented, deliberately simple choice; it is
+a continuous-convolution technique that is well founded for many estimation
+tasks \parencite{nagler2018}, but for concordance it has a known cost
+\parencite{denuit2005,genest2007}: pairs that are tied in the original
+data are ordered at random after jittering and contribute zero expected
+concordance, so Kendall's $\tau$ of the jittered data equals, in
+expectation, Kendall's $\tau_a$ of the raw data rather than $\tau_b$
+(Section~\ref{sec:rq4}). As an alternative, \texttt{pyvinecopulib} can fit
+copulas to discrete data natively: the likelihood of an observation is the
+probability of the rectangle $[F(x^-), F(x)] \times [F(y^-), F(y)]$ under
+the copula, which needs $F(x)$ and $F(x^-)$ but no jittering. This mode is
+implemented as \texttt{discrete\_mode="native"} for both pairwise copulas
+and conditional vines (the fitted latent copula is then sampled exactly as
+in the continuous case) and compared with jittering in
+Section~\ref{sec:rq4}. Since copulas of discrete data are not unique
+\parencite{genest2007}, the native fit estimates the latent copula of a
+continuous variable discretized at the observed category boundaries.
+
+\section{Random-Forest Conditionals}
+\label{sec:forest-method}
+A copula conditional, whether an inverse $h$-function or a vine, represents
+dependence that is monotone along each variable's order -- for a
+categorical variable, along its fixed category order -- and approximates
+interactions between parents through the simplifying assumption.
+Conditional probability tables of discrete networks are bound by neither.
+On the training draws of Asia, Insurance and Alarm, 0 of 6,
+3 of 34 and 7 of 40 strong edges (Cram\'er's $V > 0.2$) have a
+Spearman correlation of the category indices below half their Cram\'er's
+$V$, and several tables are logical functions of the parents, such as Asia's
+\emph{either} = \emph{tub} OR \emph{lung}.
+
+As a nonparametric alternative for a node's conditional given its parents,
+a random forest \parencite{breiman2001} is fitted in the same
+pseudo-observation space as the rest of the pipeline. It therefore plugs
+into the graph sampler unchanged: the parents enter with their
+$U$-values, and the child's $U$-value is mapped back through its stored
+marginal. For a discrete child, a classification forest predicts the
+category probabilities; a category is drawn from them and turned into a
+$U$-value uniform on that category's slice of the CDF. For a continuous
+child, a regression forest is used as a conditional sampler in the manner of
+quantile regression forests \parencite{meinshausen2006}: a tree is chosen
+at random, and the sampler returns the $U$-value of a random training
+observation from the leaf into which the parent values fall. Leaves hold at
+least 10 (discrete) or 20 (continuous) training observations, so the
+sampler does not replay individual rows. Unlike the copula library, a
+forest is fitted for one node, one parent set and one dataset. It is
+therefore not a reusable building block for new graphs or across datasets,
+and is evaluated only on the known graphs of RQ6
+(Section~\ref{sec:rq6-forest}).
+
+
+\chapter{Implementation}
+\label{chap:implementation}
+
+Chapter~\ref{chap:method} described the pipeline's design; this chapter
+describes how that design maps onto the actual codebase, and walks through
+two of the bugs mentioned only in passing above in enough detail to show
+what a fix in this kind of pipeline actually looks like at the code level.
+
+\section{Module Structure}
+Figure~\ref{fig:module-diagram} shows how the core packages under
+\texttt{gcda/} depend on each other; \texttt{gcda.experiments} (the
+held-out, multi-seed experiments of Chapter~\ref{chap:results}) and
+\texttt{gcda.provenance} (run metadata attached to every output) sit on top
+of all of them and are omitted from the figure. The dependency direction is
+deliberately one-way: \texttt{generation} (the sampler) depends on
+\texttt{dependency} (the library) but not vice versa, and neither depends
+on \texttt{evaluation}, so that evaluation code can be changed freely
+without any risk of it being (accidentally) load-bearing for generation
+itself -- a real risk in smaller research codebases where evaluation
+scripts and core logic tend to accrete into the same files.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners, minimum width=3.1cm, minimum height=1cm, align=center, font=\small},
+  arr/.style={-{Latex[length=2mm]}, thick}
+]
+\node[box] (data) {\texttt{gcda.data}\\loaders + preprocessing};
+\node[box, right=1.6cm of data] (dep) {\texttt{gcda.dependency}\\pairwise + conditional fitting,\\DependencyLibrary};
+\node[box, right=1.6cm of dep] (gen) {\texttt{gcda.generation}\\GraphSampler};
+\node[box, below=1.3cm of dep] (eval) {\texttt{gcda.evaluation}\\realism, conditioning,\\discrete metrics, causal\_discovery};
+\node[box, below=1.3cm of gen] (cli) {\texttt{gcda.cli}\\build-library / generate /\\evaluate / sweep};
+
+\draw[arr] (data) -- (dep);
+\draw[arr] (dep) -- (gen);
+\draw[arr] (data) -- (eval);
+\draw[arr] (gen) -- (eval);
+\draw[arr] (dep) -- (cli);
+\draw[arr] (gen) -- (cli);
+\draw[arr] (eval) -- (cli);
+\end{tikzpicture}
+\caption{Module dependency graph. Arrows point from a module to the module that depends on it. \texttt{evaluation} depends on both \texttt{data} (for ground truth) and \texttt{generation} (for the data being evaluated), but nothing depends on \texttt{evaluation} in turn, keeping it safely swappable.}
+\label{fig:module-diagram}
+\end{figure}
+
+\section{Case Study: The Pseudo-Observation Scrambling Bug}
+\label{sec:bug-case-study-1}
+Section~\ref{sec:pairwise-math}'s preprocessing step needs every column
+mapped to pseudo-observations in the \emph{original} row order, since a
+pairwise fit compares $\hat{u}_i$ and $\hat{v}_i$ at the same row $i$. The
+first implementation of \path{EmpiricalMarginal.transform} looked
+approximately like Listing~\ref{lst:bug1-before}: it computed ranks
+internally but returned them in whatever order \texttt{numpy.argsort}
+produced internally, rather than the caller's original order, whenever no
+explicit values were passed in.
+
+\begin{lstlisting}[caption={Before (simplified reconstruction for illustration; the buggy version is documented in the lab notebook but was not preserved in the repository history): silently returns pseudo-observations in sorted, not original, row order when called without an explicit argument.}, label={lst:bug1-before}]
+class EmpiricalMarginal:
+    def __init__(self, values):
+        self.sorted_values = np.sort(values)
+        self.n = len(values)
+
+    def transform(self, values=None):
+        # BUG: falls back to self.sorted_values, discarding
+        # the caller's original row order entirely.
+        target = values if values is not None else self.sorted_values
+        ranks = np.searchsorted(self.sorted_values, target) + 1
+        return ranks / (self.n + 1)
+\end{lstlisting}
+
+Every call site in the original pairwise-fitting loop happened to call
+\texttt{transform()} with no argument, on the (false) assumption that the
+object already "remembered" the right values from construction. The fix,
+shown in Listing~\ref{lst:bug1-after}, removes the fallback entirely and
+makes the argument mandatory, so the same mistake cannot recur silently at
+a new call site in the future.
+
+\begin{lstlisting}[caption={After (verbatim from \texttt{gcda/data/preprocessing.py}, docstrings shortened): \texttt{transform} has no default argument, so every caller must pass the values, in the order it wants them transformed.}, label={lst:bug1-after}]
+@dataclass
+class EmpiricalMarginal:
+    sorted_values_: np.ndarray = field(default=None, repr=False)
+    plotting_positions_: np.ndarray = field(default=None, repr=False)
+
+    def fit(self, x):
+        x = np.asarray(x, dtype=float)
+        n = len(x)
+        self.sorted_values_ = np.sort(x)
+        self.plotting_positions_ = np.arange(1, n + 1) / (n + 1)
+        return self
+
+    def transform(self, x):
+        x = np.asarray(x, dtype=float)
+        return np.interp(x, self.sorted_values_, self.plotting_positions_)
+\end{lstlisting}
+
+The accompanying regression test, added alongside the fix, checks the
+property that actually matters rather than any specific numeric output:
+transforming a permuted copy of a column and inverting the result must
+recover the original values in the original order, for an arbitrary
+permutation.
+
+\section{Case Study: The Independence-Family Reshape Bug}
+Section~\ref{sec:pairwise-math} noted that reconstructing a stored copula
+whose selected family is \texttt{indep} crashes on a shape mismatch.
+Listing~\ref{lst:bug2-before} shows the deserialization code that
+triggered it: the independence family's parameter array is
+\texttt{numpy}-shaped $(0,0)$ before serialization, but round-tripping it
+through \texttt{.tolist()} and back through \texttt{np.array(...)}
+collapses the empty array to shape $(0,)$, which the underlying
+\texttt{pv.Bicop} constructor rejects as malformed.
+
+\begin{lstlisting}[caption={Before (simplified from \texttt{\_bicop\_from\_pairwise\_entry}): round-tripping an empty (0,0)-shaped parameter array through JSON collapses it to shape (0,), which the copula constructor rejects.}, label={lst:bug2-before}]
+def _bicop_from_pairwise_entry(entry):
+    family = getattr(pv.BicopFamily, entry["family"])
+    params = np.array(entry["parameters"], dtype=float)  # BUG: (0,0) -> (0,)
+    return pv.Bicop(family=family, rotation=entry["rotation"], parameters=params)
+\end{lstlisting}
+
+\begin{lstlisting}[caption={After (verbatim from \texttt{gcda/generation/graph\_sampler.py}): an explicit reshape guard restores the (0,0) shape the constructor expects whenever the family carries no parameters; the family name is also validated against pyvinecopulib's families before use.}, label={lst:bug2-after}]
+def _bicop_from_pairwise_entry(entry: dict) -> pv.Bicop:
+    name = entry["family"]
+    if not isinstance(name, str) or not hasattr(pv.BicopFamily, name) or name.startswith("_"):
+        raise ValueError(f"unknown copula family {name!r} in library entry")
+    family = getattr(pv.BicopFamily, name)
+    params = np.array(entry["parameters"], dtype=float)
+    if params.size == 0:
+        # e.g. the "indep" family has no parameters; .tolist() loses the (0, 0)
+        # shape pv.Bicop's constructor requires, collapsing it to a bare [].
+        params = params.reshape(0, 0)
+    return pv.Bicop(family=family, rotation=int(entry["rotation"]), parameters=params)
+\end{lstlisting}
+
+This bug is a good illustration of a broader point from
+Chapter~\ref{chap:discussion}: it was latent in the codebase for the
+entire continuous-only Phase 1, because no one-parent edge sampled in
+Phase 1 used an independence copula (independence was selected for six
+UCI-diabetes pairs and one synthetic-SCM pair, none of them a sampled
+edge), so \texttt{\_bicop\_from\_pairwise\_entry} was exercised only on
+families with nonempty parameter arrays. It surfaced the moment Phase 2's Asia network,
+which does contain independence-selected pairs, was reconstructed from a
+saved library -- an example of a code path that passed every existing test
+simply because nothing had ever asked it to handle that input.
+
+\section{Testing Philosophy}
+The regression tests added throughout Chapter~\ref{chap:method} (including
+the discrete extension, Section~\ref{sec:discrete-method}) follow one
+guiding rule, made explicit here because Chapter~\ref{chap:discussion}
+argues it generalizes beyond this
+specific project: whenever a bug is found because a summary statistic
+looked implausible -- too uniform, too flat, too clean -- the regression
+test asserts on that same statistic's plausible \emph{range} or
+\emph{direction of change}, not on a specific fitted number. A test that
+merely reproduces today's fitted parameters to five decimal places would
+have passed throughout the entire period the pseudo-observation bug was
+present, since the bug's symptom was a suspicious pattern across many
+pairs, not a wrong-looking number in any single one.
+
+\chapter{Experimental Setup}
+\label{chap:setup}
+
+\section{Datasets}
+Table~\ref{tab:datasets} summarizes the datasets used. They were chosen to
+cover three axes that matter for the research questions in
+Chapter~\ref{chap:results}: real versus synthetic (so that recovered
+structure can be checked against either domain knowledge or an exactly
+known ground truth), continuous versus discrete, and small versus larger
+graphs.
+
+\begin{table}[ht]
+\caption{Datasets used across the two phases of the pipeline.}
+\label{tab:datasets}
+\centering
+\begin{tabular}{lp{3.1cm}p{6.7cm}}
+\toprule
+\textbf{Dataset} & \textbf{Type} & \textbf{Role} \\
+\midrule
+Sachs \parencite{sachs2005} & real, continuous & 11 phosphoproteins and phospholipids measured in 7,466 single cells pooled over nine experimental conditions (one general stimulation and eight interventions); the 853-row general-stimulation condition is used as the observational subset. Checks whether fitted pairwise models recover the consensus network. \\
+UCI diabetes \parencite{efron2004} & real, continuous & 442 patients, 10 baseline variables and a disease-progression target; checks recovered dependence against its documented strongest predictors. \\
+Synthetic SCM & synthetic, continuous & Small DAG with a known, deliberately varied edge-strength pattern; the only dataset where ``did sampling reproduce the true per-edge dependence'' can be checked exactly. \\
+Asia \parencite{lauritzen1988} & real (CPT-sampled), discrete & 8 binary variables; the small sanity-check network for the discrete extension. \\
+Insurance \parencite{binder1997} & real (CPT-sampled), discrete & 27 categorical variables, indegree up to 3; the larger discrete benchmark, including genuinely ordinal variables. \\
+Alarm \parencite{beinlich1989} & real (CPT-sampled), discrete & 37 discrete variables, indegree up to 4; the task plan's alternative larger benchmark, used for the held-out discovery experiment and the indegree-4 check. \\
+Discretized Sachs & synthetic (from real), discrete & Quantile-binned continuous data; a stress test with realistic (non-CPT) discrete dependence. \\
+Mixed synthetic SCM & synthetic, mixed & Small DAG with a continuous$\to$discrete edge and a two-parent node with one continuous and one discrete parent; a shape neither Asia nor Insurance exercises on its own. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Evaluation Metrics}
+Three complementary families of metrics are used, because none of them
+alone answers the question this thesis cares about.
+
+\emph{Statistical realism.} \texttt{compare\_marginals} reports the
+Kolmogorov--Smirnov statistic and a decile-quantile $L_1$ distance between
+true and simulated marginals; \path{compare_pairwise_dependence} reports
+Kendall's $\tau$ and Spearman's $\rho$ per edge. A single multivariate
+summary, the energy distance \parencite{szekely2013} and a Gaussian-kernel
+maximum mean discrepancy \parencite{gretton2012}, is computed on
+rank-transformed (U-space) data specifically so that it reflects
+dependence-structure realism rather than being dominated by whichever
+variable happens to have the largest raw scale. The held-out experiments
+use the unbiased (U-statistic) estimators, which are centred at zero when
+both samples come from the same distribution, together with a permutation
+two-sample test (200 permutations, both samples subsampled to 500 rows).
+
+\emph{Graph-conditioning checks.} \path{edge_removal_effect} verifies
+that deleting an edge from the sampling graph collapses the corresponding
+empirical dependence towards zero, and \path{dependence_strength_sweep}
+verifies that increasing an edge's copula parameter increases the resulting
+Kendall's $\tau$ monotonically. These checks target a different failure mode
+than realism metrics: a sampler could produce individually realistic
+marginals and pairwise dependence values while completely ignoring the
+requested graph structure, and these two checks are what would catch that.
+
+\emph{Discrete-specific metrics.} Category frequency comparison and joint
+contingency distance serve as sanity checks; bias-corrected Cram\'er's V
+\parencite{bergsma2013} and
+normalized mutual information serve as the discrete analogue of Kendall's
+$\tau$ for dependence strength; and \path{measure_generation_stability}
+records wall-clock time, the number of fallback events (warnings of the
+dedicated fallback class only) and the number of fallback draws from the
+sampler's per-node counters, treating stability itself as a metric rather
+than an implementation detail.
+
+\emph{Downstream usability.} Structural Hamming Distance between the graph
+recovered by the PC algorithm \parencite{spirtes2000}, run via
+\texttt{causal-learn} \parencite{zheng2024}, and the true DAG, computed for
+data generated by each method and for the real data itself, complemented by
+the number of edges PC finds and the precision, recall and $F_1$ score of
+its skeleton (adjacencies) against the true skeleton. This is the
+metric that most directly answers the thesis's stated goal, and is treated
+as the headline result in Chapter~\ref{chap:results} rather than a secondary
+check.
+
+\section{Hyperparameter Sweep Design}
+\label{sec:sweep}
+A single sweep script varies three factors for the two-parent conditional
+model: the copula family set offered to AIC/BIC selection (Gaussian-only
+versus the full parametric set), the information criterion used for
+selection (AIC versus BIC), and the dataset (all three continuous and both
+discrete datasets). A separate sweep varies only the sampler's indegree
+cap (2, 3, or 4 parents) to test how far conditional-vine sampling scales
+before it becomes unreliable; it now covers caps 2 to 6, each repeated with
+ten seeds, and uses the validity-capped baseline correlation of
+Section~\ref{sec:sampler}. A third sweep varies the clipping epsilon of the
+conditional sampler ($10^{-10}$ to $10^{-2}$), as requested by the task
+plan's ``clipping/fallback settings''. What is swept is defined entirely in
+a versioned YAML configuration file rather than hardcoded into the sweep
+script, so that a specific sweep run can be reproduced from the config file
+alone; every run additionally logs the clipping epsilon used during
+sampling and the number of fallback draws it triggered, and its full
+configuration is logged to Weights \& Biases alongside its metrics, in
+offline mode by default so that reproducing a sweep locally requires no
+external credentials.
+
+\section{Protocol for the Held-Out Experiments}
+\label{sec:reproduce-seeds}
+The original evaluation fitted each library on one data draw and compared
+generated data with true data from four seeds, one of which (seed 1 of the
+synthetic SCM) was the library's own training data. All experiments added
+in this version use a held-out protocol instead: the library is fitted once
+on a training draw (seed 10{,}000), and every evaluation seed $s = 0, 1,
+\dots$ draws independent true data and an independent generated sample.
+The number of evaluation seeds is 100 for RQ2 and RQ6 (synthetic SCM,
+Asia, Insurance, Alarm), 50 for RQ4 (Asia, Insurance, Alarm, mixed SCM) and
+10 for the learned-vine indegree check; the novel-graph study uses 200
+random DAGs. These runs were executed on the Lichtenberg cluster
+(\path{slurm/}, Python 3.13); every seed they share with earlier runs on a
+4-core workstation reproduced the workstation results exactly. Per seed,
+PC ($\alpha = 0.05$; Fisher-$z$ for continuous, $\chi^2$ for discrete
+data) and, as a second, score-based algorithm, GES (BIC score for
+continuous, BDeu for discrete data) are run on the true data and on data from
+every generator: the fixed-$\rho$ Gaussian baseline with real marginals,
+a fitted Gaussian copula (the same pipeline restricted to Gaussian and
+independence families), the learned generator, for discrete networks the
+learned generator with native discrete fitting, and refitted conditional
+probability tables (CPT refit), the natural generator for a purely discrete
+Bayesian network. Results are reported as means with 95\% bootstrap
+confidence intervals, and generators are compared with paired Wilcoxon
+signed-rank and paired $t$-tests over seeds. The library-fitting variance
+(a single training draw per experiment) is not resampled.
+
+\chapter{Results}
+\label{chap:results}
+
+The results are organized around six research questions, each targeting a
+different claim the thesis goal depends on: that dependence can be learned
+faithfully (RQ1), that it can be recomposed for an arbitrary graph (RQ2),
+that the choice of copula family set actually matters and is
+dataset-dependent (RQ3), that the same machinery extends to discrete data
+(RQ4), that the learned dependencies are genuinely reusable across datasets
+(RQ5), and, finally, that the resulting data is useful for the task that
+motivated building it at all (RQ6).
+
+\section{RQ1: Does the fitted library recover known real-world structure?}
+\label{sec:rq1}
+RQ1 asks whether strong fitted pairwise dependencies coincide with known
+causal edges. All 55 Sachs variable pairs were ranked by the absolute
+Kendall's $\tau$ of their fitted pairwise copula and the ranking was scored
+against the skeleton of the Sachs consensus network as distributed by
+bnlearn/pgmpy (17 edges). Because the bundled Sachs file pools nine
+experimental conditions (Chapter~\ref{chap:setup}), the analysis is run both
+on all 7,466 rows and on the 853-row general-stimulation (observational)
+condition (the first 853 rows of the bundled file; verified row by row
+against an independent copy of the observational data, 853 of 853 rows
+identical). Table~\ref{tab:rq1} summarizes the result.
+
+\begin{table}[ht]
+\caption{RQ1: ranking the 55 Sachs pairs by $|\tau|$ of the fitted pairwise copula against the 17-edge consensus skeleton. Random ranking gives precision $17/55 = 0.31$ and AUROC 0.5; the $p$-value is the one-sided Mann--Whitney test that consensus pairs have larger $|\tau|$.}
+\label{tab:rq1}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Rows} & \textbf{AUROC} & \textbf{$p$} & \textbf{P@5} & \textbf{P@10} & \textbf{P@17} & \textbf{Rank of praf--pmek} \\
+\midrule
+Pooled (7,466) & 0.641 & 0.050 & 1.00 & 0.80 & 0.53 & 1 \\
+Observational (853) & 0.752 & $1.1\times10^{-5}$ & 1.00 & 0.90 & 0.71 & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On the observational condition the nine strongest pairs are all consensus
+edges, and the ranking separates edges from non-edges clearly (AUROC 0.75).
+On the pooled data the separation is weaker (AUROC 0.64, $p = 0.05$): the
+interventions shift several variables jointly and create strong dependence
+between pairs that are not adjacent in the consensus graph. The
+\emph{praf}--\emph{pmek} pair is the strongest pair on the pooled data
+(fitted Joe copula, $\tau = 0.666$) and the third strongest on the
+observational data (Gumbel, $\tau = 0.483$), behind
+\emph{p44/42}--\emph{pakts473} and \emph{PKC}--\emph{P38}, both of which are
+also consensus edges. Two caveats apply to the value 0.666: it is the
+$\tau$ implied by the fitted copula, whereas the empirical Kendall's
+$\tau_b$ of the raw data is 0.616, and 91\% of the \emph{praf} values are
+ties because the measurements are rounded (the fitted copula is the same
+under maximum-rank, mid-rank and random tie handling). On UCI diabetes,
+\emph{s5} ($\tau = 0.41$) and \emph{bmi} ($0.36$) are the two variables most
+strongly dependent on the progression target, the two predictors that
+enter first in the analysis of \textcite{efron2004}.
+
+Figure~\ref{fig:sachs-cascade} shows the relevant part of the consensus
+network. Pairwise dependence is not causation -- the copula fit has no
+access to edge directions, and strong dependence also arises between
+non-adjacent variables -- so RQ1 establishes that the library captures the
+\emph{strongest} real dependencies, which are predominantly direct edges,
+not that it identifies the graph.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node/.style={draw, rounded corners, minimum width=1.8cm, minimum height=0.8cm, font=\small},
+  arr/.style={-{Latex[length=2mm]}, thick}
+]
+\node[node] (praf) {\emph{praf}};
+\node[node, right=1.3cm of praf] (pmek) {\emph{pmek}};
+\node[node, right=1.3cm of pmek] (p4442) {\emph{p44/42}};
+\node[node, right=1.3cm of p4442] (pakts) {\emph{pakts473}};
+\draw[arr] (praf) -- node[above, font=\scriptsize] {$\tau=0.666$} (pmek);
+\draw[arr] (pmek) -- (p4442);
+\draw[arr] (p4442) -- node[above, font=\scriptsize] {$\tau=0.637^{*}$} (pakts);
+\end{tikzpicture}
+\caption{The raf/mek/erk cascade subgraph of the Sachs consensus network
+(bnlearn/pgmpy). Edge labels: Kendall's $\tau$ of the fitted pairwise
+copula on the pooled data; $^{*}$ on the observational subset, where
+\emph{p44/42}--\emph{pakts473} is the strongest of all 55 pairs.}
+\label{fig:sachs-cascade}
+\end{figure}
+
+\section{RQ2: Does the sampler reproduce learned dependence for an arbitrary graph?}
+\label{sec:rq2}
+Sampling the synthetic SCM's own DAG using the library learned from its own
+data reproduces both the true marginal statistics and every pairwise
+Kendall's $\tau$ -- direct edges and dependence induced through the graph
+alike -- closely. The Gaussian-everywhere baseline, sampling the identical
+graph with a single fixed correlation on every edge, instead produces a
+uniform $\tau \approx 0.33$ regardless of an edge's true, and deliberately
+varied, strength. On held-out data (library fitted on a training draw, compared with 100
+independent test draws) the mean absolute error of the per-edge Kendall's
+$\tau$ is 0.0084 for the learned models versus
+0.159 for the baseline and
+0.0114 for a fitted Gaussian copula; the
+unbiased U-space energy distance to the true data is
+-0.00007 (95\% CI
+$[-0.00038, 0.00027]$, i.e.\ indistinguishable from
+zero) versus 0.0038, and a permutation test (run on the first
+ten seeds) rejects equality of the generated and the true distribution in
+0/10 seeds for the learned models versus 4/10 for the baseline. Because the
+synthetic SCM is linear-Gaussian apart from Student-$t$ noise on one node,
+the fitted Gaussian copula is nearly as good as the full family set here;
+the advantage of richer families shows on Sachs (Section~\ref{sec:rq3}). This is the cleanest possible demonstration of what the
+learned-dependency approach buys over a generic baseline: the graph
+structure alone is not enough to make a sampler realistic, and a method that
+ignores per-edge dependence strength gets every edge equally wrong unless
+they all happen to share the same true strength by coincidence.
+
+\section{RQ3: Does the choice of copula family set matter, and is that dataset-dependent?}
+\label{sec:rq3}
+Table~\ref{tab:sweep} reports the full hyperparameter sweep -- Gaussian-only
+versus the full parametric family set, crossed with AIC versus BIC
+selection -- for the two-parent conditional model on all five datasets.
+
+\begin{table}[ht]
+\caption{Conditional-vine AIC and mean $|\tau|$ error (in-sample) under Gaussian-only versus full parametric family selection, for each dataset's two-parent node. Asia's AIC- and BIC-selected fits are shown separately since they differ; every other dataset selects identical families under both criteria.}
+\label{tab:sweep}
+\centering
+\small
+\begin{tabular}{llrrl}
+\toprule
+\textbf{Dataset} & \textbf{Family set} & \textbf{AIC} & \textbf{Mean $|\tau|$ err.} & \textbf{Families selected} \\
+\midrule
+Sachs         & Gaussian-only & $-7{,}769.2$  & 0.0379 & gaussian, gaussian, gaussian \\
+Sachs         & parametric    & $-13{,}649.8$ & 0.0490 & joe, joe, clayton \\
+\addlinespace
+UCI diabetes  & Gaussian-only & $-339.9$      & 0.0318 & gaussian, gaussian, gaussian \\
+UCI diabetes  & parametric    & $-373.3$      & 0.0264 & frank, frank, clayton \\
+\addlinespace
+Synthetic SCM & Gaussian-only & $-6{,}267.7$  & 0.00272 & gaussian, gaussian, gaussian \\
+Synthetic SCM & parametric    & $-6{,}265.2$  & 0.00264 & gaussian, clayton, gaussian \\
+\addlinespace
+Asia (AIC-sel.)& parametric   & $-2{,}224.8$  & 0.0127 & frank, clayton, clayton \\
+Asia (BIC-sel.)& parametric   & $-2{,}219.5$  & 0.0128 & frank, indep, clayton \\
+Asia          & Gaussian-only & $-1{,}563.3$  & 0.0328 & gaussian, gaussian, gaussian \\
+\addlinespace
+Insurance     & Gaussian-only & $-5{,}337.3$  & 0.0233 & gaussian, gaussian, gaussian \\
+Insurance     & parametric    & $-5{,}849.4$  & 0.00617 & frank, frank, frank \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Allowing the full parametric family set, rather than restricting selection
+to Gaussian only, improves the fitted conditional vine's AIC on Sachs from
+$-7{,}769$ to $-13{,}650$ -- the largest improvement of any dataset -- consistent
+with the fact that Sachs' pairwise fits are almost all non-Gaussian (Joe 26,
+Clayton 14, Student-$t$ 11, Gumbel 2, Frank 1 and Gaussian 1 of the 55 pairs
+on the pooled data). Insurance and, once the
+sweep was extended to discrete data, Asia show a similarly large AIC
+improvement (roughly $-512$ and $-660$ points respectively) and a
+correspondingly large drop in mean $|\tau|$ error, and in both cases the
+selected families are entirely non-Gaussian (Frank, Clayton). The picture
+is different for the two most linear datasets. UCI diabetes shows a modest
+AIC improvement ($-339.9 \to -373.3$) with a real, if smaller, drop in
+$\tau$ error. The synthetic SCM, which was in fact generated with linear-Gaussian
+relationships, shows the full family set buying essentially
+nothing: AIC moves from $-6{,}267.7$ to $-6{,}265.2$, a change in the
+\emph{wrong} direction. This is not a parameter-count penalty -- the
+Clayton copula chosen for one edge has one parameter, like the Gaussian it
+replaces. The reason is that the vine is selected tree by tree
+\parencite{dissmann2013}: the second
+tree is fitted to pseudo-observations computed from the first tree's
+copulas, so a family that is locally better for one first-tree edge does not
+guarantee a better joint fit. This is a useful negative result in its own
+right: family-set flexibility is not a free lunch, and on data that
+genuinely is close to linear-Gaussian, sequential (greedy) family selection
+can very slightly worsen the joint fit.
+
+Figure~\ref{fig:aic-improvement} visualizes the AIC improvement from
+allowing the full parametric family set, expressed as $\Delta\text{AIC} =
+\text{AIC}_{\text{parametric}} - \text{AIC}_{\text{Gaussian-only}}$ (more
+negative bars indicate a larger improvement). Figure~\ref{fig:tau-error}
+shows the corresponding change in mean $|\tau|$ error, which -- unlike raw
+AIC -- is directly comparable across datasets since it does not depend on
+sample size or dimensionality. The two figures agree for Asia and Insurance
+(large AIC improvement, large drop in $\tau$ error) and for the synthetic
+SCM (neither changes), but not for Sachs: the largest AIC improvement comes
+with a \emph{higher} $\tau$ error (0.038 to 0.049). AIC scores the joint
+density of the three variables, while the $\tau$ error looks only at the two
+child--parent pairs, so AIC is not a reliable proxy for dependence
+reconstruction and both are reported. The $\tau$ errors in this table are
+in-sample and based on a single conditional target per dataset; differences
+in the third decimal (e.g.\ 0.00272 versus 0.00264 on the synthetic SCM)
+are within sampling noise and are not interpreted.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\textwidth, height=5.5cm,
+  ybar, bar width=14pt,
+  symbolic x coords={Sachs,UCI diabetes,Synthetic SCM,Asia,Insurance},
+  xtick=data, x tick label style={rotate=20, anchor=east, font=\small},
+  ylabel={$\Delta$AIC (parametric $-$ Gaussian-only)},
+  ymin=-6800, ymax=600,
+  nodes near coords, every node near coord/.append style={font=\tiny},
+  enlarge x limits=0.15,
+  axis lines*=left,
+]
+\addplot[fill=gray!60] coordinates {
+  (Sachs,-5880.6) (UCI diabetes,-33.4) (Synthetic SCM,2.5) (Asia,-661.5) (Insurance,-512.1)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{AIC improvement from the full parametric family set relative to Gaussian-only, per dataset. A positive bar (synthetic SCM) means the richer family set actually made AIC slightly worse.}
+\label{fig:aic-improvement}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\textwidth, height=5.7cm,
+  ybar, bar width=10pt,
+  symbolic x coords={Sachs,UCI diabetes,Synthetic SCM,Asia,Insurance},
+  xtick=data, x tick label style={rotate=20, anchor=east, font=\small},
+  ylabel={Mean $|\tau|$ error},
+  ymin=0, ymax=0.045,
+  enlarge x limits=0.15,
+  legend style={at={(0.5,1.12)}, anchor=south, legend columns=2, font=\small},
+  axis lines*=left,
+]
+\addplot[fill=gray!30] coordinates {
+  (Sachs,0.0379) (UCI diabetes,0.0318) (Synthetic SCM,0.00272) (Asia,0.0328) (Insurance,0.0233)
+};
+\addplot[fill=gray!70] coordinates {
+  (Sachs,0.0490) (UCI diabetes,0.0264) (Synthetic SCM,0.00264) (Asia,0.0127) (Insurance,0.00617)
+};
+\legend{Gaussian-only, Parametric}
+\end{axis}
+\end{tikzpicture}
+\caption{Mean $|\tau|$ error under Gaussian-only versus full parametric family selection, per dataset. Sachs is a partial exception: the richer families fit the joint likelihood far better (Figure~\ref{fig:aic-improvement}) while showing a slightly higher $\tau$-recovery error, since AIC optimizes the vine's joint density rather than any single marginal-tau reconstruction target.}
+\label{fig:tau-error}
+\end{figure}
+
+On the three continuous datasets and on Insurance, AIC and BIC select
+identical models. Asia is the one dataset where they diverge: for the
+parent--parent edge \emph{bronc}--\emph{either} of the first tree, AIC,
+whose penalty per parameter (2) is lighter than BIC's ($\log n \approx 9.0$
+for $n = 8{,}000$), keeps a one-parameter Clayton copula, while BIC prefers
+the zero-parameter independence family (Table~\ref{tab:sweep}, ``frank,
+clayton, clayton'' versus ``frank, indep, clayton''). The two selections are close enough in mean $\tau$ error
+(0.0127 versus 0.0128) that either is a reasonable choice in practice, but
+the fact that they disagree at all is informative: model-selection
+ambiguity of this kind appeared only on a discrete dataset in this sweep,
+and specifically on the smallest one, where a single edge's evidence for
+one extra parameter is genuinely marginal rather than clear-cut.
+
+\subsection{Indegree-Cap Sweep: Does Correctness Hold at Three to Six Parents?}
+A separate sweep checks the sampler itself, independent of any specific
+dependency library, as the indegree cap is raised from the core two-parent
+target to six parents. Each run samples a node with $k$ independent root
+parents using the Gaussian baseline with correlation $\rho_k$ between the
+child and every parent and measures Kendall's $\tau$ across the $k$ edges;
+each cap is repeated with ten seeds. For a Gaussian copula $\tau =
+\frac{2}{\pi}\arcsin\rho$. With $\rho = 0.5$ for every $k$, as in the
+original version of this experiment, the correlation matrix is positive
+definite only for $k \le 3$: at $k = 4$ it is singular (the child is a
+deterministic function of its parents) and for $k \ge 5$ it is not a valid
+correlation matrix at all, so the original four-parent result tested a
+degenerate model. The sampler now caps the correlation at $\rho_k =
+\min(0.5, \sqrt{0.9/k})$, which leaves $k \le 3$ unchanged.
+Table~\ref{tab:indegree} shows the observed mean $\tau$ within 0.006 of the
+theoretical value at every cap, with no fallback draw.
+
+\begin{table}[ht]
+\caption{Indegree-cap sweep: baseline sampler with $\rho_k = \min(0.5, \sqrt{0.9/k})$, $n = 5{,}000$, ten seeds per cap. Mean $\tau$ $\pm$ standard deviation over seeds; min/max over all edges and seeds. For seed 0, caps 2 and 3 reproduce the original single-run values (mean $\tau$ 0.334 and 0.327).}
+\label{tab:indegree}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Cap} & \textbf{$\rho_k$} & \textbf{$\tau$ theory} & \textbf{Mean $\tau$} & \textbf{Min} & \textbf{Max} & \textbf{Time (s)} \\
+\midrule
+2 & 0.500 & 0.333 & $0.339 \pm 0.006$ & 0.315 & 0.361 & $0.023 \pm 0.003$ \\
+3 & 0.500 & 0.333 & $0.335 \pm 0.006$ & 0.316 & 0.356 & $0.039 \pm 0.004$ \\
+4 & 0.474 & 0.315 & $0.314 \pm 0.004$ & 0.282 & 0.335 & $0.066 \pm 0.006$ \\
+5 & 0.424 & 0.279 & $0.278 \pm 0.004$ & 0.257 & 0.298 & $0.081 \pm 0.012$ \\
+6 & 0.387 & 0.253 & $0.253 \pm 0.003$ & 0.235 & 0.274 & $0.126 \pm 0.011$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:indegree-tau} plots the deviation of the observed from the
+theoretical $\tau$ and Figure~\ref{fig:indegree-time} the wall-clock time,
+which grows roughly linearly with the cap over this range (sampling only;
+the baseline vine is refitted in every run). Neither shows any sign of
+degrading correctness.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.7\textwidth, height=5.5cm,
+  xlabel={Indegree cap}, ylabel={$\bar\tau_{\text{observed}} - \tau_{\text{theory}}$},
+  xtick={2,3,4,5,6}, xmin=1.7, xmax=6.3,
+  ymin=-0.02, ymax=0.02,
+  axis lines*=left,
+]
+\addplot[thick, dashed, gray] coordinates {(1.7,0) (6.3,0)};
+\addplot[
+  only marks, mark=*, mark size=2pt, black,
+  error bars/.cd, y dir=both, y explicit
+] coordinates {
+  (2,0.0058) +- (0,0.0056)
+  (3,0.0016) +- (0,0.0055)
+  (4,-0.0008) +- (0,0.0041)
+  (5,-0.0011) +- (0,0.0038)
+  (6,-0.0006) +- (0,0.0031)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Deviation of the mean observed Kendall's $\tau$ from the theoretical Gaussian-copula value at each indegree cap (error bars: standard deviation over ten seeds).}
+\label{fig:indegree-tau}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.7\textwidth, height=5.5cm,
+  xlabel={Indegree cap}, ylabel={Elapsed time (s)},
+  xtick={2,3,4,5,6}, xmin=1.7, xmax=6.3,
+  ymin=0, ymax=0.15,
+  axis lines*=left,
+]
+\addplot[thick, mark=square*, mark size=2pt,
+  error bars/.cd, y dir=both, y explicit] coordinates {
+  (2,0.0225) +- (0,0.0031) (3,0.0393) +- (0,0.0036) (4,0.0657) +- (0,0.0061)
+  (5,0.0811) +- (0,0.0116) (6,0.1256) +- (0,0.0106)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Wall-clock time to fit the baseline vine and sample $n=5{,}000$ rows, per cap (mean $\pm$ standard deviation over ten seeds).}
+\label{fig:indegree-time}
+\end{figure}
+
+The baseline check validates the sampling machinery. For \emph{learned}
+vines, conditional vines were fitted for every multi-parent node of
+Insurance (indegree 2--3) and Alarm (indegree 2--4) on a training draw and
+used to sample each child given the parents of 10 independent test draws:
+no fallback draw occurred at any indegree (0 in total), including the
+40 child--parent edges of Alarm's four-parent nodes. The fidelity of the
+reproduced child--parent dependence is governed by the discrete-data issue
+of Section~\ref{sec:rq4} rather than by the number of parents: with
+jittered fitting the mean absolute Cram\'er's V error of the child--parent
+edges is 0.20/0.13 on Insurance (indegree 2/3) and
+0.37/0.21/0.17 on Alarm (indegree 2/3/4); with native discrete fitting
+it drops to 0.055/0.066 and
+0.24/0.14/0.065 respectively.
+
+Finally, the clipping guard of the conditional sampler was swept from
+$\epsilon = 10^{-10}$ to $10^{-2}$ on the Sachs and Asia targets of
+Table~\ref{tab:sweep}. Results are identical up to $\epsilon = 10^{-6}$
+(the default); larger values start to bias the reproduced dependence (mean
+$|\tau|$ error on Sachs 0.049 at $10^{-6}$, 0.050 at $10^{-3}$, 0.057 at
+$10^{-2}$), and no setting triggered a fallback.
+
+\section{RQ4: Does the pipeline extend to discrete and mixed data without redesign?}
+\label{sec:rq4}
+\label{sec:discrete-results}
+Reconstructing the full Asia network end-to-end with the unmodified sampler
+reproduces the true category frequencies closely: in the original
+single-run evaluation the mean total-variation distance (TVD) over nodes is
+$0.0033$ for the Gaussian baseline and $0.0024$ for the learned model, both
+without any fallback draw. On Insurance the baseline reached only $0.0574$
+against $0.0045$ for the learned model. The gap is concentrated at the
+multi-parent nodes (mean TVD of the baseline 0.004 at roots, 0.010 at
+one-parent, 0.062 at two-parent and 0.091 at three-parent nodes): the
+baseline's multi-parent model is a Gaussian vine fitted with mutually
+\emph{independent} parents, but in the generated graph the parents are
+dependent, so the child's generated uniforms are no longer uniform and its
+categories are mis-weighted. This is the compatibility issue described in
+Section~\ref{sec:sampler}, not an accumulation of error along the graph;
+with margin calibration the baseline's TVD drops to the level of the
+learned model (Table~\ref{tab:rq4}). In this sense -- can the continuous
+pipeline be pointed at discrete data and produce something sane -- the
+extension succeeds without changing the fitting or sampling code.
+
+Per-edge dependence is where jittering shows its cost. In the original
+evaluation, the learned model's mean absolute error in Cram\'er's V over the
+Asia edges is even slightly \emph{worse} than the naive baseline's ($0.2662$
+versus $0.2439$; normalized mutual information $0.2172$ versus $0.2188$);
+Insurance shows the same pattern ($0.1859$ versus $0.1815$, NMI $0.1360$
+versus $0.1324$). The worst-matched Asia edges are \emph{lung}--\emph{either}
+(true Cram\'er's V $0.898$, simulated $0.300$), \emph{either}--\emph{xray}
+($0.753 \to 0.307$) and \emph{tub}--\emph{either} ($0.431 \to 0.112$); on
+Insurance, \emph{MakeModel}--\emph{Antilock} ($0.638 \to 0.213$),
+\emph{Age}--\emph{SeniorTrain} ($0.728 \to 0.307$) and
+\emph{VehicleYear}--\emph{Airbag} ($0.841 \to 0.432$). The mechanism is
+explained below, and its remedy, native discrete fitting, is evaluated on
+held-out data in Table~\ref{tab:rq4}.
+
+Figure~\ref{fig:asia-network} shows the full Asia network structure, so
+the specific edges named throughout this section can be located within the
+graph rather than treated as an unstructured list of variable-name pairs.
+The edges examined in Table~\ref{tab:jitter} below span the network's
+skew spectrum deliberately: \emph{smoke}$\to$\emph{bronc} sits near the
+graph's root with a roughly balanced split, while \emph{lung}$\to$\emph{either}
+sits one step before the highly skewed \emph{either} node, whose own
+definition as a logical OR of two upstream binary variables makes it the
+most extreme case of the skew this section quantifies.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  node/.style={draw, circle, minimum size=8mm, font=\scriptsize},
+  arr/.style={-{Latex[length=1.8mm]}, thick}
+]
+\node[node] (asia) at (0,1.2) {asia};
+\node[node] (smoke) at (0,-1.2) {smoke};
+\node[node] (tub) at (2,1.2) {tub};
+\node[node] (lung) at (2,-0.4) {lung};
+\node[node] (bronc) at (2,-2) {bronc};
+\node[node] (either) at (4,0.4) {either};
+\node[node] (xray) at (6,1.2) {xray};
+\node[node] (dysp) at (6,-1.2) {dysp};
+
+\draw[arr] (asia) -- (tub);
+\draw[arr] (smoke) -- (lung);
+\draw[arr] (smoke) -- (bronc);
+\draw[arr] (tub) -- (either);
+\draw[arr] (lung) -- (either);
+\draw[arr] (either) -- (xray);
+\draw[arr] (either) -- (dysp);
+\draw[arr] (bronc) -- (dysp);
+\end{tikzpicture}
+\caption{The Asia network \parencite{lauritzen1988}: 8 binary variables, indegree at most 2. \emph{either} is a deterministic logical OR of \emph{tub} and \emph{lung}, making it the most heavily skewed node in the graph.}
+\label{fig:asia-network}
+\end{figure}
+
+The jittering transform dilutes measured concordance relative to the raw
+data's Kendall's $\tau_b$, and the dilution is severe for skewed or rare
+binary variables. The mechanism is an identity rather than an
+approximation \parencite{denuit2005,genest2007}. After independent
+jittering, a pair of observations that is tied in $x$ (or $y$) in the raw
+data is ordered at random and contributes zero expected concordance; all
+other pairs keep their order. Hence $\tau$ of the jittered data equals, in
+expectation, Kendall's $\tau_a = (n_c - n_d)/\binom{n}{2}$ of the raw data,
+and because $\tau_b = (n_c - n_d)/\sqrt{(n_0 - n_x)(n_0 - n_y)}$ with $n_0 =
+\binom{n}{2}$ and $n_x, n_y$ the numbers of pairs tied in $x$ and $y$,
+\[
+\mathbb{E}\bigl[\tau_{\text{jittered}}\bigr] = \tau_a = \tau_b(\text{raw}) \cdot \sqrt{(1-t_x)(1-t_y)},
+\qquad t_x = n_x/n_0,\; t_y = n_y/n_0 .
+\]
+Table~\ref{tab:jitter} shows this on real Asia edges, including ordinary
+ones and not only the near-deterministic \emph{either = tub OR lung} node
+that first drew attention to the effect; the remaining differences are the
+noise of a single jitter draw. A copula fitted to jittered data therefore
+\emph{correctly} fits a diluted dependence -- the input signal genuinely is
+weaker than the raw categorical dependence -- which is why a naive
+Gaussian baseline sometimes lands, by chance, closer to the raw value on an
+individual edge than the jitter-based model does. The remedy is to avoid
+jittering altogether and fit the copula with the native discrete likelihood
+(Section~\ref{sec:discrete-method}); Table~\ref{tab:rq4} and the paragraph
+after it quantify the improvement.
+
+\begin{table}[ht]
+\caption{Predicted versus observed jittered Kendall's $\tau$ on four Asia edges spanning a range of category skew, verified against the dilution formula.}
+\label{tab:jitter}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Edge} & \textbf{Raw $\tau_b$} & \textbf{Jittered $\tau$ (observed)} & \textbf{Predicted} & \textbf{Abs.\ error} \\
+\midrule
+smoke $\to$ lung   & 0.196 & 0.037 & 0.044 & 0.007 \\
+smoke $\to$ bronc  & 0.307 & 0.153 & 0.153 & 0.001 \\
+either $\to$ dysp  & 0.195 & 0.041 & 0.048 & 0.006 \\
+lung $\to$ either  & 0.898 & 0.101 & 0.099 & 0.002 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These four edges were chosen deliberately to span a range of category
+skew rather than to show the effect at its most extreme: \emph{smoke
+$\to$ bronc} joins two roughly balanced variables (49/51 and 55/45) and
+shows only mild dilution; in \emph{either $\to$ dysp} the parent is skewed
+93.5/6.5 (\emph{dysp} is 56.5/43.5) and the dilution is strong; \emph{lung
+$\to$ either} is skewed on both sides (94.7/5.3 and 93.5/6.5) and shows
+near-total dilution despite a very high raw $\tau_b$ of 0.898. A fifth
+edge, \emph{asia $\to$ tub}, was fitted but is excluded from the table: both
+variables are about 99\% ``no'' (98.8/1.2 and 98.7/1.3),
+so the raw dependence signal is small enough to be dominated by
+BIF-resampling noise rather than by the dilution mechanism itself, and
+including it would muddy the comparison rather than sharpen it.
+
+Figure~\ref{fig:dilution-scatter} plots predicted against observed jittered
+$\tau$ for the four edges on a $y=x$ reference line; as expected from the
+identity, every point lies on the line up to the noise of one jitter draw.
+
+\begin{table}[ht]
+\caption{RQ4 on held-out data: the library is fitted once on a training draw and each of 50 independent test draws is compared with the generated data (mean over seeds, 95\% bootstrap CI in brackets). TVD: mean category-frequency total-variation distance over discrete nodes; CV: mean absolute Cram\'er's V error over discrete--discrete edges. ``cal.'' = margin calibration.}
+\label{tab:rq4}
+\centering
+\small
+\begin{tabular}{llcc}
+\toprule
+\textbf{Network} & \textbf{Generator} & \textbf{TVD} & \textbf{CV error} \\
+\midrule
+Asia & fixed-$\rho$ baseline & 0.0040 & 0.240 [0.238, 0.242] \\
+ & fixed-$\rho$ baseline, cal. & 0.0034 & 0.240 [0.238, 0.242] \\
+ & learned, jittered (thesis method) & 0.0043 & 0.266 [0.264, 0.267] \\
+ & learned, native discrete & 0.0058 & 0.140 [0.139, 0.142] \\
+ & learned, native discrete, cal. & 0.0034 & 0.139 [0.138, 0.141] \\
+ & CPT refit (true model class) & 0.0047 & 0.015 [0.014, 0.016] \\
+\addlinespace
+Insurance & fixed-$\rho$ baseline & 0.0579 & 0.182 [0.181, 0.182] \\
+ & fixed-$\rho$ baseline, cal. & 0.0062 & 0.176 [0.176, 0.177] \\
+ & learned, jittered (thesis method) & 0.0079 & 0.187 [0.187, 0.188] \\
+ & learned, native discrete & 0.0107 & 0.061 [0.060, 0.062] \\
+ & learned, native discrete, cal. & 0.0062 & 0.058 [0.057, 0.059] \\
+ & CPT refit (true model class) & 0.0073 & 0.011 [0.011, 0.012] \\
+\addlinespace
+Alarm & fixed-$\rho$ baseline & 0.0095 & 0.310 [0.309, 0.311] \\
+ & fixed-$\rho$ baseline, cal. & 0.0055 & 0.314 [0.313, 0.314] \\
+ & learned, jittered (thesis method) & 0.0063 & 0.345 [0.344, 0.345] \\
+ & learned, native discrete & 0.0088 & 0.187 [0.186, 0.187] \\
+ & learned, native discrete, cal. & 0.0055 & 0.188 [0.187, 0.189] \\
+ & CPT refit (true model class) & 0.0065 & 0.012 [0.012, 0.013] \\
+\addlinespace
+Mixed SCM & fixed-$\rho$ baseline & 0.0055 & 0.250 [0.247, 0.253] \\
+ & fixed-$\rho$ baseline, cal. & 0.0029 & 0.249 [0.246, 0.252] \\
+ & learned, jittered (thesis method) & 0.0060 & 0.240 [0.237, 0.244] \\
+ & learned, native discrete & 0.0059 & 0.008 [0.007, 0.010] \\
+ & learned, native discrete, cal. & 0.0029 & 0.008 [0.006, 0.010] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two experiments quantify the native-discrete remedy. First, for every edge
+of Asia and Insurance a single bivariate copula was fitted on a training
+draw, once to jittered pseudo-observations and once with the native
+discrete likelihood, and pairs simulated from it were mapped back through
+the discrete quantile function and compared with an independent test draw.
+The mean absolute Cram\'er's V error falls from 0.263 to 0.023 on the eight
+Asia edges (Wilcoxon $p = 0.016$) and from 0.177 to 0.045 on the 52
+Insurance edges ($p < 10^{-4}$); on \emph{lung}--\emph{either}, for
+example, the jittered copula reproduces a Cram\'er's V of 0.30 and the
+native one 0.89 (test data 0.92). Second, Table~\ref{tab:rq4} reconstructs
+whole networks. Native fitting roughly halves the edge-dependence error on
+Asia (0.266 to 0.140) and Alarm
+(0.345 to 0.187), cuts it by two thirds on Insurance
+(0.187 to 0.061) and almost removes it on the mixed
+SCM (0.240 to 0.0084); every one of these differences, and
+the difference to the fixed-$\rho$ baseline, has a paired Wilcoxon
+$p < 10^{-4}$ over the 50 seeds. On the three discrete networks uncalibrated native
+fitting slightly increases the category-frequency error (TVD), which
+margin calibration removes. On the purely discrete networks, refitting the conditional
+probability tables, which is the true model class of the data, remains
+clearly better (Cram\'er's V error between 0.011 and 0.015); the
+copula generator's advantage is that the same machinery handles continuous,
+discrete and mixed data and allows dependencies to be transplanted between
+graphs, which CPTs do not.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.65\textwidth, height=6.5cm,
+  xlabel={Predicted $\tau_{\text{jittered}}$}, ylabel={Observed $\tau_{\text{jittered}}$},
+  xmin=0, xmax=0.18, ymin=0, ymax=0.18,
+  axis lines*=left,
+  legend pos=north west, legend style={font=\small},
+]
+\addplot[thick, dashed, gray, domain=0:0.18] {x};
+\addlegendentry{$y=x$}
+\addplot[only marks, mark=*, mark size=2.3pt, black] coordinates {
+  (0.044,0.037) (0.153,0.153) (0.048,0.041) (0.099,0.101)
+};
+\addlegendentry{Asia edges}
+\end{axis}
+\end{tikzpicture}
+\caption{Predicted versus observed jittered Kendall's $\tau$ for the four Asia edges in Table~\ref{tab:jitter}. All four points lie within 0.007 of the $y=x$ line.}
+\label{fig:dilution-scatter}
+\end{figure}
+
+\subsection{Mixed Continuous/Discrete Data}
+Table~\ref{tab:mixed} reports every edge of the dedicated mixed synthetic
+SCM (continuous columns $x_1, x_3, x_4$; discrete columns $x_2, x_5$; edges
+$x_1{\to}x_2$, $x_1{\to}x_4$, $x_2{\to}x_5$, $x_3{\to}x_4$, $x_4{\to}x_5$).
+Both marginal families are reproduced closely on their own: the three
+continuous columns show a Kolmogorov--Smirnov statistic no larger than
+$0.013$, and the two discrete columns show a total-variation distance no
+larger than $0.0064$.
+
+\begin{table}[ht]
+\caption{Per-edge Kendall's $\tau$ (true vs.\ simulated, ordinal-numeric view) on the mixed synthetic SCM, by edge type.}
+\label{tab:mixed}
+\centering
+\begin{tabular}{llccc}
+\toprule
+\textbf{Edge} & \textbf{Type} & \textbf{$\tau_{\text{true}}$} & \textbf{$\tau_{\text{sim}}$} & \textbf{Abs.\ error} \\
+\midrule
+$x_1 \to x_4$ & continuous--continuous & 0.460 & 0.470 & 0.010 \\
+$x_3 \to x_4$ & continuous--continuous & 0.363 & 0.348 & 0.015 \\
+$x_1 \to x_2$ & continuous--discrete   & 0.643 & 0.547 & 0.096 \\
+$x_4 \to x_5$ & continuous--discrete   & 0.504 & 0.308 & 0.197 \\
+$x_2 \to x_5$ & discrete--discrete     & 0.644 & 0.404 & 0.241 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ordering in Table~\ref{tab:mixed} (jittered fitting) is not a
+coincidence: dependence error grows from continuous--continuous ($\le
+0.015$), to one-side-discrete ($0.096$--$0.197$), to fully
+discrete--discrete ($0.241$, corroborated by a Cram\'er's V drop from
+$0.683$ true to $0.428$ simulated on the same pair). This is what the
+identity above predicts: an edge with one continuous and one discrete
+endpoint picks up a single $\sqrt{1-t}$ factor from the discrete side,
+while an edge between two discrete endpoints picks up the full
+$\sqrt{(1-t_x)(1-t_y)}$ product. With native discrete fitting the
+discrete--discrete error disappears (Table~\ref{tab:rq4}: mean Cram\'er's V
+error 0.007). The
+mixed dataset therefore does more than confirm that Phase 1 and Phase 2
+results combine as expected -- it isolates edge type as the variable that
+predicts how much dilution to expect, holding the rest of the graph fixed.
+
+Figure~\ref{fig:mixed-edges} shows the same five edges as a bar chart
+grouped by type, which makes the step pattern easier to see at a glance
+than the table alone.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.85\textwidth, height=5.5cm,
+  ybar, bar width=16pt,
+  symbolic x coords={$x_1\to x_4$,$x_3\to x_4$,$x_1\to x_2$,$x_4\to x_5$,$x_2\to x_5$},
+  xtick=data, x tick label style={font=\small},
+  ylabel={Abs.\ error in $\tau$},
+  ymin=0, ymax=0.27,
+  nodes near coords, every node near coord/.append style={font=\tiny},
+  enlarge x limits=0.12,
+  axis lines*=left,
+]
+\addplot[fill=gray!25] coordinates {
+  ($x_1\to x_4$,0.010) ($x_3\to x_4$,0.015) ($x_1\to x_2$,0.096) ($x_4\to x_5$,0.197) ($x_2\to x_5$,0.241)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Dependence error by edge, grouped visually by type: the two leftmost bars are continuous--continuous, the middle two are one-side-discrete, and the rightmost is discrete--discrete -- a monotonically increasing step that matches the dilution formula's prediction.}
+\label{fig:mixed-edges}
+\end{figure}
+
+
+\section{RQ5: Are the learned dependencies genuinely reusable across datasets and graphs?}
+\label{sec:composition}
+Every result so far reconstructs a dataset's \emph{own} graph. RQ5 tests
+reuse in structurally different contexts, in two experiments
+(\path{gcda/experiments/composition.py}).
+
+\subsection{A graph built from two datasets}
+The Sachs and Asia libraries were merged
+(\texttt{DependencyLibrary.merge}) and the graph \emph{praf} $\to$
+\emph{pmek}, \emph{praf} $\to$ \emph{dysp} was sampled, which exists in
+neither dataset: \emph{praf} and \emph{pmek} keep their Sachs marginals and
+the learned \emph{praf}--\emph{pmek} copula, \emph{dysp} keeps its Asia
+marginal, and the cross-dataset edge \emph{praf} $\to$ \emph{dysp} re-uses
+the copula Asia learned for \emph{bronc} $\to$ \emph{dysp}, \emph{dysp}'s
+strongest parent (a Frank copula with $\tau = 0.339$; the graph
+specification format is given in Appendix~\ref{sec:cli}). The run uses strict
+mode, i.e.\ no baseline model is involved. Over 30 seeds of $n = 10{,}000$
+rows: the marginals are reproduced (KS 0.008 for \emph{praf} and
+\emph{pmek}, TVD 0.005 for \emph{dysp}); the \emph{praf}--\emph{pmek}
+dependence matches its copula ($\tau = 0.669$ versus 0.666); and on the
+copula scale the transplanted edge reproduces its source copula exactly
+($\tau = 0.338 \pm 0.005$ versus 0.339). On the observable scale the
+binary child attenuates it to $\tau_a = 0.243$ (versus $\tau_a = 0.334$ for
+\emph{bronc}--\emph{dysp} in Asia, where \emph{both} variables are
+discrete), which illustrates that a transplanted dependence is defined at
+the copula level and its observable strength depends on the marginals it
+is attached to. In the earlier demonstration of this capability the
+cross-dataset edge had silently used the fixed $\rho = 0.5$ baseline
+because no binding mechanism existed; the binding (and the CLI support for
+it) were added as part of this work.
+
+\subsection{Novel graphs over the Sachs variables}
+200 random DAGs over the eleven Sachs variables (maximum indegree 2, none
+of them the consensus graph) were sampled with four generators: learned
+pairwise copulas plus a conditional vine fitted for every two-parent node
+of the graph (``fitted vine''); learned pairwise copulas with two-parent
+nodes composed from the edges' pairwise copulas (``composed'',
+Section~\ref{sec:sampler}); the same with Gaussian-only families (``fitted
+Gaussian''); and the fixed-$\rho$ baseline. Table~\ref{tab:novel} reports,
+for $n = 5{,}000$, how well PC recovers the \emph{specified} graph, how
+faithfully the one-parent edges reproduce their library copula, marginal
+fidelity and varsortability \parencite{reisach2021}.
+
+\begin{table}[ht]
+\caption{RQ5: 200 random DAGs over the Sachs variables (mean over DAGs). SHD and skeleton $F_1$ of PC (Fisher-$z$, $\alpha=0.05$) against the specified DAG; $\Delta\tau$: mean $|\tau_{\text{generated}} - \tau_{\text{copula}}|$ over one-parent edges; KS: mean marginal KS distance to the real data; VS: varsortability (fraction of edges along which the marginal variance increases; a linear-Gaussian SCM with random weights on the same DAGs gives 0.92). Copulas fitted on the pooled (P) or observational (O) Sachs rows.}
+\label{tab:novel}
+\centering
+\small
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Rows} & \textbf{Generator} & \textbf{SHD} & \textbf{$F_1$} & \textbf{$\Delta\tau$} & \textbf{KS} & \textbf{VS} \\
+\midrule
+P & fitted vine      & 11.73 & 0.77 & 0.007 & 0.013 & 0.50 \\
+P & composed         & 11.66 & 0.78 & 0.007 & 0.012 & 0.49 \\
+P & fitted Gaussian  & 11.37 & 0.81 & 0.007 & 0.012 & 0.49 \\
+P & fixed $\rho$     & 11.85 & 0.79 & 0.008 & 0.017 & 0.52 \\
+\addlinespace
+O & fitted vine      & 13.47 & 0.33 & 0.007 & 0.012 & 0.49 \\
+O & composed         & 13.46 & 0.34 & 0.007 & 0.012 & 0.49 \\
+O & fitted Gaussian  & 13.60 & 0.30 & 0.007 & 0.012 & 0.49 \\
+O & fixed $\rho$     & 11.47 & 0.79 & 0.008 & 0.017 & 0.51 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three findings stand out. First, the building blocks transfer faithfully
+to graphs that never existed: every one-parent edge reproduces the $\tau$ of
+the copula it was built from to within 0.007 on average, and the
+pairwise-composed two-parent model performs like a vine fitted specifically
+for that parent set (paired SHD difference
+$+0.07$, $p = 0.75$, on the pooled and
+$+0.01$, $p = 0.90$, on the observational copulas).
+Second, \emph{how hard} the generated graph is to recover is inherited from
+the real data: with the observational copulas, most of which are weak, PC
+recovers only a third of the skeleton, whereas the fixed-$\rho$ baseline,
+which makes every edge equally strong, is easy (SHD
+2.00 lower than with the fitted vines, 95\% CI
+$[1.49, 2.50]$, $p < 10^{-4}$). With the pooled copulas, which are
+stronger, the generators differ by less than half an SHD unit (fitted
+vine versus baseline $p = 0.33$; versus the fitted Gaussian copula,
+which is slightly easier to recover, $+0.36$, Wilcoxon
+$p = 0.048$, $t$-test $p = 0.11$). Generated benchmarks therefore reflect
+the dependence strengths of the source data rather than an arbitrary
+simulation choice -- which is the point of the method, but it also means
+that ``usable'' must be read as ``faithful to the specified graph and the
+learned dependencies'', not ``easy to recover''. Third, the varsortability
+of all copula-generated data is about 0.5, i.e.\ marginal variances carry
+no information about the causal order, in contrast to
+0.92 for a linear-Gaussian SCM on the same graphs;
+benchmarks generated this way cannot be gamed by sorting variables by
+variance. The generated marginals deviate slightly from the real ones
+(mean KS about 0.013); with margin calibration this falls to 0.004
+without materially changing any other metric.
+
+\section{RQ6: Is the generated data actually useful for causal discovery?}
+\label{sec:closing-loop}
+Every check up to this point validates statistical realism. RQ6 asks
+whether a structure-learning algorithm can use the generated data as it
+can use real data. Table~\ref{tab:shd} gives the original four-seed result;
+Table~\ref{tab:shd-heldout} the held-out evaluation of
+Section~\ref{sec:reproduce-seeds}.
+
+\begin{table}[ht]
+\caption{Original protocol: mean (standard deviation) SHD between the PC algorithm's recovered graph and the true DAG, over 4 seeds (the library was fitted on the seed-1 draw of the synthetic SCM, which is also one of the evaluation seeds).}
+\label{tab:shd}
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Source} & \textbf{Continuous (synthetic SCM)} & \textbf{Discrete (Asia)} \\
+\midrule
+True data & 1.25 (0.50) & 6.50 (0.58) \\
+Baseline (Gaussian everywhere) & 1.00 (0.00) & 8.25 (1.26) \\
+Learned (T4 models) & 1.00 (0.00) & 6.75 (1.26) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+With four seeds, the Asia difference between the learned generator and
+the baseline (1.5 SHD) was not statistically significant (paired $t$-test
+$p = 0.22$). Table~\ref{tab:shd-heldout} repeats the experiment on held-out
+data with 100 seeds, stronger baselines and two larger networks, and
+Table~\ref{tab:shd-ges} repeats it with GES.
+
+\begin{table}[ht]
+\caption{Held-out RQ6 with PC: mean SHD to the true DAG [95\% bootstrap CI] and mean number of edges PC finds (true number of edges in parentheses), 100 seeds per graph.}
+\label{tab:shd-heldout}
+\centering
+\small
+\begin{tabular}{llcc}
+\toprule
+\textbf{Graph} & \textbf{Source} & \textbf{SHD} & \textbf{Edges found} \\
+\midrule
+Synth.\ SCM (4) & true data & 1.13 [1.06, 1.21] & 4.1 \\
+ & fixed-$\rho$ baseline & 1.13 [1.06, 1.21] & 4.1 \\
+ & fitted Gaussian copula & 1.14 [1.04, 1.28] & 4.1 \\
+ & learned (jittered) & 1.15 [1.04, 1.29] & 4.1 \\
+\addlinespace
+Asia (8) & true data & 6.37 [6.27, 6.47] & 5.7 \\
+ & fixed-$\rho$ baseline & 8.18 [7.87, 8.51] & 12.5 \\
+ & fitted Gaussian copula & 7.68 [7.53, 7.84] & 5.9 \\
+ & learned (jittered) & 6.56 [6.38, 6.76] & 7.7 \\
+ & learned (native discrete) & 8.58 [8.43, 8.74] & 8.0 \\
+ & CPT refit & 6.21 [6.13, 6.29] & 5.3 \\
+\addlinespace
+Insurance (52) & true data & 23.19 [22.64, 23.74] & 41.3 \\
+ & fixed-$\rho$ baseline & 46.56 [45.70, 47.46] & 65.8 \\
+ & fitted Gaussian copula & 41.34 [40.64, 42.06] & 33.7 \\
+ & learned (jittered) & 37.39 [36.52, 38.24] & 36.2 \\
+ & learned (native discrete) & 60.32 [59.69, 60.93] & 51.9 \\
+ & CPT refit & 22.39 [21.95, 22.85] & 41.6 \\
+\addlinespace
+Alarm (46) & true data & 9.17 [8.75, 9.64] & 43.9 \\
+ & fixed-$\rho$ baseline & 31.55 [30.86, 32.26] & 59.6 \\
+ & fitted Gaussian copula & 37.50 [36.87, 38.13] & 36.0 \\
+ & learned (jittered) & 30.58 [29.74, 31.41] & 43.6 \\
+ & learned (native discrete) & 52.37 [51.68, 53.07] & 63.9 \\
+ & CPT refit & 9.14 [8.75, 9.56] & 44.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Held-out RQ6 with GES (BIC score for the SCM, BDeu for the discrete networks): mean SHD to the true DAG [95\% bootstrap CI] and mean number of edges found, 100 seeds per graph.}
+\label{tab:shd-ges}
+\centering
+\small
+\begin{tabular}{llcc}
+\toprule
+\textbf{Graph} & \textbf{Source} & \textbf{SHD} & \textbf{Edges found} \\
+\midrule
+Synth.\ SCM (4) & true data & 1.05 [1.00, 1.14] & 4.0 \\
+ & fixed-$\rho$ baseline & 1.04 [1.00, 1.12] & 4.0 \\
+ & fitted Gaussian copula & 1.07 [1.01, 1.17] & 4.0 \\
+ & learned (jittered) & 1.07 [1.01, 1.17] & 4.0 \\
+\addlinespace
+Asia (8) & true data & 3.10 [3.01, 3.23] & 7.4 \\
+ & fixed-$\rho$ baseline & 10.25 [9.93, 10.56] & 11.2 \\
+ & fitted Gaussian copula & 8.07 [8.00, 8.14] & 4.7 \\
+ & learned (jittered) & 6.37 [5.99, 6.76] & 6.5 \\
+ & learned (native discrete) & 7.96 [7.88, 8.04] & 7.3 \\
+ & CPT refit & 3.10 [3.03, 3.20] & 7.2 \\
+\addlinespace
+Insurance (52) & true data & 22.59 [21.81, 23.40] & 43.2 \\
+ & fixed-$\rho$ baseline & 36.14 [35.63, 36.66] & 57.1 \\
+ & fitted Gaussian copula & 41.41 [40.72, 42.11] & 27.8 \\
+ & learned (jittered) & 33.92 [33.64, 34.20] & 30.7 \\
+ & learned (native discrete) & 49.58 [48.95, 50.22] & 47.4 \\
+ & CPT refit & 20.46 [20.04, 20.88] & 43.6 \\
+\addlinespace
+Alarm (46) & true data & 11.29 [10.08, 12.55] & 45.5 \\
+ & fixed-$\rho$ baseline & 24.60 [24.13, 25.08] & 52.0 \\
+ & fitted Gaussian copula & 42.73 [42.15, 43.25] & 27.0 \\
+ & learned (jittered) & 36.32 [35.26, 37.32] & 32.9 \\
+ & learned (native discrete) & 38.59 [37.90, 39.29] & 59.7 \\
+ & CPT refit & 9.98 [8.77, 11.23] & 45.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On the continuous SCM all sources sit at the floor of about one error
+(the one edge whose orientation is not identifiable from observational
+data) under both algorithms, and no source is distinguishable from another.
+
+\emph{Asia, PC.} The learned generator's data supports PC significantly
+better than the fixed-$\rho$ baseline (SHD difference
+$-1.62$, 95\% CI $[-1.98, -1.27]$, Wilcoxon
+$p < 10^{-4}$) and than a fitted Gaussian copula (difference
+$-1.12$, 95\% CI $[-1.34, -0.89]$, $p < 10^{-4}$), so the advantage is due to the learned
+non-Gaussian dependence, not merely to learned strengths, and it is not
+distinguishable from real data (difference
+$+0.19$, 95\% CI $[-0.01, 0.41]$, Wilcoxon $p = 0.15$). Refitted CPTs are
+slightly better still ($+0.35$, $p = 0.003$). The baseline's
+extra error comes from spurious edges: PC finds 12.5 edges on its data
+against 7.7 on the learned generator's and 5.7 on real data (the true
+graph has 8).
+
+\emph{Asia, GES.} With GES the ranking of the generators is the same --
+learned (6.37) before the fitted Gaussian copula
+(8.07) and the fixed-$\rho$ baseline (10.25), $p < 10^{-4}$ for both
+comparisons -- but GES recovers the graph far better from real data
+(3.10) than from the learned generator's data, so the near-parity with
+real data seen with PC does not carry over to a score-based method.
+
+\emph{Insurance and Alarm.} On the two larger networks the learned
+generator falls far short of real data under both algorithms (PC: SHD
+37.4 versus 23.2 on Insurance and 30.6 versus 9.2 on Alarm; GES:
+33.9 versus 22.6 and 36.3 versus 11.3; all $p < 10^{-4}$), while refitted
+CPTs match real data. Relative to the Gaussian alternatives the picture is
+mixed: with PC the learned generator beats both on Insurance
+($-9.2$ and $-4.0$ SHD, $p < 10^{-4}$) and the fitted
+Gaussian copula on Alarm ($-6.9$), but is not distinguishable from the
+fixed-$\rho$ baseline on Alarm ($-0.97$, Wilcoxon
+$p = 0.21$); with GES it beats both on Insurance but is \emph{worse} than the
+fixed-$\rho$ baseline on Alarm ($+11.7$ SHD, $p < 10^{-4}$), where it
+yields too sparse graphs (32.9 edges found against 45.5 on real data).
+
+\emph{Native discrete fitting}, which reproduces the edge dependence far
+better (Section~\ref{sec:rq4}), makes both algorithms \emph{worse} on every
+discrete network (PC on Asia 8.58, Insurance 60.3, Alarm
+52.4); on Alarm it also produces many more adjacencies than exist
+(63.9 edges found with PC against 46 true edges), whereas on Asia and
+Insurance the number of edges found is about right but many of them are
+wrong. A plausible explanation
+is that it also reproduces near-deterministic relations such as Asia's
+\emph{either} = \emph{tub} OR \emph{lung}, which violate the faithfulness
+assumption the algorithms rely on, while pairwise and three-to-five-variable
+copula models do not reproduce the conditional independences these tests
+need precisely enough. Statistical fidelity and usefulness for a given
+discovery algorithm are therefore related but not interchangeable, and
+producing data that is as usable for discovery as real data on large
+discrete networks remains an open problem for copula conditionals.
+
+\subsection{Random-Forest Conditionals}
+\label{sec:rq6-forest}
+Table~\ref{tab:rf} repeats the held-out RQ6 evaluation with one further
+source: every non-root node sampled from a random-forest conditional
+(Section~\ref{sec:forest-method}) fitted on the same training draw as the
+copula library. The other sources are regenerated with the same code and
+seeds and are identical, row by row, to those of
+Tables~\ref{tab:shd-heldout} and~\ref{tab:shd-ges}.
+
+\begin{table}[ht]
+\caption{Held-out RQ6 with random-forest conditionals: mean SHD over 100 seeds, and the share of the gap between the fixed-$\rho$ baseline and real data that the copula generator (learned, jittered) and the forest close. Above $100\%$, discovery is easier than on real data.}
+\label{tab:rf}
+\centering
+\small
+\begin{tabular}{llccccccc}
+\toprule
+ & & \multicolumn{5}{c}{\textbf{SHD}} & \multicolumn{2}{c}{\textbf{Gap closed}} \\
+\cmidrule(lr){3-7} \cmidrule(lr){8-9}
+\textbf{Graph} & \textbf{Alg.} & \textbf{Baseline} & \textbf{Copula} & \textbf{Forest} & \textbf{CPT refit} & \textbf{Real} & \textbf{Copula} & \textbf{Forest} \\
+\midrule
+Asia & PC & 8.18 & 6.56 & 5.24 & 6.21 & 6.37 & $90\%$ & $162\%$ \\
+Insurance & PC & 46.56 & 37.39 & 22.90 & 22.39 & 23.19 & $39\%$ & $101\%$ \\
+Alarm & PC & 31.55 & 30.58 & 9.91 & 9.14 & 9.17 & $4\%$ & $97\%$ \\
+\addlinespace
+Asia & GES & 10.25 & 6.37 & 3.01 & 3.10 & 3.10 & $54\%$ & $101\%$ \\
+Insurance & GES & 36.14 & 33.92 & 19.91 & 20.46 & 22.59 & $16\%$ & $120\%$ \\
+Alarm & GES & 24.60 & 36.32 & 8.79 & 9.98 & 11.29 & $-88\%$ & $119\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On Insurance and Alarm, which the copula generator could not handle, the
+forest brings both algorithms to about the level of real data. With PC it
+is not distinguishable from real data on Insurance (difference
+$-0.29$, 95\% CI $[-1.04, 0.48]$, Wilcoxon
+$p = 0.63$) and slightly worse on Alarm
+($+0.74$, 95\% CI $[0.15, 1.33]$). With GES it overshoots: its
+data yields a \emph{lower} SHD than real data on Insurance
+($-2.68$, $p < 10^{-4}$) and Alarm
+($-2.50$, $p = 0.0089$), which is a mismatch as
+well, if a smaller one than the copula generator's. On Asia the forest
+matches real data with GES ($-0.09$, $p = 0.57$) but
+overshoots with PC ($-1.13$, 95\% CI $[-1.37, -0.88]$), where the copula
+generator was closer to real data. On the continuous SCM, whose edges
+are all monotone, the forest is indistinguishable from the copula
+generator. Against the copula generator the forest lowers the SHD on every
+discrete network under both algorithms (PC: $-1.32$ on Asia,
+$-14.49$ on Insurance, $-20.67$ on Alarm; all
+$p < 10^{-4}$).
+
+The edge dependence explains the difference. The mean error of Cram\'er's
+$V$ over the true edges falls from 0.268, 0.185 and 0.344 for the
+copula generator to 0.019, 0.016 and 0.014 for the forest (Asia, Insurance,
+Alarm), close to the CPT refit (0.016, 0.014, 0.013).
+A model without the copula's monotonicity and simplifying assumptions
+reproduces both the non-monotone edges and the interactions, and with them
+the conditional independences the discovery algorithms test. On the
+discrete networks the forest is, however, no better than refitting the
+CPTs, the networks' own model class; its advantage over a CPT refit is
+that the same code applies to continuous and mixed variables. Its
+disadvantage relative to the copula library is the one noted in
+Section~\ref{sec:forest-method}: it does not provide transferable building
+blocks.
+
+\chapter{Discussion}
+\label{chap:discussion}
+
+\section{What the Bugs Reveal About the Method, Not Just the Code}
+\label{sec:bugs-discussion}
+Several of the bugs found during development are worth revisiting
+collectively rather than only as isolated fixes, because they share a
+pattern: each one was invisible to generic testing and visible only to a
+check informed by what the numbers \emph{should} mean statistically. None
+of them would have been caught by a unit test that only checks output
+shapes or types.
+
+\subsection{The Pseudo-Observation Scrambling Bug}
+Section~\ref{sec:bug-case-study-1} covers this bug's mechanics in full;
+the point worth adding here is \emph{why} it evaded detection for as long
+as it did. The function's signature (Listing~\ref{lst:bug1-before}) was
+not wrong in a way any type checker or shape assertion could flag -- it
+returned an array of the correct length, correct dtype, and correct range
+$(0,1)$, just in the wrong row order. Every individual pairwise fit that
+consumed this output ran successfully and produced a plausible-looking
+single number. What made the bug visible was not inspecting any one
+fit's output, but computing many fits at once and noticing that their
+\emph{distribution} was wrong: real variable pairs from a real dataset
+essentially never all show $\tau \approx 0.999$, which is what happens
+when two independently sorted (and therefore functionally identical)
+columns are compared to each other. This is the clearest illustration in
+the whole project of aggregate, cross-fit sanity checking catching
+something no single-fit test could.
+
+\subsection{The Independence-Family Reshape Bug}
+Chapter~\ref{chap:implementation}'s second case study is a different
+failure mode: not wrong output, but a crash, and a crash that was entirely
+deterministic given the right input -- yet absent for the whole of Phase 1.
+The lesson here is about test \emph{coverage} of input space rather than
+output correctness: independence was selected for a few Phase-1 pairs (six
+in UCI diabetes, one in the synthetic SCM), but none of them was a
+one-parent edge of a graph that was sampled, so the \texttt{indep} branch
+of the deserialization code was simply never
+exercised, by any test or any demo, during the whole of Phase 1. Asia -- with several
+genuinely independent binary pairs -- was the first dataset to hit it. The
+regression test added afterward does not just fix this one case; it forces
+the independence family specifically into the test matrix, which is the
+only way to guarantee this class of bug (works for every family present in
+the data so far, breaks on a family that happens not to appear yet) cannot
+recur unnoticed for some future dataset either.
+
+\subsection{The Sweep Validation-Guard Bug}
+A third case, mentioned only briefly in earlier chapters, fits the same
+pattern from a slightly different angle. \path{dependence_strength_sweep}'s
+correlation override was written to apply to a node's single incoming
+pairwise copula, but the first demo call happened to target a node that
+actually had two parents in that DAG, so the override silently had nothing
+to act on and Kendall's $\tau$ stayed constant across every value tested
+in the sweep. A flat line across a sweep that is supposed to show a
+monotonic trend is exactly the same kind of implausible-summary-statistic
+signal as the $\tau \approx 0.999$ case above, just inverted: too little
+variation rather than too much. The fix was not merely to correct the
+target node, but to add an explicit validation guard that raises clearly
+whenever the target child does not have exactly one parent, converting a
+silent no-op into a loud, immediate failure the next time the same mistake
+is made.
+
+\subsection{A Common Thread}
+The standard-normal baseline bug -- found independently in both the
+continuous evaluation script and, later, its discrete counterpart --
+extends this pattern once more: a baseline comparison that was supposed to
+isolate dependence-model quality instead used a generic marginal instead
+of each dataset's real one, conflating two different sources of error into
+a single number. What all four bugs share is that they hide behind a
+result that looks superficially reasonable -- a single fitted parameter,
+a single sweep row, a single baseline comparison -- and only become
+visible when checked against either (a) a broader ensemble of similar
+results that should vary, or (b) an expected qualitative behavior (a
+monotonic trend, a clean isolation between two quantities) that a
+one-off inspection would not think to verify. The practical implication
+for anyone extending this pipeline is that its test suite needs
+statistical sanity checks with a known expected direction or magnitude,
+not just structural checks, and that an implausibly clean or implausibly
+flat result is itself worth investigating before being reported as a
+finding.
+
+\section{The Audit Pass}
+\label{sec:audit}
+Midway through Phase 2, the implemented scope was checked directly against
+the original task plan rather than assumed complete, and this surfaced five
+concrete gaps: the ordinal-category-order default described in
+Section~\ref{sec:discrete-method}; a mixed continuous/discrete pipeline that
+had only ever been unit-tested, never run end-to-end; a hyperparameter
+sweep that never actually covered discrete data (fixing this is what first
+revealed AIC and BIC diverging, Section~\ref{sec:rq3}); a missing baseline
+comparison for the discrete pipeline, whose addition is what led directly to
+discovering the jitter-dilution effect in Section~\ref{sec:rq4}; and a
+three-parent closed-form verification that had been done ad hoc during
+development but never committed as a regression test. All five were
+concrete, fixable gaps rather than open design questions, which suggests the
+audit was worth doing as a discrete step rather than trusting that
+task-by-task completion implies scope-level completion.
+
+A second, external-style audit of this document against the code (the
+record is part of the repository, \path{thesis_audit/}) found that several
+descriptions had drifted from the implementation -- most importantly the
+vine structure and Rosenblatt order (Sections~\ref{sec:conditional}
+and~\ref{sec:sampler}), a cross-dataset demonstration whose transplanted
+edge silently used the baseline, and a parent-order-sensitive model lookup
+that made the same graph produce different data depending on the order in
+which its edges were listed. It also found that a four-parent baseline was
+degenerate and that the downstream result rested on four seeds, one of
+which overlapped the training data. All of these were fixed in code, tested,
+and re-evaluated in Chapter~\ref{chap:results}.
+
+\section{Reproducibility Across Environments}
+Running the pipeline on a cluster with a different Python version and
+freshly resolved (rather than pinned) dependency versions reproduced every
+continuous result exactly, since those only depend on \texttt{numpy}'s
+seeded generator, which is bit-stable across platforms for the operations
+used here. The discrete sweep results did not reproduce, and tracking down
+why surfaced a genuine bug rather than an environment quirk: the sweep
+script's call into the categorical continuization step omitted a fixed
+seed, so it drew fresh operating-system entropy for jitter randomness on
+every run, while every other call site in the codebase passed a fixed seed
+and the sweep's own continuous rows never exercised that code path at all.
+This is a useful cautionary example independent of this specific project:
+a bug that never manifests within a single environment can still be a real
+bug, and cross-environment reruns are a legitimate way to find it -- not a
+compliance exercise, but a genuine second layer of testing that single-machine
+development cannot provide by itself. After the fix, a third environment
+(Python 3.13 with newer releases of \texttt{pyvinecopulib},
+\texttt{pgmpy}, \texttt{causal-learn} and \texttt{numpy}) reproduced the
+sweep table bit-for-bit (maximum absolute AIC difference $10^{-11}$) and the
+four-seed SHD table exactly. That environment is pinned in
+\path{requirements-lock.txt}, every output carries a provenance file, and a
+continuous-integration job re-runs the sweep and compares it with the
+committed table on every commit. On the Lichtenberg cluster the
+dependency libraries were then rebuilt from scratch and every original
+evaluation script re-run: the sweep table again agreed to $10^{-11}$ in AIC
+with identical families, and every evaluation reproduced its committed
+values, with a single exception at the fourth decimal (the Insurance
+baseline's mean Cram\'er's V error, $0.1816$ instead of $0.1815$), which
+the original code shows as well when run with the current library
+versions.
+
+\section{Limitations}
+Jittering-based continuization measures Kendall's $\tau_a$ instead of
+$\tau_b$ and therefore under-reproduces dependence for skewed categorical
+variables (Section~\ref{sec:rq4}). The native discrete likelihood removes
+most of this loss, but copulas of discrete data are not unique
+\parencite{genest2007}, so what is transplanted from a discrete dataset is
+a latent dependence that is only identified up to that ambiguity; on a
+purely discrete network, refitting the conditional probability tables
+remains the better generator for that network's own graph.
+
+Reusing a multi-parent model in a new graph is exact only if the parents'
+joint distribution matches the one the model was fitted under; otherwise
+the child's marginal drifts. The sampler detects this and margin
+calibration repairs the marginal, but calibration preserves only the ranks
+of the generated child, not its conditional distribution. The pairwise
+composition of multi-parent nodes assumes conditional independence of the
+parents given the child in copula space.
+
+The downstream evaluation uses PC and GES on four known graphs with 100
+seeds each. It supports the specific claims of
+Section~\ref{sec:closing-loop}, not general statements about other
+algorithm families, larger graphs, or supervised structure-learning
+methods trained on generated data. Generated data is only as close to
+reality as its building blocks: with GES on Asia, and with both algorithms
+on Insurance and Alarm, the graph is recovered markedly less well from
+the copula generator's data than from real data. Random-forest conditionals
+close most of this gap (Section~\ref{sec:rq6-forest}), but are fitted per
+node, parent set and dataset and therefore not reusable building blocks;
+they were evaluated only on the known graphs of RQ6.
+
+\section{Threats to Validity}
+The Sachs file pools nine experimental conditions; the RQ1 results are
+therefore reported on the pooled rows and on the 853-row observational
+condition, whose identity was verified row by row against an independent
+copy of the observational data. RQ1 compares a ranking with a consensus network
+that is itself an estimate. The Sachs measurements are rounded (91\% ties
+in \emph{praf}); the fitted copulas were insensitive to the tie-handling
+rule, but empirical and copula-implied $\tau$ differ (0.616 versus 0.666
+for \emph{praf}--\emph{pmek}).
+
+Each held-out experiment fits its library on a single training draw, so
+the variance due to library fitting is not resampled. The discrete networks
+are sampled from bnlearn CPTs via pgmpy, and their deterministic or
+near-deterministic nodes (Asia's \emph{either}) violate faithfulness, which
+affects every source including real data. Finally, the composition study
+uses random DAGs over one dataset's variables; transplanting dependencies
+between semantically unrelated variables is a modelling choice of the user
+whose plausibility the tool cannot judge.
+
+\chapter{Conclusion and Future Work}
+\label{chap:conclusion}
+
+\section{Summary}
+This thesis set out to build a tool that generates realistic synthetic data
+for an arbitrary user-specified graph by learning local dependencies from
+real data rather than assuming a fixed generic dependence model, and to
+verify on held-out data that the result is both statistically faithful and
+usable for causal discovery. The strongest fitted dependencies coincide
+with known causal edges (RQ1); sampling reproduces the true, non-uniform
+per-edge dependence where a generic baseline cannot (RQ2); flexible family
+selection matters in a dataset-dependent way, and the sampler is correct up
+to six parents with its baseline and four with learned vines (RQ3); the
+pipeline extends to discrete and mixed data, where native discrete fitting
+removes most of the dependence loss that jittering causes (RQ4); learned
+building blocks transfer to graphs that never existed, including across
+datasets, and yield benchmarks that are not variance-sortable (RQ5); and on
+Asia, PC recovers the true graph significantly better from the learned
+generator's data than from a fixed-correlation baseline or a fitted
+Gaussian copula and as well as from real data, whereas GES on Asia, and both
+algorithms on the larger Insurance and Alarm networks, fall clearly short of
+real data (RQ6). Random-forest conditionals fitted on the same data close
+most of this gap on the known graphs, which locates its cause in the
+non-monotone and interaction dependence that copula conditionals cannot
+represent.
+
+\section{Future Work}
+The main open problem is the gap to real data on larger discrete networks
+(Section~\ref{sec:closing-loop}). Random-forest conditionals close most of
+it on the known graphs (Section~\ref{sec:rq6-forest}) but are not reusable
+building blocks. A hybrid that keeps copulas for monotone edges and for
+dependence transferred to new graphs, and uses nonparametric conditionals
+only where an edge is non-monotone or parents interact, would combine both
+properties; it would also have to be evaluated on novel graphs, which the
+prototype was not. Beyond that,
+three directions follow from the results. First, generated benchmarks should be used for what motivated
+them: training and evaluating supervised or amortized structure-learning
+methods on many generated (graph, dataset) pairs, and testing whether
+performance on generated data predicts performance on real data. Second,
+the compatibility of transplanted multi-parent models deserves a principled
+treatment -- for instance re-estimating a vine's parent-dependence trees
+from the parents actually generated, while keeping the child's conditional
+copulas. Third, a systematic study of which cross-dataset compositions
+produce plausible variables would turn a working capability into a
+principled one.
+
+\appendix
+\chapter{Software Artifact}
+
+\section{Repository Layout}
+The codebase is organized as an installable package (\texttt{gcda/}) plus a
+set of narrated, single-purpose scripts (\texttt{scripts/}) that mirror the
+same operations as the composable \texttt{gcda} command-line interface,
+described below.
+
+\begin{table}[ht]
+\caption{Top-level repository structure (repository \texttt{ramya-ravi26/Graph-Conditioned-Causal-Data-Augmentation}; the commit used for this thesis is recorded in every output's \texttt{.meta.json} file).}
+\label{tab:repo-layout}
+\centering
+\small
+\begin{tabular}{lp{9.5cm}}
+\toprule
+\textbf{Path} & \textbf{Contents} \\
+\midrule
+\texttt{gcda/data/} & Dataset loaders (incl.\ the bundled Sachs CSV as package data), dataset registry, preprocessing (continuous, jittered and native-discrete inputs). \\
+\texttt{gcda/dependency/} & Pairwise and conditional copula fitting, pairwise-composed multi-parent models, \texttt{DependencyLibrary} (merge, validation). \\
+\texttt{gcda/generation/} & \texttt{GraphSampler} (fallback counters, drift diagnostics, margin calibration) and the graph-specification layer used by the CLI. \\
+\texttt{gcda/evaluation/} & Realism (incl.\ unbiased energy distance/MMD and permutation tests), graph-conditioning, discrete metrics, PC/GES + SHD. \\
+\texttt{gcda/experiments/} & Hyperparameter sweep and the held-out, multi-seed experiments of Chapter~\ref{chap:results}. \\
+\texttt{gcda/provenance.py} & Run metadata (package versions, git commit, arguments) written next to every output. \\
+\texttt{gcda/cli.py} & The \texttt{gcda} command (build-library / generate / evaluate / sweep). \\
+\texttt{scripts/} & Narrated entry points for each pipeline stage, \texttt{run\_experiments.py}, result merging and reproduction checks. \\
+\texttt{configs/sweep.yaml} & Versioned definition of what the sweep varies. \\
+\texttt{outputs/} & Versioned result artifacts the tables and figures are produced from. \\
+\texttt{slurm/}, \texttt{docs/HPC\_RUNBOOK.md} & Job scripts and instructions for the large-seed runs on the Lichtenberg cluster. \\
+\texttt{tests/} & Pytest suite mirroring the package layout, including every regression test referenced in Chapters~\ref{chap:method} and~\ref{chap:discussion}. \\
+\texttt{thesis/}, \texttt{thesis\_audit/} & This document's source and the record of its corrections. \\
+\texttt{LAB\_NOTEBOOK.md} & Chronological record of decisions, validations, and bugs found and fixed. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Command-Line Interface}
+\label{sec:cli}
+\begin{verbatim}
+gcda build-library --dataset sachs --output lib_sachs.json
+gcda build-library --dataset asia --discrete-mode native --output lib_asia.json
+gcda generate --dag graph.json --library lib_sachs.json \
+    --library lib_asia.json --n 5000 --output data.csv [--strict]
+gcda evaluate --true-csv true.csv --sim-csv data.csv --distances
+gcda sweep [--wandb]
+\end{verbatim}
+\texttt{graph.json} accepts any DAG, not necessarily a source dataset's own
+structure. In its simplest form it is an edge list,
+\path{{"edges": [["a", "b"], ["a", "c"]]}}, whose nodes are looked up in
+the dataset given by \texttt{--dataset}. Each node can instead be mapped
+to a (dataset, variable) of any of the merged libraries, and each edge can
+be bound to any learned pair copula (Section~\ref{sec:composition} uses
+exactly this to build a graph from Sachs and Asia building blocks).
+Multi-parent nodes use a fitted vine when one exists for that parent set
+and are otherwise composed from the edges' pairwise copulas
+(Section~\ref{sec:sampler}). Every modelling decision and every baseline
+fallback is written to a JSON report next to the output, and
+\texttt{--strict} turns any fallback into an error.
+
+\section{Sweep Configuration}
+Listing~\ref{lst:sweep-yaml} shows \texttt{configs/sweep.yaml}, the
+versioned file the sweep (\path{gcda/experiments/sweep.py}) reads rather
+than encoding these choices as constants -- the reason the sweep results in
+Table~\ref{tab:sweep} and Table~\ref{tab:indegree} are reproducible from a
+single committed file. Sample sizes and seeds of the datasets are fixed in
+\path{gcda/experiments/sweep.py} (synthetic SCM $n=5{,}000$, Asia and
+Insurance $n=8{,}000$); W\&B logging is offline unless
+\texttt{WANDB\_MODE=online} is set.
+
+\begin{lstlisting}[caption={configs/sweep.yaml (verbatim, comments removed).}, label={lst:sweep-yaml}]
+family_sets:
+  gaussian_only: [gaussian]
+  parametric: [indep, gaussian, student, clayton, gumbel, frank, joe]
+selection_criteria: [aic, bic]
+targets:
+  sachs:         {child: pmek, parents: [praf, PKA]}
+  uci_diabetes:  {child: disease_progression, parents: [s5, bmi]}
+  synthetic_scm: {child: x4, parents: [x1, x2]}
+  asia:          {child: dysp, parents: [bronc, either]}
+  insurance:     {child: DrivQuality, parents: [RiskAversion, DrivingSkill]}
+indegree_sweep:
+  caps: [2, 3, 4, 5, 6]
+  baseline_rho: 0.5
+  n: 5000
+  seed: 0
+  repeats: 10
+clip_sweep:
+  datasets: [sachs, asia]
+  eps_values: [1.0e-10, 1.0e-6, 1.0e-3, 1.0e-2]
+\end{lstlisting}
+
+\section{Environment}
+\texttt{pyproject.toml} declares the direct dependencies with lower bounds
+(the oldest versions the results were produced with), the Python floor of
+3.10 (needed for the \texttt{X | Y} union type hints used throughout the
+codebase) and a single upper bound, \texttt{pgmpy<1.3}, because pgmpy 1.3
+removes the bundled-network loader the discrete experiments use. In
+addition, \texttt{requirements-lock.txt} pins the exact environment
+(Python 3.13) in which every table of Chapter~\ref{chap:results} was
+reproduced bit-for-bit, and every output file is accompanied by a
+\texttt{.meta.json} file recording package versions and the git commit.
+Table~\ref{tab:deps} lists the direct dependencies.
+
+\begin{table}[ht]
+\caption{Direct dependencies (lower bounds in \texttt{pyproject.toml}; exact versions in \texttt{requirements-lock.txt}).}
+\label{tab:deps}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Package} & \textbf{Role} \\
+\midrule
+\texttt{pyvinecopulib} & pairwise and vine copula fitting/sampling (Section~\ref{sec:pairwise-math}) \\
+\texttt{networkx} & DAG representation and topological sort (Section~\ref{sec:sampler}) \\
+\texttt{pgmpy} & bundled Asia/Insurance CPT sampling (Section~\ref{sec:discrete-method}) \\
+\texttt{causal-learn} & PC algorithm for the downstream discovery check (Section~\ref{sec:closing-loop}) \\
+\texttt{numpy}, \texttt{scipy} & numerical core \\
+\texttt{pandas} & tabular data handling \\
+\texttt{scikit-learn} & UCI diabetes loader, general utilities \\
+\texttt{wandb} & sweep logging (offline by default) \\
+\texttt{PyYAML} & sweep configuration \\
+\texttt{matplotlib} & diagnostic plots \\
+\texttt{pytest} & test suite \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Reproducing These Results}
+\label{sec:reproduce}
+Concretely, the results in Chapter~\ref{chap:results} can be regenerated
+with the following sequence, matching the script names referenced
+throughout that chapter:
+\begin{enumerate}
+  \item \path{python scripts/build_dependency_library.py} -- fits the
+    Phase 1 pairwise/conditional models (Table~\ref{tab:sweep}'s ``families
+    selected'' column; RQ1, Section~\ref{sec:rq1}).
+  \item \path{python scripts/generate_graph_data.py} -- the baseline-vs-learned
+    comparison on the synthetic SCM's own graph (RQ2).
+  \item \path{python scripts/sweep_hyperparameters.py --config configs/sweep.yaml}
+    -- produces \path{outputs/sweep_dependency_models.csv} and
+    \path{outputs/sweep_indegree_cap.csv}, the source of
+    Table~\ref{tab:sweep}, Figure~\ref{fig:aic-improvement},
+    Figure~\ref{fig:tau-error}, Table~\ref{tab:indegree}, and
+    Figures~\ref{fig:indegree-tau}--\ref{fig:indegree-time} (RQ3).
+  \item \path{python scripts/build_discrete_library.py} followed by
+    \path{python scripts/evaluate_discrete_generation.py} and
+    \path{python scripts/evaluate_mixed_generation.py} -- the Asia,
+    Insurance, and mixed-SCM numbers behind Table~\ref{tab:jitter},
+    Figure~\ref{fig:dilution-scatter}, Table~\ref{tab:mixed}, and
+    Figure~\ref{fig:mixed-edges} (RQ4).
+  \item \path{python scripts/demo.py} -- the cross-dataset composition
+    check behind RQ5 (Section~\ref{sec:composition}).
+  \item \path{python scripts/evaluate_causal_discovery.py} -- Table~\ref{tab:shd}
+    (the original four-seed protocol, RQ6).
+  \item \path{python scripts/run_experiments.py <name>} with \texttt{<name>} one
+    of \texttt{rq1}, \texttt{rq2}, \texttt{rq4}, \texttt{rq5},
+    \texttt{composition}, \texttt{rq6}, \texttt{discrete-native},
+    \texttt{learned-indegree} -- the held-out, multi-seed experiments added
+    to Chapter~\ref{chap:results}; the large-seed versions are run on the
+    Lichtenberg cluster with the job scripts in \texttt{slurm/} as described
+    in \texttt{docs/HPC\_RUNBOOK.md}.
+\end{enumerate}
+Every step above writes its numeric output to \texttt{outputs/} together with
+a provenance file, so that a later step -- or a reader checking a specific
+number against this thesis -- can consume a previous step's exact output
+rather than re-deriving it by eye from terminal text. These artifacts are
+versioned in the repository (\texttt{scripts/check\_reproduction.py}
+compares a fresh sweep with them; the continuous-integration workflow runs
+this check on every commit).
+
+\section{Test Suite Reference}
+Table~\ref{tab:test-suite} lists the regression tests referenced throughout
+this thesis, organized by the module they cover and the specific bug or
+property each one guards against, following the testing philosophy laid
+out in Chapter~\ref{chap:implementation}: every test here asserts a
+statistical property or an input-space edge case that was previously
+missed, not just a structural shape or type check.
+
+\begin{table}[ht]
+\caption{Regression tests referenced in this thesis, by module.}
+\label{tab:test-suite}
+\centering
+\begin{tabular}{lp{8.7cm}}
+\toprule
+\textbf{Test module} & \textbf{What it guards against} \\
+\midrule
+\texttt{test\_preprocessing.py} & Pseudo-observation round-trip on a permuted column (Section~\ref{sec:bug-case-study-1}); the jitter-dilution factor on a simulated skewed binary pair (Section~\ref{sec:rq4}). \\
+\texttt{t3\_validation.py} (script) & Family/parameter/$\tau$ recovery on toy Gaussian, Student-$t$ and Clayton data with known ground truth (Section~\ref{sec:pairwise-math}); exits non-zero on failure. \\
+\texttt{test\_pairwise.py} & Gaussian family/$\tau$ recovery; independence detection for independent columns. \\
+\texttt{test\_conditional.py} & Two-parent conditional sampler against closed-form Gaussian theory (Section~\ref{sec:conditional}); the three-parent extension of the same closed-form check, added during the audit pass (Section~\ref{sec:audit}). \\
+\texttt{test\_graph\_sampler.py} & Fallback on failing and on non-finite edge models; the independence-family $(0,0)$-shape reshape guard (Chapter~\ref{chap:implementation}); the $h$-function direction check by binning (Section~\ref{sec:conditional}). \\
+\texttt{test\_library.py} & JSON save/load round trip of marginals, pairwise and conditional models. \\
+\texttt{test\_graph\_conditioning.py} & \texttt{dependence\_strength\_sweep}'s one-parent validation guard (Section~\ref{sec:bugs-discussion}); edge removal and monotonicity checks. \\
+\texttt{test\_remediation.py} & Regression tests for the corrections made after the audit: parent-order invariance of conditional lookups (library and CLI), library merge and namespace collisions, copula binding with orientation, cross-dataset CLI generation, strict mode, pairwise-composed conditionals against closed-form Gaussian theory, margin calibration and drift warnings, the valid baseline at four and five parents, per-node fallback counters, unbiased distances and permutation tests, library validation, marginal compression, parallel fitting, and the $\tau_a$ identity behind the dilution formula (Section~\ref{sec:rq4}). \\
+\texttt{test\_forest.py} & Random-forest conditionals (Section~\ref{sec:forest-method}): a logical OR child and a non-monotone continuous child reproduced, integration with the graph sampler for one and two parents, no replay of training rows. \\
+\texttt{test\_datasets.py} & Loaders, ordinal category orders, the Sachs condition boundaries and observational subset, the consensus DAG (Mek has three parents). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\printbibliography
+
+\end{document}

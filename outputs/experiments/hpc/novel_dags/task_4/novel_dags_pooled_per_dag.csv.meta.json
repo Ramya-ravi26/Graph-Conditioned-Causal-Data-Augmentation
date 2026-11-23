@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-11-20T12:02:21+00:00",
+  "python": "3.13.11",
+  "platform": "Linux-5.14.0-570.154.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "git_sha": "713e164fcb410ad281723938588ae82fee794c5e+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/run_experiments.py",
+    "composition",
+    "--n-dags",
+    "20",
+    "--dag-start",
+    "80",
+    "--seeds",
+    "30",
+    "--out",
+    "/work/scratch/rr51dyhu/gcda/novel_dags/task_4"
+  ],
+  "output": "novel_dags_pooled_per_dag.csv",
+  "n_dags": 20,
+  "sachs_rows": "pooled"
+}

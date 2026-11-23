@@ -1,0 +1,49 @@
+{
+  "created_utc": "2026-11-23T15:13:36+00:00",
+  "python": "3.13.11",
+  "platform": "Linux-5.14.0-570.154.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "git_sha": "7e8d0de6d4a4953c02760e65d48d0d74f7263008+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/merge_results.py",
+    "rf",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_0",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_1",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_2",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_3",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_4",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_5",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_6",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_7",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_8",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_9",
+    "--out",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/merged"
+  ],
+  "output": "rf_tests.csv",
+  "algorithms": [
+    "pc"
+  ],
+  "train_seed": 10000,
+  "merged_from": [
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_0",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_1",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_2",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_3",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_4",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_5",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_6",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_7",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_8",
+    "/work/scratch/rr51dyhu/gcda/rf_pc/task_9"
+  ]
+}

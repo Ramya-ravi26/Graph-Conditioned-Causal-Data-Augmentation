@@ -1,0 +1,28 @@
+
+=== asia (8 vars, max indegree 2) ===
+  [baseline] stability: {'n': 10000, 'elapsed_sec': 0.0745549201965332, 'n_fallback_events': 0, 'fallback_event_rate': 0.0}
+  [baseline] T7d.i category frequencies: mean total_variation_distance=0.0033
+  [baseline] T7d.ii edge dependence: mean cramers_v_abs_error=0.2439, mean nmi_abs_error=0.2188
+  [learned] stability: {'n': 10000, 'elapsed_sec': 0.16294002532958984, 'n_fallback_events': 0, 'fallback_event_rate': 0.0}
+  [learned] T7d.i category frequencies: mean total_variation_distance=0.0024
+  [learned] T7d.ii edge dependence: mean cramers_v_abs_error=0.2662, mean nmi_abs_error=0.2172
+  worst-matched edges in the learned run (largest Cramer's V error):
+ var_i  var_j  cramers_v_true  cramers_v_sim  cramers_v_abs_error
+  lung either        0.898407       0.300281             0.598126
+either   xray        0.753265       0.306652             0.446613
+   tub either        0.431484       0.111685             0.319799
+
+=== insurance (27 vars, max indegree 3) ===
+  [baseline] stability: {'n': 10000, 'elapsed_sec': 0.8548941612243652, 'n_fallback_events': 0, 'fallback_event_rate': 0.0}
+  [baseline] T7d.i category frequencies: mean total_variation_distance=0.0574
+  [baseline] T7d.ii edge dependence: mean cramers_v_abs_error=0.1815, mean nmi_abs_error=0.1324
+  [learned] stability: {'n': 10000, 'elapsed_sec': 1.8127434253692627, 'n_fallback_events': 0, 'fallback_event_rate': 0.0}
+  [learned] T7d.i category frequencies: mean total_variation_distance=0.0045
+  [learned] T7d.ii edge dependence: mean cramers_v_abs_error=0.1859, mean nmi_abs_error=0.1360
+  worst-matched edges in the learned run (largest Cramer's V error):
+      var_i       var_j  cramers_v_true  cramers_v_sim  cramers_v_abs_error
+  MakeModel    Antilock        0.638358       0.213211             0.425147
+        Age SeniorTrain        0.728294       0.307248             0.421046
+VehicleYear      Airbag        0.840664       0.431576             0.409089
+
+Note: jittering-based continuization dilutes measured dependence for skewed/binary discrete variables (severely for near-deterministic ones like Asia's 'either' = tub OR lung), which is why 'learned' sometimes loses to the naive baseline on individual edges above despite correctly reproducing category frequencies throughout - see the module docstring for the mechanism and the verified dilution formula.

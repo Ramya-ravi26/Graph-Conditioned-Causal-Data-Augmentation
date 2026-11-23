@@ -1,0 +1,19 @@
+graph,comparison,metric,mean_diff,ci_low,ci_high,wilcoxon_p,ttest_p,n
+alarm,learned - baseline_fixed_rho,shd,8.5,4.0,12.9,0.009765625,0.006166764400241396,10
+alarm,learned - cpt_refit,shd,21.2,15.0,26.7,0.001953125,8.64984056807091e-05,10
+alarm,learned - gaussian_copula_fitted,shd,-8.7,-12.7,-4.9,0.00390625,0.0024953541337341813,10
+alarm,learned - learned_native,shd,-5.5,-10.2,-1.4,0.125,0.04457989329313049,10
+alarm,learned - true_data,shd,24.0,20.4,27.8,0.001953125,8.070815956436781e-07,10
+asia,learned - baseline_fixed_rho,shd,-4.0,-5.1,-2.9,0.001953125,8.771397134967769e-05,10
+asia,learned - cpt_refit,shd,2.6,1.3,3.9,0.0078125,0.004295743442226456,10
+asia,learned - gaussian_copula_fitted,shd,-2.1,-3.3,-0.8,0.03125,0.013980099427587317,10
+asia,learned - learned_native,shd,-1.8,-3.2,-0.2,0.0859375,0.05757436840588039,10
+asia,learned - true_data,shd,3.1,1.7,4.6,0.00390625,0.0032588630995276516,10
+insurance,learned - baseline_fixed_rho,shd,-2.8,-4.3,-1.1,0.021484375,0.010309937713023342,10
+insurance,learned - cpt_refit,shd,12.6,10.4,14.6,0.001953125,1.4082509923008437e-06,10
+insurance,learned - gaussian_copula_fitted,shd,-8.1,-10.4,-5.6,0.001953125,0.0001276987536541993,10
+insurance,learned - learned_native,shd,-16.6,-18.8,-14.6,0.001953125,1.4291152804046682e-07,10
+insurance,learned - true_data,shd,10.0,7.0,13.2,0.001953125,0.00023381372307875673,10
+synthetic_scm,learned - baseline_fixed_rho,shd,0.0,0.0,0.0,1.0,1.0,10
+synthetic_scm,learned - gaussian_copula_fitted,shd,0.0,0.0,0.0,1.0,1.0,10
+synthetic_scm,learned - true_data,shd,-0.1,-0.3,0.0,1.0,0.3434363961379136,10

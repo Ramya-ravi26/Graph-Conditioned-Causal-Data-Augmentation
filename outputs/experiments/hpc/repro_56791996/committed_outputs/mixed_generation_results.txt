@@ -1,0 +1,23 @@
+DAG edges: [('x1', 'x2'), ('x1', 'x4'), ('x2', 'x5'), ('x3', 'x4'), ('x4', 'x5')]
+continuous columns: ['x1', 'x3', 'x4'], discrete columns: ['x2', 'x5']
+
+=== continuous marginals (T6a.i) ===
+column  quantile_l1  ks_stat
+    x1     0.017510   0.0120
+    x3     0.012534   0.0126
+    x4     0.008793   0.0118
+
+=== discrete category frequencies (T7d.i) ===
+column  max_abs_diff  total_variation_distance
+    x2        0.0036                    0.0036
+    x5        0.0064                    0.0064
+
+=== dependence per edge, Kendall's tau on the ordinal-numeric view (T6a.ii/T7d.ii) ===
+  x1->x2 (mixed): tau_true=0.643 tau_sim=0.547 abs_error=0.096
+  x1->x4 (continuous-continuous): tau_true=0.460 tau_sim=0.470 abs_error=0.010
+  x2->x5 (discrete-discrete): tau_true=0.644 tau_sim=0.404 abs_error=0.241
+  x3->x4 (continuous-continuous): tau_true=0.363 tau_sim=0.348 abs_error=0.015
+  x4->x5 (mixed): tau_true=0.504 tau_sim=0.308 abs_error=0.197
+
+=== Cramer's V on the one genuinely discrete-discrete-adjacent pair (x2, x5) ===
+  true=0.683 sim=0.428

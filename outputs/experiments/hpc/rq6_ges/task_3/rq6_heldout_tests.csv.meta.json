@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-11-20T13:12:19+00:00",
+  "python": "3.13.11",
+  "platform": "Linux-5.14.0-570.154.1.el9_6.x86_64-x86_64-with-glibc2.34",
+  "git_sha": "713e164fcb410ad281723938588ae82fee794c5e+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/run_experiments.py",
+    "rq6",
+    "--graphs",
+    "synthetic_scm",
+    "asia",
+    "insurance",
+    "alarm",
+    "--seeds",
+    "10",
+    "--seed-start",
+    "30",
+    "--algorithm",
+    "ges",
+    "--out",
+    "/work/scratch/rr51dyhu/gcda/rq6_ges/task_3"
+  ],
+  "output": "rq6_heldout_tests.csv",
+  "graphs": [
+    "synthetic_scm",
+    "asia",
+    "insurance",
+    "alarm"
+  ],
+  "seeds": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "train_seed": 10000,
+  "alpha": 0.05,
+  "algorithm": "ges"
+}

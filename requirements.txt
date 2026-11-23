@@ -1,0 +1,21 @@
+# Direct dependencies only (no pinned transitive packages, no exact version
+# pins) - this file previously pinned to exact versions captured from a
+# development sandbox with a non-standard package index (it listed
+# certifi==2026.6.17 and click==8.4.1, neither of which exists on PyPI),
+# which made a fresh install fail on any real machine. Let pip resolve a
+# compatible version of each package and its own dependencies instead.
+#
+# Requires Python >= 3.10 (the codebase uses `X | Y` union type hints).
+
+numpy
+scipy
+pandas
+matplotlib
+scikit-learn
+networkx
+pyvinecopulib
+pytest
+PyYAML
+wandb
+pgmpy<1.3
+causal-learn

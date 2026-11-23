@@ -1,0 +1,20 @@
+=== T6a.i marginals (quantile L1 distance, lower is better) ===
+baseline: mean quantile_l1=0.0129, mean ks_stat=0.0104
+learned: mean quantile_l1=0.0090, mean ks_stat=0.0089
+
+=== T6a.ii pairwise dependence (mean |tau error|, lower is better) ===
+baseline: mean_tau_abs_error=0.1585
+learned: mean_tau_abs_error=0.0087
+
+=== T6a.iii distribution distance in U-space (lower is better) ===
+baseline: energy_distance=0.00753, gaussian_mmd=0.00431
+learned: energy_distance=0.00332, gaussian_mmd=0.00155
+
+Diagnostic plots written to /work/home/rr51dyhu/copula-simulator/outputs/t6_evaluation/
+
+=== T6b graph-conditioning: removing an edge should collapse its dependence ===
+{'parent': 'x1', 'child': 'x4', 'tau_with_edge': np.float64(0.33836255251050207), 'tau_without_edge': np.float64(-0.004995079015803161), 'expected_direction_confirmed': np.True_}
+
+=== T6b graph-conditioning: dependence strength should increase monotonically with rho ===
+[{'rho': 0.0, 'tau': np.float64(0.0025144228845769157)}, {'rho': 0.3, 'tau': np.float64(0.19861764352870573)}, {'rho': 0.6, 'tau': np.float64(0.41475959191838374)}, {'rho': 0.9, 'tau': np.float64(0.7152678535707141)}]
+monotonic: True

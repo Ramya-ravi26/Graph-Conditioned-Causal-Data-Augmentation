@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-11T09:22:12+00:00",
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+  "git_sha": "bb8e93fbefdd4f36ba060214e52645b3fe216b5e+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/sweep_hyperparameters.py",
+    "--output-dir",
+    "/tmp/claude-0/sweep_new"
+  ],
+  "output": "sweep_indegree_cap.csv",
+  "config_file": "/home/user/copula-simulator/configs/sweep.yaml"
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+wandb/
+.pytest_cache/
+# outputs/ IS versioned: it holds the exact artifacts the thesis tables were
+# produced from (see outputs/SHA256SUMS). Scratch output goes to outputs/scratch/.
+outputs/scratch/
+outputs/t3_validation/
+thesis/build/
+logs/
+outputs/verify/

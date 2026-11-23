@@ -1,0 +1,7153 @@
+{
+  "pairwise": [
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "tub",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "smoke",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "lung",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "bronc",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "either",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "xray",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "asia",
+      "var_j": "dysp",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "smoke",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "lung",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "bronc",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "either",
+      "family": "joe",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.10360640543515
+        ]
+      ],
+      "tau": 0.05623587397498153,
+      "aic": -225.8292558461078,
+      "bic": -218.61891547413163,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "xray",
+      "family": "joe",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.076851935973648
+        ]
+      ],
+      "tau": 0.04240864206033457,
+      "aic": -138.63806355377164,
+      "bic": -131.42772318179547,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "tub",
+      "var_j": "dysp",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "smoke",
+      "var_j": "lung",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.0905143631031334
+        ]
+      ],
+      "tau": 0.043297651860556945,
+      "aic": -73.09985961171667,
+      "bic": -65.88951923974048,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "smoke",
+      "var_j": "bronc",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.4152983899088405
+        ]
+      ],
+      "tau": 0.15420873366418686,
+      "aic": -533.1230246365893,
+      "bic": -525.9126842646132,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "smoke",
+      "var_j": "either",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.10461815771243128
+        ]
+      ],
+      "tau": 0.049708854467997034,
+      "aic": -89.64290139447185,
+      "bic": -82.43256102249566,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "smoke",
+      "var_j": "xray",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.07505265873224932
+        ]
+      ],
+      "tau": 0.03616903812846014,
+      "aic": -47.92812982170949,
+      "bic": -40.7177894497333,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "smoke",
+      "var_j": "dysp",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0254312326457193
+        ]
+      ],
+      "tau": 0.11275974350705642,
+      "aic": -280.7682380303358,
+      "bic": -273.5578976583596,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "lung",
+      "var_j": "bronc",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "lung",
+      "var_j": "either",
+      "family": "joe",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.356693932533009
+        ]
+      ],
+      "tau": 0.16796110011169763,
+      "aic": -1516.4299996156565,
+      "bic": -1509.2196592436803,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "lung",
+      "var_j": "xray",
+      "family": "joe",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.300366245307307
+        ]
+      ],
+      "tau": 0.1456930842503008,
+      "aic": -1110.469079371905,
+      "bic": -1103.258738999929,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "lung",
+      "var_j": "dysp",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.1004182984218908
+        ]
+      ],
+      "tau": 0.04780871433910959,
+      "aic": -84.65558518973823,
+      "bic": -77.44524481776205,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "bronc",
+      "var_j": "either",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "bronc",
+      "var_j": "xray",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "bronc",
+      "var_j": "dysp",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          3.373188301227918
+        ]
+      ],
+      "tau": 0.33892470621798354,
+      "aic": -2676.167285726333,
+      "bic": -2668.956945354357,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "either",
+      "var_j": "xray",
+      "family": "joe",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.368310368216041
+        ]
+      ],
+      "tau": 0.17239547866454275,
+      "aic": -1439.9626022365717,
+      "bic": -1432.7522618645955,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "either",
+      "var_j": "dysp",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.10648050330514244
+        ]
+      ],
+      "tau": 0.05054900965761172,
+      "aic": -87.49921721320368,
+      "bic": -80.28887684122749,
+      "n": 10000
+    },
+    {
+      "dataset": "asia",
+      "var_i": "xray",
+      "var_j": "dysp",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.09060890829687186
+        ]
+      ],
+      "tau": 0.04334091753712414,
+      "aic": -64.23665040598885,
+      "bic": -57.02631003401267,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Age",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.207277535029723
+        ]
+      ],
+      "tau": 0.093906421707378,
+      "aic": -352.8189085433768,
+      "bic": -345.6085681714006,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "SocioEcon",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.08429893202898113
+        ]
+      ],
+      "tau": -0.04044474174677023,
+      "aic": -61.30855278088323,
+      "bic": -54.098212408907045,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "RiskAversion",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04783643913214136
+        ]
+      ],
+      "tau": 0.02335950187135751,
+      "aic": -20.009963720024558,
+      "bic": -12.799623348048375,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "VehicleYear",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.03157745245413135
+        ]
+      ],
+      "tau": 0.015543317049510471,
+      "aic": -7.427011099565053,
+      "bic": -0.21667072758886974,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "ThisCarDam",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "RuggedAuto",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Accident",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "MakeModel",
+      "family": "joe",
+      "rotation": 90,
+      "parameters": [
+        [
+          1.0262626092772855
+        ]
+      ],
+      "tau": -0.01496582457116935,
+      "aic": -12.598450154002538,
+      "bic": -5.388109782026355,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "DrivQuality",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04129879191787147
+        ]
+      ],
+      "tau": 0.020231625120921082,
+      "aic": -14.232470113078378,
+      "bic": -7.022129741102194,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Antilock",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.05264970020872381
+        ]
+      ],
+      "tau": 0.025649627505058524,
+      "aic": -25.52940870107489,
+      "bic": -18.319068329098705,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "DrivingSkill",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.05682150698125233
+        ]
+      ],
+      "tau": 0.027625881384645716,
+      "aic": -28.642256772278856,
+      "bic": -21.431916400302672,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "ThisCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "CarValue",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.05073838049297815
+        ]
+      ],
+      "tau": -0.02474151797011822,
+      "aic": -21.2940738392683,
+      "bic": -14.083733467292117,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "HomeBase",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "AntiTheft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "OtherCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Cushioning",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.03168320522588452
+        ]
+      ],
+      "tau": -0.015594559793765658,
+      "aic": -7.643199606680248,
+      "bic": -0.43285923470406473,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "Airbag",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04803660584396747
+        ]
+      ],
+      "tau": 0.023454954714626424,
+      "aic": -19.25579132726287,
+      "bic": -12.045450955286686,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "GoodStudent",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.0408059741087557
+        ]
+      ],
+      "tau": -0.019995028741806854,
+      "aic": -13.79376489528898,
+      "bic": -6.583424523312797,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "SocioEcon",
+      "family": "student",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.006153873776058772
+        ],
+        [
+          20.803184667494506
+        ]
+      ],
+      "tau": 0.003917702450096727,
+      "aic": -16.469564608568827,
+      "bic": -2.04888386461646,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "RiskAversion",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.8614576642912928
+        ]
+      ],
+      "tau": 0.20005773290098272,
+      "aic": -909.9763184996248,
+      "bic": -902.7659781276486,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "VehicleYear",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "ThisCarDam",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.11331464147550703
+        ]
+      ],
+      "tau": -0.05361938977358868,
+      "aic": -101.92357775340093,
+      "bic": -94.71323738142475,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "RuggedAuto",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Accident",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.6715081932982555
+        ]
+      ],
+      "tau": -0.07427813621047541,
+      "aic": -122.81593560713837,
+      "bic": -115.60559523516218,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "MakeModel",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.031382502797140395
+        ]
+      ],
+      "tau": 0.015448839769924087,
+      "aic": -7.849160647366286,
+      "bic": -0.6388202753901027,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "DrivQuality",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1155264089269932
+        ]
+      ],
+      "tau": 0.12243685076842459,
+      "aic": -332.89013833746935,
+      "bic": -325.67979796549315,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Antilock",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "DrivingSkill",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1123809288025956
+        ]
+      ],
+      "tau": 0.12209992100651057,
+      "aic": -326.1846584325958,
+      "bic": -318.9743180606196,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "SeniorTrain",
+      "family": "joe",
+      "rotation": 270,
+      "parameters": [
+        [
+          1.451815043968158
+        ]
+      ],
+      "tau": -0.2028080691662375,
+      "aic": -1726.276937635107,
+      "bic": -1719.066597263131,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "ThisCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.08932173148919512
+        ]
+      ],
+      "tau": -0.04275154474439402,
+      "aic": -65.04904261095533,
+      "bic": -57.83870223897914,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "CarValue",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.040354085551586545
+        ]
+      ],
+      "tau": 0.019777981595129494,
+      "aic": -13.090215400925421,
+      "bic": -5.879875028949238,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "HomeBase",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.7427876822732181
+        ]
+      ],
+      "tau": -0.0820808355560203,
+      "aic": -152.78944149881409,
+      "bic": -145.5791011268379,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.2225298711597326
+        ]
+      ],
+      "tau": -0.13385661440898122,
+      "aic": -407.6154517751001,
+      "bic": -400.4051114031239,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "PropCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.09179484630052248
+        ]
+      ],
+      "tau": -0.058520796795955704,
+      "aic": -82.40310927560851,
+      "bic": -75.19276890363233,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.0818734559217533
+        ]
+      ],
+      "tau": -0.039326816761542156,
+      "aic": -55.98916225616209,
+      "bic": -48.7788218841859,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.03322402687406283
+        ]
+      ],
+      "tau": -0.01634056377208094,
+      "aic": -8.628503605861223,
+      "bic": -1.4181632338850392,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Age",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.1363701531532249
+        ]
+      ],
+      "tau": -0.12466779699571084,
+      "aic": -351.813519690534,
+      "bic": -344.6031793185578,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "RiskAversion",
+      "family": "gumbel",
+      "rotation": 180,
+      "parameters": [
+        [
+          1.017140555846937
+        ]
+      ],
+      "tau": 0.016851708201394783,
+      "aic": -11.776147251951077,
+      "bic": -4.565806879974893,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "VehicleYear",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -2.48187494483543
+        ]
+      ],
+      "tau": -0.26036791622921185,
+      "aic": -1561.3654420271241,
+      "bic": -1554.155101655148,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "ThisCarDam",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.044219237083209156
+        ]
+      ],
+      "tau": -0.028160022809707707,
+      "aic": -16.75410926717049,
+      "bic": -9.543768895194308,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "RuggedAuto",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.6630320323797798
+        ]
+      ],
+      "tau": 0.17989902725972406,
+      "aic": -727.8491296844863,
+      "bic": -720.6387893125102,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Accident",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.03970619742373902
+        ]
+      ],
+      "tau": -0.02528439715706011,
+      "aic": -13.498979113841068,
+      "bic": -6.288638741864885,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "MakeModel",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.5702242635647212
+        ]
+      ],
+      "tau": 0.24198550615103787,
+      "aic": -2175.0838944618017,
+      "bic": -2167.8735540898256,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "DrivQuality",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Antilock",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.5463381798630591
+        ]
+      ],
+      "tau": -0.21455837413255174,
+      "aic": -1650.936024604776,
+      "bic": -1643.7256842328,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "ThisCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "CarValue",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.8368908701356019
+        ]
+      ],
+      "tau": 0.2950028423531142,
+      "aic": -3022.204641043058,
+      "bic": -3014.994300671082,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.3107491687067473
+        ]
+      ],
+      "tau": -0.13447983576714376,
+      "aic": -701.1340705077647,
+      "bic": -693.9237301357886,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.6068576774492338
+        ]
+      ],
+      "tau": -0.1741226381278811,
+      "aic": -680.0334375256837,
+      "bic": -672.8230971537075,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "OtherCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.7382630219533834
+        ]
+      ],
+      "tau": -0.1875877889154971,
+      "aic": -804.9286392309727,
+      "bic": -797.7182988589966,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.04629245597600048
+        ]
+      ],
+      "tau": -0.022622600127761707,
+      "aic": -16.55329687996748,
+      "bic": -9.342956507991296,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          2.0553294547131533
+        ]
+      ],
+      "tau": 0.21936344055136603,
+      "aic": -1087.7671032531498,
+      "bic": -1080.5567628811737,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -2.4437316224654584
+        ]
+      ],
+      "tau": -0.2567872204764088,
+      "aic": -1525.064307212977,
+      "bic": -1517.8539668410008,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SocioEcon",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "VehicleYear",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "ThisCarDam",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.1342221379686071
+        ]
+      ],
+      "tau": -0.06289042531269133,
+      "aic": -144.6161458307633,
+      "bic": -137.4058054587871,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "RuggedAuto",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Accident",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.7757167815146201
+        ]
+      ],
+      "tau": -0.08567735849236335,
+      "aic": -164.39274418483797,
+      "bic": -157.1824038128618,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "MakeModel",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "DrivQuality",
+      "family": "student",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.14788091496808928
+        ],
+        [
+          9.937178312835934
+        ]
+      ],
+      "tau": 0.09449047100987207,
+      "aic": -264.94694139672555,
+      "bic": -250.52626065277317,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Antilock",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "DrivingSkill",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.10376153983419317
+        ]
+      ],
+      "tau": 0.049321911190738414,
+      "aic": -84.69428921135624,
+      "bic": -77.48394883938005,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "SeniorTrain",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.3421923235386508
+        ]
+      ],
+      "tau": -0.14609915680265612,
+      "aic": -804.4676858119012,
+      "bic": -797.2573454399251,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "ThisCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.10977112961971056
+        ]
+      ],
+      "tau": -0.052029875695330505,
+      "aic": -98.03658559053437,
+      "bic": -90.82624521855819,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "CarValue",
+      "family": "gumbel",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0152493315212794
+        ]
+      ],
+      "tau": 0.015020282257590202,
+      "aic": -10.359495837105923,
+      "bic": -3.1491554651297395,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.3668271695766236
+        ]
+      ],
+      "tau": -0.15498688467491328,
+      "aic": -854.8061957729893,
+      "bic": -847.5958554010132,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.522555307470128
+        ]
+      ],
+      "tau": -0.3511065661167885,
+      "aic": -3059.258400600374,
+      "bic": -3052.048060228398,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.10864697145376206
+        ]
+      ],
+      "tau": -0.05152449552940467,
+      "aic": -98.85372723702707,
+      "bic": -91.64338686505089,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.10205060329502572
+        ]
+      ],
+      "tau": -0.04854811921989814,
+      "aic": -90.04298223137022,
+      "bic": -82.83264185939403,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.04017323647240335
+        ]
+      ],
+      "tau": -0.019691090812398646,
+      "aic": -13.301228848106042,
+      "bic": -6.090888476129859,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "ILiCost",
+      "family": "gumbel",
+      "rotation": 90,
+      "parameters": [
+        [
+          1.020649877861039
+        ]
+      ],
+      "tau": -0.02023208772073195,
+      "aic": -19.74760233439612,
+      "bic": -12.537261962419937,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RiskAversion",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.8917792031242913
+        ]
+      ],
+      "tau": -0.20310326079741792,
+      "aic": -976.5331359053777,
+      "bic": -969.3227955334015,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "ThisCarDam",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "RuggedAuto",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.6276662283830573
+        ]
+      ],
+      "tau": -0.0694677650844735,
+      "aic": -107.67197453983688,
+      "bic": -100.4616341678607,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Accident",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.038643491766654284
+        ]
+      ],
+      "tau": 0.02460733796134907,
+      "aic": -13.087553474927057,
+      "bic": -5.877213102950874,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "MakeModel",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.25041728374307276
+        ]
+      ],
+      "tau": -0.11127593338003468,
+      "aic": -447.171708913679,
+      "bic": -439.9613685417028,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "DrivQuality",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Antilock",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.5219617181651524
+        ]
+      ],
+      "tau": 0.20696655084237536,
+      "aic": -1502.929901477197,
+      "bic": -1495.719561105221,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "ThisCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.577163051097906
+        ]
+      ],
+      "tau": -0.35548925451007646,
+      "aic": -3081.0644876182923,
+      "bic": -3073.854147246316,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.13778657187998797
+        ]
+      ],
+      "tau": 0.0644529129766295,
+      "aic": -155.70661865979443,
+      "bic": -148.49627828781826,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.8409735569133557
+        ]
+      ],
+      "tau": 0.09278849475072493,
+      "aic": -193.9045049976146,
+      "bic": -186.69416462563842,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "OtherCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04090960756169408
+        ]
+      ],
+      "tau": 0.02605113501473474,
+      "aic": -14.753703003437444,
+      "bic": -7.54336263146126,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6858699213486151
+        ]
+      ],
+      "tau": 0.07585211640244083,
+      "aic": -130.528768072623,
+      "bic": -123.31842770064681,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.03931470933106077
+        ]
+      ],
+      "tau": 0.01927839246741708,
+      "aic": -12.361873512089309,
+      "bic": -5.151533140113125,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.7453014636168929
+        ]
+      ],
+      "tau": -0.18830431335517273,
+      "aic": -807.4892945125289,
+      "bic": -800.2789541405527,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          4.186748840495499
+        ]
+      ],
+      "tau": 0.40186044103222773,
+      "aic": -3964.1851009741536,
+      "bic": -3956.9747606021774,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "VehicleYear",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "RuggedAuto",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.04795063964712914
+        ]
+      ],
+      "tau": -0.030538035429861193,
+      "aic": -20.09735366318042,
+      "bic": -12.887013291204237,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Accident",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          2.428523028873569
+        ]
+      ],
+      "tau": 0.43721156746738987,
+      "aic": -6779.043642930907,
+      "bic": -6771.83330255893,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "MakeModel",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.04404012563826754
+        ]
+      ],
+      "tau": -0.028045885731170752,
+      "aic": -16.924654233252095,
+      "bic": -9.714313861275912,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "DrivQuality",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.072555208372917
+        ]
+      ],
+      "tau": -0.31354426191189255,
+      "aic": -2297.178698447482,
+      "bic": -2289.968358075506,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Mileage",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.103867663867465
+        ]
+      ],
+      "tau": 0.04936986562953716,
+      "aic": -85.48606637634762,
+      "bic": -78.27572600437144,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Antilock",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.05065362995448838
+        ]
+      ],
+      "tau": 0.032260908200809235,
+      "aic": -23.52742818872617,
+      "bic": -16.317087816749986,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "DrivingSkill",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.6087995118522275
+        ]
+      ],
+      "tau": -0.23336385532362527,
+      "aic": -1840.1459740395942,
+      "bic": -1832.935633667618,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "SeniorTrain",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04306889983255527
+        ]
+      ],
+      "tau": 0.027426996861954326,
+      "aic": -16.339033343044918,
+      "bic": -9.128692971068734,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "ThisCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.831903314013073
+        ]
+      ],
+      "tau": 0.31540164408274574,
+      "aic": -3769.508952061712,
+      "bic": -3762.298611689736,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.37595386958805316
+        ]
+      ],
+      "tau": -0.04171375169593006,
+      "aic": -36.98170711028823,
+      "bic": -29.771366738312043,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "HomeBase",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.03638641015454674
+        ]
+      ],
+      "tau": 0.023169422675716443,
+      "aic": -11.190039426645974,
+      "bic": -3.9796990546697906,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "AntiTheft",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.06442180276728081
+        ]
+      ],
+      "tau": 0.04104061444375098,
+      "aic": -38.472650165698205,
+      "bic": -31.26230979372202,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.8242555901166513
+        ]
+      ],
+      "tau": 0.2918487947766111,
+      "aic": -3080.6716214843054,
+      "bic": -3073.4612811123293,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "OtherCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.593779767049916
+        ]
+      ],
+      "tau": 0.249286697218556,
+      "aic": -2529.0538722774218,
+      "bic": -2521.8435319054456,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "OtherCar",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.034621721242800864
+        ]
+      ],
+      "tau": 0.017016293928904386,
+      "aic": -9.586777412527208,
+      "bic": -2.376437040551025,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "MedCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.3243028508038692
+        ]
+      ],
+      "tau": 0.15531492823064907,
+      "aic": -1128.4578806473255,
+      "bic": -1121.2475402753494,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Cushioning",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.04625945979073808
+        ]
+      ],
+      "tau": -0.029460200304657326,
+      "aic": -19.184446529047776,
+      "bic": -11.974106157071592,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "Airbag",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.030978868364939117
+        ]
+      ],
+      "tau": 0.019724915953360164,
+      "aic": -7.521291779969916,
+      "bic": -0.31095140799373233,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1266113033228864
+        ]
+      ],
+      "tau": 0.06777082883205343,
+      "aic": -270.0401629859854,
+      "bic": -262.8298226140092,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarDam",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.4798058003821326
+        ]
+      ],
+      "tau": 0.19348523191138417,
+      "aic": -1253.4614915285306,
+      "bic": -1246.2511511565544,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Accident",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "MakeModel",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          4.430585237527823
+        ]
+      ],
+      "tau": 0.41912260821388797,
+      "aic": -4321.702298114516,
+      "bic": -4314.49195774254,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "DrivQuality",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Antilock",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.06578315113881388
+        ]
+      ],
+      "tau": -0.031844170624854444,
+      "aic": -35.128343600337956,
+      "bic": -27.918003228361773,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "ThisCarCost",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.23519845323353267
+        ]
+      ],
+      "tau": -0.02611871863230064,
+      "aic": -13.147092273476991,
+      "bic": -5.9367519015008074,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.144693302309163
+        ]
+      ],
+      "tau": 0.1255577868090465,
+      "aic": -347.9024637754885,
+      "bic": -340.6921234035123,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.06856600667517128
+        ]
+      ],
+      "tau": -0.033146637068341936,
+      "aic": -38.00230441821716,
+      "bic": -30.791964046240974,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.43409765136042566
+        ]
+      ],
+      "tau": -0.04814247182127751,
+      "aic": -50.17706955843572,
+      "bic": -42.96672918645953,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.03219177505627977
+        ]
+      ],
+      "tau": 0.01584091395871743,
+      "aic": -7.336168279234501,
+      "bic": -0.1258279072583175,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.5944793028132866
+        ]
+      ],
+      "tau": -0.06582121338415003,
+      "aic": -96.20127942790126,
+      "bic": -88.99093905592507,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.08542610629150878
+        ]
+      ],
+      "tau": -0.04096338203199207,
+      "aic": -60.11873980088563,
+      "bic": -52.90839942890945,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Cushioning",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6347769017096052
+        ]
+      ],
+      "tau": 0.43781599608505023,
+      "aic": -5121.212316753813,
+      "bic": -5114.001976381836,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.9310599169947388
+        ]
+      ],
+      "tau": -0.10256731485115189,
+      "aic": -235.72849181020356,
+      "bic": -228.5181514382274,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "RuggedAuto",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "MakeModel",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "DrivQuality",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.259671652376986
+        ]
+      ],
+      "tau": -0.32947646797044083,
+      "aic": -2592.0913275765574,
+      "bic": -2584.8809872045813,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "Mileage",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.0973149825536198
+        ]
+      ],
+      "tau": 0.06205084516659183,
+      "aic": -92.43070605092106,
+      "bic": -85.22036567894487,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "Antilock",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.041788528260518897
+        ]
+      ],
+      "tau": 0.026611152276364246,
+      "aic": -15.788539504991231,
+      "bic": -8.578199133015048,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "DrivingSkill",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -2.8750117488357643
+        ]
+      ],
+      "tau": -0.2962431408076315,
+      "aic": -2059.2129437027716,
+      "bic": -2052.0026033307954,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "SeniorTrain",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.0761536451035991
+        ]
+      ],
+      "tau": 0.04852789878283106,
+      "aic": -56.84925567638812,
+      "bic": -49.63891530441194,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "ThisCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.7865260997082868
+        ]
+      ],
+      "tau": 0.3037819773963272,
+      "aic": -3504.9904123884144,
+      "bic": -3497.780072016438,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.36431446509565935
+        ]
+      ],
+      "tau": -0.04042577969529759,
+      "aic": -35.225831354177394,
+      "bic": -28.01549098220121,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "HomeBase",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.2540472606327027
+        ]
+      ],
+      "tau": 0.028209275360676855,
+      "aic": -16.248222616302634,
+      "bic": -9.03788224432645,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.4801679811519373
+        ]
+      ],
+      "tau": 0.05322946903106285,
+      "aic": -63.05734200560045,
+      "bic": -55.84700163362426,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.841596975051807
+        ]
+      ],
+      "tau": 0.29617042192848736,
+      "aic": -3196.9542871789217,
+      "bic": -3189.7439468069456,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "OtherCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.6471282066430428
+        ]
+      ],
+      "tau": 0.26527290172947626,
+      "aic": -2876.9344779679277,
+      "bic": -2869.7241375959516,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "MedCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.3130032712047472
+        ]
+      ],
+      "tau": 0.1508028194257015,
+      "aic": -1076.8883575252476,
+      "bic": -1069.6780171532714,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1331709154627931
+        ]
+      ],
+      "tau": 0.0710020666339447,
+      "aic": -305.7222298292463,
+      "bic": -298.5118894572701,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Accident",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          2.473349026738582
+        ]
+      ],
+      "tau": 0.2595690535912486,
+      "aic": -1565.85352412417,
+      "bic": -1558.6431837521939,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "DrivQuality",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "Antilock",
+      "family": "joe",
+      "rotation": 270,
+      "parameters": [
+        [
+          1.292306535275676
+        ]
+      ],
+      "tau": -0.14239847431621877,
+      "aic": -884.9671056257475,
+      "bic": -877.7567652537714,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "ThisCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "CarValue",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.6489551053486955
+        ]
+      ],
+      "tau": 0.2658073325323739,
+      "aic": -2913.6609788297483,
+      "bic": -2906.450638457772,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "HomeBase",
+      "family": "joe",
+      "rotation": 270,
+      "parameters": [
+        [
+          1.1286936729155361
+        ]
+      ],
+      "tau": -0.06879933041723718,
+      "aic": -221.3493024759348,
+      "bic": -214.13896210395862,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "AntiTheft",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.15663574748018355
+        ]
+      ],
+      "tau": -0.07262967223982862,
+      "aic": -189.03120028723495,
+      "bic": -181.82085991525878,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "OtherCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.7817752311360255
+        ]
+      ],
+      "tau": -0.08633847954436735,
+      "aic": -171.02978248243645,
+      "bic": -163.81944211046027,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.06416361523099212
+        ]
+      ],
+      "tau": -0.031084558780875435,
+      "aic": -33.64370163485047,
+      "bic": -26.43336126287429,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          3.7342135256106825
+        ]
+      ],
+      "tau": 0.36788267993539064,
+      "aic": -3268.8855028493435,
+      "bic": -3261.6751624773674,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "Airbag",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.28831546185255347
+        ]
+      ],
+      "tau": -0.1259946308360569,
+      "aic": -539.1732924517316,
+      "bic": -531.9629520797555,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MakeModel",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "Mileage",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "Antilock",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "DrivingSkill",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          6.065058956041789
+        ]
+      ],
+      "tau": 0.5175686504613343,
+      "aic": -6864.561310975616,
+      "bic": -6857.350970603639,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "SeniorTrain",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.16541666738654967
+        ]
+      ],
+      "tau": -0.07639022543693254,
+      "aic": -221.16445063844756,
+      "bic": -213.9541102664714,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "ThisCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.4607674141000298
+        ]
+      ],
+      "tau": -0.18724541436133454,
+      "aic": -1211.7244790087875,
+      "bic": -1204.5141386368114,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "CarValue",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "HomeBase",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.4029792285083049
+        ]
+      ],
+      "tau": -0.04470295811927372,
+      "aic": -43.37086239803688,
+      "bic": -36.16052202606069,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.5960419630199791
+        ]
+      ],
+      "tau": -0.06599301496987042,
+      "aic": -96.37361543139393,
+      "bic": -89.16327505941774,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.422565582494071
+        ]
+      ],
+      "tau": -0.17442895480213702,
+      "aic": -1043.5374616420395,
+      "bic": -1036.3271212700633,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.3543282180903916
+        ]
+      ],
+      "tau": -0.15050077358278835,
+      "aic": -808.4237334118517,
+      "bic": -801.2133930398755,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.20872827021767013
+        ]
+      ],
+      "tau": -0.09450156138812854,
+      "aic": -339.9519334722813,
+      "bic": -332.7415931003051,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "ILiCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.08256134197670223
+        ]
+      ],
+      "tau": -0.03964413451482662,
+      "aic": -63.97113085003299,
+      "bic": -56.760790478056805,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivQuality",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.7814832096226927
+        ]
+      ],
+      "tau": -0.37155176665927137,
+      "aic": -3311.0527314739793,
+      "bic": -3303.842391102003,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "Antilock",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "ThisCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.07571553149807794
+        ]
+      ],
+      "tau": 0.048248179391236254,
+      "aic": -53.09264128345397,
+      "bic": -45.882300911477785,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.1548472814727824
+        ]
+      ],
+      "tau": -0.12664288055769335,
+      "aic": -362.1935649995949,
+      "bic": -354.9832246276187,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "HomeBase",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "AntiTheft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.08413118552591756
+        ]
+      ],
+      "tau": 0.040367509545560384,
+      "aic": -56.65452827813937,
+      "bic": -49.44418790616318,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.08062698683335358
+        ]
+      ],
+      "tau": 0.03875129340510248,
+      "aic": -52.81719246303311,
+      "bic": -45.60685209105692,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "MedCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0248097578590112
+        ]
+      ],
+      "tau": 0.014151236571093517,
+      "aic": -11.92063191183486,
+      "bic": -4.710291539858677,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Mileage",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "DrivingSkill",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "SeniorTrain",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "ThisCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "CarValue",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.6990004586482342
+        ]
+      ],
+      "tau": -0.25898493511124526,
+      "aic": -2440.2744008654972,
+      "bic": -2433.064060493521,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.15632131849392647
+        ]
+      ],
+      "tau": 0.07249444558805755,
+      "aic": -208.22793063565769,
+      "bic": -201.0175902636815,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "AntiTheft",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.15120737537742426
+        ]
+      ],
+      "tau": 0.07028953931086969,
+      "aic": -172.2766739022326,
+      "bic": -165.06633353025643,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "PropCost",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.21916994599739015
+        ]
+      ],
+      "tau": 0.024340528068858447,
+      "aic": -11.356386038177696,
+      "bic": -4.146045666201513,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "OtherCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04673093066253601
+        ]
+      ],
+      "tau": 0.029760672943614723,
+      "aic": -20.045638303207607,
+      "bic": -12.835297931231423,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.5538126534715901
+        ]
+      ],
+      "tau": 0.06134698564430252,
+      "aic": -85.66168197998707,
+      "bic": -78.45134160801088,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "MedCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04555872664175205
+        ]
+      ],
+      "tau": 0.02901362886242751,
+      "aic": -18.897879030786537,
+      "bic": -11.687538658810354,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "Cushioning",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.1890676729013937
+        ]
+      ],
+      "tau": -0.08636903977061755,
+      "aic": -275.63464650913124,
+      "bic": -268.42430613715504,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          2.0211070769853388
+        ]
+      ],
+      "tau": 0.21598474221884878,
+      "aic": -1092.174160066752,
+      "bic": -1084.9638196947758,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Antilock",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "SeniorTrain",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.17465258562541078
+        ]
+      ],
+      "tau": -0.08031286780236772,
+      "aic": -246.8719186797593,
+      "bic": -239.66157830778312,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "ThisCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.4226707695764789
+        ]
+      ],
+      "tau": -0.174464799296839,
+      "aic": -1039.2126715719812,
+      "bic": -1032.002331200005,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "CarValue",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "HomeBase",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.2927857232668048
+        ]
+      ],
+      "tau": -0.03250390027288752,
+      "aic": -21.64633147456823,
+      "bic": -14.435991102592045,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.3611160964269939
+        ]
+      ],
+      "tau": -0.04007180281243805,
+      "aic": -33.88430042457745,
+      "bic": -26.673960052601263,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "PropCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.3935070226327639
+        ]
+      ],
+      "tau": -0.16440604473343956,
+      "aic": -925.4054661416853,
+      "bic": -918.1951257697092,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "OtherCarCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.33494981747185343
+        ]
+      ],
+      "tau": -0.14345054226241036,
+      "aic": -735.4389002982552,
+      "bic": -728.2285599262791,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.2035724820587619
+        ]
+      ],
+      "tau": -0.09238292986331334,
+      "aic": -318.6566464686344,
+      "bic": -311.4463060966582,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "ILiCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.08306538579674248
+        ]
+      ],
+      "tau": -0.03987651389299581,
+      "aic": -63.86080876339834,
+      "bic": -56.65046839142215,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "DrivingSkill",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.901266281690308
+        ]
+      ],
+      "tau": -0.38072333961583515,
+      "aic": -3518.9056494007336,
+      "bic": -3511.6953090287575,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "ThisCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.05018491336600515
+        ]
+      ],
+      "tau": 0.03196213395108033,
+      "aic": -22.651643654869265,
+      "bic": -15.441303282893081,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "CarValue",
+      "family": "joe",
+      "rotation": 90,
+      "parameters": [
+        [
+          1.0221292002643843
+        ]
+      ],
+      "tau": -0.012644264935158134,
+      "aic": -13.401683491796684,
+      "bic": -6.1913431198205,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.12185156514908149
+        ]
+      ],
+      "tau": 0.05742699779309029,
+      "aic": -130.20443533768238,
+      "bic": -122.9940949657062,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "AntiTheft",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.19021193280236867
+        ]
+      ],
+      "tau": 0.0868463594566363,
+      "aic": -277.91656508024687,
+      "bic": -270.70622470827067,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "PropCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04516019663679179
+        ]
+      ],
+      "tau": 0.02875965537238114,
+      "aic": -18.38292689955178,
+      "bic": -11.172586527575596,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "OtherCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.04786120790199032
+        ]
+      ],
+      "tau": 0.030481035968798486,
+      "aic": -20.991276532630565,
+      "bic": -13.780936160654381,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "SeniorTrain",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.12374232006927723
+        ]
+      ],
+      "tau": 0.05826616482607961,
+      "aic": -125.2428582096696,
+      "bic": -118.03251783769342,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "Theft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "CarValue",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.20823760950895107
+        ]
+      ],
+      "tau": -0.023127486463749847,
+      "aic": -9.816658147915646,
+      "bic": -2.6063177759394627,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "HomeBase",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.3838510579047294
+        ]
+      ],
+      "tau": 0.042587433183390644,
+      "aic": -38.1770557254109,
+      "bic": -30.96671535343472,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "PropCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.7227455229296
+        ]
+      ],
+      "tau": 0.2867145774289198,
+      "aic": -3267.6165582591198,
+      "bic": -3260.4062178871436,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "OtherCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.4857634676337244
+        ]
+      ],
+      "tau": 0.2144856475603223,
+      "aic": -1845.0976989602323,
+      "bic": -1837.8873585882561,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "MedCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.2581095768293429
+        ]
+      ],
+      "tau": 0.128100413879078,
+      "aic": -718.7882160035526,
+      "bic": -711.5778756315765,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.21455189987923257
+        ]
+      ],
+      "tau": -0.023828134831934022,
+      "aic": -10.649457994100029,
+      "bic": -3.4391176221238453,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1081216378377525
+        ]
+      ],
+      "tau": 0.05852518172128529,
+      "aic": -206.94609370969914,
+      "bic": -199.73575333772297,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ThisCarCost",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.35114106365099657
+        ]
+      ],
+      "tau": 0.14934921135940823,
+      "aic": -757.6777636247414,
+      "bic": -750.4674232527652,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "CarValue",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "HomeBase",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "AntiTheft",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "OtherCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Theft",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "HomeBase",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.20697717068321805
+        ]
+      ],
+      "tau": -0.09378310452533759,
+      "aic": -335.8482325350795,
+      "bic": -328.6378921631033,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.049331031809757
+        ]
+      ],
+      "tau": -0.11533208094753711,
+      "aic": -299.9266364838453,
+      "bic": -292.7162961118691,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "OtherCarCost",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.2619629892773137
+        ]
+      ],
+      "tau": -0.02908704752578295,
+      "aic": -17.15511797464142,
+      "bic": -9.944777602665237,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.8634048284892761
+        ]
+      ],
+      "tau": -0.09522765096565466,
+      "aic": -208.323626659284,
+      "bic": -201.11328628730783,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.05628820175995683
+        ]
+      ],
+      "tau": -0.027373692905391527,
+      "aic": -26.87055359822149,
+      "bic": -19.660213226245308,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.8411244936985673
+        ]
+      ],
+      "tau": 0.19801014794134186,
+      "aic": -892.2591396227497,
+      "bic": -885.0487992507735,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -3.4085482387851274
+        ]
+      ],
+      "tau": -0.341834232540421,
+      "aic": -2806.402912011814,
+      "bic": -2799.1925716398378,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "CarValue",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "AntiTheft",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.5722391028588185
+        ]
+      ],
+      "tau": 0.1705481668696287,
+      "aic": -658.632632508469,
+      "bic": -651.4222921364928,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "PropCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "OtherCarCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "OtherCar",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.0687777656017728
+        ]
+      ],
+      "tau": 0.033245603633876304,
+      "aic": -42.18091680604254,
+      "bic": -34.97057643406636,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "Cushioning",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.0989948158928125
+        ]
+      ],
+      "tau": -0.04716296350198693,
+      "aic": -85.49408712018332,
+      "bic": -78.28374674820714,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "Airbag",
+      "family": "clayton",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.12143274855018518
+        ]
+      ],
+      "tau": 0.05724091354447785,
+      "aic": -119.64398342812316,
+      "bic": -112.43364305614698,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "HomeBase",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.5539727752503133
+        ]
+      ],
+      "tau": 0.06136461461555065,
+      "aic": -84.23785727034371,
+      "bic": -77.02751689836752,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "PropCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.0471449157183716
+        ]
+      ],
+      "tau": 0.030024514821859256,
+      "aic": -19.889928503609262,
+      "bic": -12.679588131633079,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "OtherCarCost",
+      "family": "gaussian",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.053144149131335076
+        ]
+      ],
+      "tau": 0.033848561976727545,
+      "aic": -25.94048650241406,
+      "bic": -18.730146130437877,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "OtherCar",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.5206962073498237
+        ]
+      ],
+      "tau": 0.0576989941646584,
+      "aic": -75.22454148310104,
+      "bic": -68.01420111112485,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.5089133235124351
+        ]
+      ],
+      "tau": -0.056400116804721456,
+      "aic": -70.20443826738918,
+      "bic": -62.99409789541299,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.8523783704380333
+        ]
+      ],
+      "tau": 0.09402898683781524,
+      "aic": -199.70169443798414,
+      "bic": -192.49135406600797,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "AntiTheft",
+      "var_j": "DrivHist",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0764378959170733
+        ]
+      ],
+      "tau": 0.11824504375854605,
+      "aic": -319.33695173966555,
+      "bic": -312.12661136768935,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "OtherCarCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.6531580392479972
+        ]
+      ],
+      "tau": 0.26703365336848683,
+      "aic": -3019.9291882588977,
+      "bic": -3012.7188478869216,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "MedCost",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.2999739330224293
+        ]
+      ],
+      "tau": 0.1304249273069931,
+      "aic": -638.8396637248142,
+      "bic": -631.629323352838,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1028459651455473
+        ]
+      ],
+      "tau": 0.055849080859253,
+      "aic": -201.18708959313227,
+      "bic": -193.9767492211561,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "PropCost",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.31454601174815483
+        ]
+      ],
+      "tau": 0.13589965814098515,
+      "aic": -635.9757384232989,
+      "bic": -628.7653980513228,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "OtherCar",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "MedCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.2131264316655102
+        ]
+      ],
+      "tau": 0.10846426706789913,
+      "aic": -591.6651687441087,
+      "bic": -584.4548283721325,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "Cushioning",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "Airbag",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.110618116556595
+        ]
+      ],
+      "tau": 0.059785580008976824,
+      "aic": -222.32417475994097,
+      "bic": -215.1138343879648,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCarCost",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.2781565639260908
+        ]
+      ],
+      "tau": 0.12209721154841353,
+      "aic": -527.0412863782602,
+      "bic": -519.8309460062841,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCar",
+      "var_j": "MedCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCar",
+      "var_j": "Cushioning",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.659002398819511
+        ]
+      ],
+      "tau": -0.07290682406267912,
+      "aic": -119.55426937445851,
+      "bic": -112.34392900248233,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCar",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6356441012993952
+        ]
+      ],
+      "tau": 0.07034370372215726,
+      "aic": -111.59859281775618,
+      "bic": -104.38825244578,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCar",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "OtherCar",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MedCost",
+      "var_j": "Cushioning",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.12716194533284977
+        ]
+      ],
+      "tau": -0.05978009601565713,
+      "aic": -132.54028945876934,
+      "bic": -125.32994908679315,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MedCost",
+      "var_j": "Airbag",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.049478646318127276
+        ]
+      ],
+      "tau": 0.02414206481585709,
+      "aic": -20.874238394351373,
+      "bic": -13.66389802237519,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MedCost",
+      "var_j": "ILiCost",
+      "family": "joe",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0780694700295503
+        ]
+      ],
+      "tau": 0.04304783150347802,
+      "aic": -132.81912328477443,
+      "bic": -125.60878291279825,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "MedCost",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.156460844731598
+        ]
+      ],
+      "tau": 0.07255445658280513,
+      "aic": -196.13266340024495,
+      "bic": -188.92232302826878,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Cushioning",
+      "var_j": "Airbag",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -2.2734787765893043
+        ]
+      ],
+      "tau": -0.24059561127100326,
+      "aic": -1351.3014241721846,
+      "bic": -1344.0910838002085,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Cushioning",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Cushioning",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Airbag",
+      "var_j": "ILiCost",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "Airbag",
+      "var_j": "DrivHist",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 10000
+    },
+    {
+      "dataset": "insurance",
+      "var_i": "ILiCost",
+      "var_j": "DrivHist",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.0829719004676087
+        ]
+      ],
+      "tau": 0.03983342283637252,
+      "aic": -62.15418105291971,
+      "bic": -54.943840680943524,
+      "n": 10000
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "pmek",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          4.766377886229755
+        ]
+      ],
+      "tau": 0.4417353361429731,
+      "aic": -3591.701647805657,
+      "bic": -3584.7835331461824,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "plcg",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.09443533877908963
+        ]
+      ],
+      "tau": 0.04508868668828844,
+      "aic": -49.79238386487344,
+      "bic": -42.87426920539892,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "PIP2",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.5424406112363801
+        ]
+      ],
+      "tau": 0.060094718411805026,
+      "aic": -59.23448570241559,
+      "bic": -52.31637104294106,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "PIP3",
+      "family": "gumbel",
+      "rotation": 270,
+      "parameters": [
+        [
+          1.0225741072666286
+        ]
+      ],
+      "tau": -0.022075766544656438,
+      "aic": -12.056406907255159,
+      "bic": -5.13829224778063,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "p44/42",
+      "family": "joe",
+      "rotation": 270,
+      "parameters": [
+        [
+          1.0312516440189416
+        ]
+      ],
+      "tau": -0.017751472319183614,
+      "aic": -11.060051842562645,
+      "bic": -4.141937183088116,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "pakts473",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0800971116237092
+        ]
+      ],
+      "tau": 0.1186378948517759,
+      "aic": -234.6423388527576,
+      "bic": -227.72422419328308,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "PKA",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.4077505304982265
+        ]
+      ],
+      "tau": -0.15341752548429732,
+      "aic": -390.77395296232504,
+      "bic": -383.8558383028505,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "PKC",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.08117760906772357
+        ]
+      ],
+      "tau": 0.039005613319128295,
+      "aic": -37.424809818031704,
+      "bic": -30.506695158557175,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.9074805460568369
+        ]
+      ],
+      "tau": 0.10001225251175683,
+      "aic": -165.9361091030719,
+      "bic": -159.0179944435974,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "praf",
+      "var_j": "pjnk",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.06409816680668903
+        ]
+      ],
+      "tau": 0.031053836410238955,
+      "aic": -23.333276017270506,
+      "bic": -16.415161357795977,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "plcg",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.1380453601028157
+        ]
+      ],
+      "tau": 0.06456615125142963,
+      "aic": -105.31443480215253,
+      "bic": -98.39632014267801,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "PIP2",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.7138853766499417
+        ]
+      ],
+      "tau": 0.0789198233031927,
+      "aic": -102.44344223671867,
+      "bic": -95.52532757724414,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "PIP3",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.4314241431221917
+        ]
+      ],
+      "tau": -0.04784707554050094,
+      "aic": -35.92782058092829,
+      "bic": -29.00970592145376,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "p44/42",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "pakts473",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.520193081967065
+        ]
+      ],
+      "tau": 0.16515368326016322,
+      "aic": -456.22680637391534,
+      "bic": -449.3086917144408,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "PKA",
+      "family": "clayton",
+      "rotation": 90,
+      "parameters": [
+        [
+          0.2362483953138017
+        ]
+      ],
+      "tau": -0.10564497030333256,
+      "aic": -264.8600794490315,
+      "bic": -257.94196478955695,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "PKC",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6632386972964354
+        ]
+      ],
+      "tau": 0.07337142742909819,
+      "aic": -85.83948649376745,
+      "bic": -78.92137183429293,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.059781921246141
+        ]
+      ],
+      "tau": 0.11645573482724503,
+      "aic": -222.55547113369528,
+      "bic": -215.63735647422075,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pmek",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.9710408731960254
+        ]
+      ],
+      "tau": 0.1068921020840703,
+      "aic": -188.08055851269324,
+      "bic": -181.16244385321872,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "PIP2",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          2.094318399990973
+        ]
+      ],
+      "tau": 0.22319715047376243,
+      "aic": -825.9920010023949,
+      "bic": -819.0738863429203,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "PIP3",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "p44/42",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.7546613512566418
+        ]
+      ],
+      "tau": 0.08337829146798192,
+      "aic": -112.94118339558534,
+      "bic": -106.02306873611082,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "pakts473",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.7982235316718553
+        ]
+      ],
+      "tau": 0.08813244468259018,
+      "aic": -124.73568693887988,
+      "bic": -117.81757227940535,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "PKA",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.6888851675560397
+        ]
+      ],
+      "tau": -0.0761824576524548,
+      "aic": -92.84411406984304,
+      "bic": -85.92599941036852,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "PKC",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.07806385479303005
+        ]
+      ],
+      "tau": 0.03756566700920989,
+      "aic": -32.455519538276484,
+      "bic": -25.537404878801954,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "P38",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.12432671312395893
+        ]
+      ],
+      "tau": 0.058525231715007016,
+      "aic": -89.38069580307506,
+      "bic": -82.46258114360053,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "plcg",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.1249847906518622
+        ]
+      ],
+      "tau": 0.12344957610927842,
+      "aic": -252.73692660377074,
+      "bic": -245.81881194429621,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "PIP3",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.927403924808475
+        ]
+      ],
+      "tau": 0.20666924077216353,
+      "aic": -729.1015010474075,
+      "bic": -722.183386387933,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "p44/42",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6621287895525861
+        ]
+      ],
+      "tau": 0.07324970908100514,
+      "aic": -89.37103323057966,
+      "bic": -82.45291857110513,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "pakts473",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.10572410936056978
+        ]
+      ],
+      "tau": 0.05020795881596961,
+      "aic": -64.35447698417963,
+      "bic": -57.4363623247051,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "PKA",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.6302209608427456
+        ]
+      ],
+      "tau": -0.06974829302399854,
+      "aic": -78.47146022833722,
+      "bic": -71.5533455688627,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "PKC",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.6758126389160432
+        ]
+      ],
+      "tau": 0.0747499792070867,
+      "aic": -91.90682072700457,
+      "bic": -84.98870606753005,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "P38",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.08510855401589484
+        ]
+      ],
+      "tau": 0.04081732524284012,
+      "aic": -43.66960829957657,
+      "bic": -36.75149364010204,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP2",
+      "var_j": "pjnk",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.10509318963447993
+        ]
+      ],
+      "tau": 0.049923295629837605,
+      "aic": -61.063756988143524,
+      "bic": -54.145642328669,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "p44/42",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.5673019470221515
+        ]
+      ],
+      "tau": -0.06283179127754934,
+      "aic": -64.33168168057648,
+      "bic": -57.413567021101954,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "pakts473",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.5447725715679508
+        ]
+      ],
+      "tau": -0.06035154715452862,
+      "aic": -58.862833697479736,
+      "bic": -51.9447190380052,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "PKA",
+      "family": "indep",
+      "rotation": 0,
+      "parameters": [],
+      "tau": 0.0,
+      "aic": 0.0,
+      "bic": 0.0,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "PKC",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.4221400594218316
+        ]
+      ],
+      "tau": -0.04682111871093042,
+      "aic": -35.643960252297745,
+      "bic": -28.725845592823216,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.541244819474228
+        ]
+      ],
+      "tau": -0.05996301325523401,
+      "aic": -59.500824900201636,
+      "bic": -52.58271024072711,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PIP3",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -1.1377575114623155
+        ]
+      ],
+      "tau": -0.12481618046320486,
+      "aic": -265.16250587642577,
+      "bic": -258.2443912169512,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "p44/42",
+      "var_j": "pakts473",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          4.0886907944339645
+        ]
+      ],
+      "tau": 0.39471404768489726,
+      "aic": -2752.921945243082,
+      "bic": -2746.0038305836074,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "p44/42",
+      "var_j": "PKA",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.7565246838334864
+        ]
+      ],
+      "tau": 0.08358183887387227,
+      "aic": -110.23702222981707,
+      "bic": -103.31890757034255,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "p44/42",
+      "var_j": "PKC",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.2659702134705002
+        ]
+      ],
+      "tau": 0.13846856573899746,
+      "aic": -322.63085136935626,
+      "bic": -315.7127367098817,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "p44/42",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.81845030607926
+        ]
+      ],
+      "tau": 0.09033660916682873,
+      "aic": -134.8554802398788,
+      "bic": -127.93736558040428,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "p44/42",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.2914899822231993
+        ]
+      ],
+      "tau": 0.14117116834491572,
+      "aic": -332.2958473001772,
+      "bic": -325.3777326407026,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pakts473",
+      "var_j": "PKA",
+      "family": "clayton",
+      "rotation": 180,
+      "parameters": [
+        [
+          0.11215405151846199
+        ]
+      ],
+      "tau": 0.05309937096578378,
+      "aic": -76.82278369232651,
+      "bic": -69.90466903285198,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pakts473",
+      "var_j": "PKC",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.8078704745817805
+        ]
+      ],
+      "tau": 0.08918396230612036,
+      "aic": -130.67343930324722,
+      "bic": -123.7553246437727,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pakts473",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          0.9957487737843855
+        ]
+      ],
+      "tau": 0.10955990082966283,
+      "aic": -197.6858132080139,
+      "bic": -190.76769854853939,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "pakts473",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.0296120190350357
+        ]
+      ],
+      "tau": 0.11320998973426688,
+      "aic": -213.72635054922947,
+      "bic": -206.80823588975494,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PKA",
+      "var_j": "PKC",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.05899456660693714
+        ]
+      ],
+      "tau": -0.02865212349936192,
+      "aic": -18.164082629087023,
+      "bic": -11.245967969612494,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PKA",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          -0.7940978348643497
+        ]
+      ],
+      "tau": -0.08768259719034699,
+      "aic": -125.50704608198909,
+      "bic": -118.58893142251456,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PKA",
+      "var_j": "pjnk",
+      "family": "clayton",
+      "rotation": 270,
+      "parameters": [
+        [
+          0.0705388511517725
+        ]
+      ],
+      "tau": -0.03406787132370593,
+      "aic": -27.59039327982378,
+      "bic": -20.67227862034925,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PKC",
+      "var_j": "P38",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          3.8375925854851842
+        ]
+      ],
+      "tau": 0.3758704190250219,
+      "aic": -2505.576158711423,
+      "bic": -2498.6580440519483,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "PKC",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.9145548744868985
+        ]
+      ],
+      "tau": 0.20538459979428558,
+      "aic": -714.4607613820681,
+      "bic": -707.5426467225935,
+      "n": 7466
+    },
+    {
+      "dataset": "discretized_sachs",
+      "var_i": "P38",
+      "var_j": "pjnk",
+      "family": "frank",
+      "rotation": 0,
+      "parameters": [
+        [
+          1.9509198645738823
+        ]
+      ],
+      "tau": 0.20901585441726378,
+      "aic": -740.6298356762923,
+      "bic": -733.7117210168177,
+      "n": 7466
+    }
+  ],
+  "conditional": [
+    {
+      "dataset": "asia",
+      "child": "either",
+      "parents": [
+        "tub",
+        "lung"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":897.4653126494229,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":113.9146279230535,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.1036064054364523],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":783.5506847263694,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.3631532784342402],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "asia",
+      "child": "dysp",
+      "parents": [
+        "bronc",
+        "either"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1394.9759388242453,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1339.0836428631658,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[3.3731883012229265],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":55.8922959610795,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.11917581915079431],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "GoodStudent",
+      "parents": [
+        "Age",
+        "SocioEcon"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":213.74496245494774,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":177.4094542716884,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.207277535029723],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Student\",\"ll\":10.234782304284414,\"nobs\":10000,\"npars\":2.0,\"par\":{\"data\":[0.006153873776058772,20.803184667494506],\"shape\":[2,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":26.100725878974952,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.08074472318876877],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "RiskAversion",
+      "parents": [
+        "Age",
+        "SocioEcon"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":472.8304541520619,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":455.9881592498135,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.8614576644102807],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Student\",\"ll\":10.234782304284414,\"nobs\":10000,\"npars\":2.0,\"par\":{\"data\":[0.006153873776058772,20.803184667494506],\"shape\":[2,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":6.607512597964007,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.021317260557504],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "VehicleYear",
+      "parents": [
+        "SocioEcon",
+        "RiskAversion"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":788.5707946395379,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":781.6827210135624,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-2.48187494483543],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Gumbel\",\"ll\":6.888073625975538,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.017140555846937],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "ThisCarDam",
+      "parents": [
+        "RuggedAuto",
+        "Accident"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":3420.7357175679704,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Gaussian\",\"ll\":11.04867683159021,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.04795063964712914],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":3409.6870407363804,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[2.4388569836425016],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "RuggedAuto",
+      "parents": [
+        "VehicleYear",
+        "MakeModel"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":2364.0537487100073,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":54.8359872699155,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.6276662283552149],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":224.5858544568395,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.25041728374307276],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":2084.631906983252,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[4.3398206552400564],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "Accident",
+      "parents": [
+        "DrivQuality",
+        "Mileage",
+        "Antilock"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1368.3985898333885,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1297.0456637882787,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-3.259671652376986],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc2\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Gaussian\",\"ll\":60.48031091739399,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.11026239328370686],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree2\":{\"pc0\":{\"fam\":\"Gaussian\",\"ll\":10.872615127715866,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.046277876160810444],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":4,\"data\":[[2,3,4],[3,4],[4]],\"t\":3},\"order\":[1,2,3,4]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "MakeModel",
+      "parents": [
+        "SocioEcon",
+        "RiskAversion"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1095.430020856878,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":1088.5419472309025,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.5702242635650614],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Gumbel\",\"ll\":6.888073625975538,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.017140555846937],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "DrivQuality",
+      "parents": [
+        "RiskAversion",
+        "DrivingSkill"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":3555.8050230016765,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Student\",\"ll\":134.47347069837159,\"nobs\":10000,\"npars\":2.0,\"par\":{\"data\":[0.14788091490533067,9.937178442352792],\"shape\":[2,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":43.34714460567812,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.10376153983419317],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":3377.984407697627,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[6.015328725681496],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "Antilock",
+      "parents": [
+        "VehicleYear",
+        "MakeModel"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1188.8410103452725,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":752.4649507385985,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.5219617181651524],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":224.5858544568395,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.25041728374307276],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":211.7902051498346,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.1929058363262763],\"shape\":[1,1]},\"rot\":90,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "DrivingSkill",
+      "parents": [
+        "Age",
+        "SeniorTrain"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1056.237650385581,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":164.09232921629564,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.1123809262449198],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Joe\",\"ll\":864.1384688175535,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.451815043968158],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Gaussian\",\"ll\":28.00685235173181,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.07439532168031891],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "SeniorTrain",
+      "parents": [
+        "Age",
+        "RiskAversion"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1420.371704530449,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":864.138468817553,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.451815043968201],\"shape\":[1,1]},\"rot\":90,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":455.9881592498124,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.8614576642912928],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":100.24507646308379,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.8389690848346703],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "ThisCarCost",
+      "parents": [
+        "ThisCarDam",
+        "Theft",
+        "CarValue"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1998.621217700378,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":1885.7544760308558,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.8319033140133123],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc2\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":19.490853555144113,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.37595386958805316],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree2\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":93.37588811437817,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.13561235768000635],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":4,\"data\":[[2,3,4],[3,4],[4]],\"t\":3},\"order\":[1,2,3,4]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "Theft",
+      "parents": [
+        "CarValue",
+        "HomeBase",
+        "AntiTheft"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":592.6144816455474,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":168.92411626753974,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.20697717068321805],\"shape\":[1,1]},\"rot\":90,\"vt\":[\"c\",\"c\"]},\"pc2\":{\"fam\":\"Frank\",\"ll\":330.3163162542345,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.5722391028588185],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":93.37404912377315,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.8322112805305297],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree2\":{\"pc0\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":4,\"data\":[[2,3,4],[3,4],[4]],\"t\":3},\"order\":[1,2,3,4]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "CarValue",
+      "parents": [
+        "VehicleYear",
+        "MakeModel",
+        "Mileage"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":2963.673211300166,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1541.532243809147,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-3.577163051090536],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":224.5858544568395,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.25041728374307276],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]},\"pc2\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":938.2436692820262,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.4927640309362378],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree2\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":259.31144375215297,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-1.4077309286081037],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":4,\"data\":[[2,3,4],[3,4],[4]],\"t\":3},\"order\":[1,2,3,4]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "HomeBase",
+      "parents": [
+        "SocioEcon",
+        "RiskAversion"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":776.8383091492857,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":351.56703525388235,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.3107491687067473],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Gumbel\",\"ll\":6.888073625975538,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.017140555846937],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":418.3832002694278,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.37025351077134255],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "AntiTheft",
+      "parents": [
+        "SocioEcon",
+        "RiskAversion"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1886.0038106331963,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":341.0167187628405,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-1.606857677560008],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Gumbel\",\"ll\":6.888073625975538,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.017140555846937],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1538.0990182443802,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-3.566994461455656],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "PropCost",
+      "parents": [
+        "ThisCarCost",
+        "OtherCarCost"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":3170.2099679256544,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":1634.8082791295633,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.7227455229296613],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Joe\",\"ll\":923.5488494801161,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.4857634676337244],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":611.8528393159747,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.3283522903546459],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "OtherCarCost",
+      "parents": [
+        "RuggedAuto",
+        "Accident"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":1442.376582114455,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":4.6680841396172505,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.03219177505627977],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":1437.7084979748377,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.6464787206295284],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "MedCost",
+      "parents": [
+        "Age",
+        "Accident",
+        "Cushioning"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":656.3676562402377,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":5.314251802930611,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.03322402687406283],\"shape\":[1,1]},\"rot\":90,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":62.407967803569186,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.6715081932982555],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc2\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Joe\",\"ll\":536.1744474885802,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[1.311730706770927],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Independence\",\"ll\":0.0,\"nobs\":10000,\"npars\":0.0,\"par\":{\"data\":null,\"shape\":[0,0]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree2\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":52.47098914515765,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.11789364081334483],\"shape\":[1,1]},\"rot\":90,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":4,\"data\":[[2,3,4],[3,4],[4]],\"t\":3},\"order\":[1,2,3,4]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "Cushioning",
+      "parents": [
+        "RuggedAuto",
+        "Airbag"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":3305.3512054241282,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Gaussian\",\"ll\":2561.606158376908,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.6347769017094921],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":118.86424590510178,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-0.9310599169947388],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":624.8808011421187,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-2.245165549904429],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "Airbag",
+      "parents": [
+        "VehicleYear",
+        "MakeModel"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":2314.630077086244,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1983.0925504870743,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[4.186748840497296],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":224.5858544568395,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.25041728374307276],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Clayton\",\"ll\":106.95167214233004,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.16745007477267043],\"shape\":[1,1]},\"rot\":270,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "insurance",
+      "child": "DrivHist",
+      "parents": [
+        "RiskAversion",
+        "DrivingSkill"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":2269.9227045372963,\"nobs_\":10000,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":489.26656795268894,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-1.891779203124769],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Clayton\",\"ll\":43.34714460567812,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[0.10376153983419317],\"shape\":[1,1]},\"rot\":180,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1737.3089919789293,\"nobs\":10000,\"npars\":1.0,\"par\":{\"data\":[-3.890983261716313],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    },
+    {
+      "dataset": "discretized_sachs",
+      "child": "pmek",
+      "parents": [
+        "praf",
+        "pakts473"
+      ],
+      "selection_criterion": "bic",
+      "vine_json": "{\"loglik\":2024.1433837959223,\"nobs_\":7466,\"pair copulas\":{\"tree0\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":1796.850823902828,\"nobs\":7466,\"npars\":1.0,\"par\":{\"data\":[4.766377886233553],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]},\"pc1\":{\"fam\":\"Frank\",\"ll\":118.3211694263788,\"nobs\":7466,\"npars\":1.0,\"par\":{\"data\":[1.0800971116237092],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}},\"tree1\":{\"pc0\":{\"fam\":\"Frank\",\"ll\":108.97139046671542,\"nobs\":7466,\"npars\":1.0,\"par\":{\"data\":[1.0563410827068795],\"shape\":[1,1]},\"rot\":0,\"vt\":[\"c\",\"c\"]}}},\"structure\":{\"array\":{\"d\":3,\"data\":[[2,3],[3]],\"t\":2},\"order\":[1,2,3]},\"threshold\":0.0,\"var_types\":[\"c\",\"c\",\"c\"]}"
+    }
+  ],
+  "marginals": {
+    "asia": {
+      "asia": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.0115,
+          1.0
+        ]
+      },
+      "tub": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.0127,
+          1.0
+        ]
+      },
+      "smoke": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.5065,
+          1.0
+        ]
+      },
+      "lung": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.0528,
+          1.0
+        ]
+      },
+      "bronc": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.4535,
+          1.0
+        ]
+      },
+      "either": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.0646,
+          1.0
+        ]
+      },
+      "xray": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.1055,
+          1.0
+        ]
+      },
+      "dysp": {
+        "type": "categorical",
+        "categories": [
+          "yes",
+          "no"
+        ],
+        "cum_probs": [
+          0.4349,
+          1.0
+        ]
+      }
+    },
+    "insurance": {
+      "GoodStudent": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.0414,
+          1.0
+        ]
+      },
+      "Age": {
+        "type": "categorical",
+        "categories": [
+          "Adolescent",
+          "Adult",
+          "Senior"
+        ],
+        "cum_probs": [
+          0.206,
+          0.8028,
+          1.0
+        ]
+      },
+      "SocioEcon": {
+        "type": "categorical",
+        "categories": [
+          "Prole",
+          "Middle",
+          "UpperMiddle",
+          "Wealthy"
+        ],
+        "cum_probs": [
+          0.4174,
+          0.7785,
+          0.9904999999999999,
+          0.9999999999999999
+        ]
+      },
+      "RiskAversion": {
+        "type": "categorical",
+        "categories": [
+          "Psychopath",
+          "Adventurous",
+          "Normal",
+          "Cautious"
+        ],
+        "cum_probs": [
+          0.0155,
+          0.2763,
+          0.7595000000000001,
+          1.0
+        ]
+      },
+      "VehicleYear": {
+        "type": "categorical",
+        "categories": [
+          "Current",
+          "Older"
+        ],
+        "cum_probs": [
+          0.3484,
+          1.0
+        ]
+      },
+      "ThisCarDam": {
+        "type": "categorical",
+        "categories": [
+          "None",
+          "Mild",
+          "Moderate",
+          "Severe"
+        ],
+        "cum_probs": [
+          0.7339,
+          0.8128,
+          0.8785,
+          1.0
+        ]
+      },
+      "RuggedAuto": {
+        "type": "categorical",
+        "categories": [
+          "EggShell",
+          "Football",
+          "Tank"
+        ],
+        "cum_probs": [
+          0.491,
+          0.8385,
+          1.0
+        ]
+      },
+      "Accident": {
+        "type": "categorical",
+        "categories": [
+          "None",
+          "Mild",
+          "Moderate",
+          "Severe"
+        ],
+        "cum_probs": [
+          0.7159,
+          0.8017,
+          0.8825999999999999,
+          1.0
+        ]
+      },
+      "MakeModel": {
+        "type": "categorical",
+        "categories": [
+          "SportsCar",
+          "Economy",
+          "FamilySedan",
+          "Luxury",
+          "SuperLuxury"
+        ],
+        "cum_probs": [
+          0.141,
+          0.5183,
+          0.8997999999999999,
+          0.9977999999999999,
+          0.9999999999999999
+        ]
+      },
+      "DrivQuality": {
+        "type": "categorical",
+        "categories": [
+          "Poor",
+          "Normal",
+          "Excellent"
+        ],
+        "cum_probs": [
+          0.3691,
+          0.8177,
+          1.0
+        ]
+      },
+      "Mileage": {
+        "type": "categorical",
+        "categories": [
+          "FiveThou",
+          "TwentyThou",
+          "FiftyThou",
+          "Domino"
+        ],
+        "cum_probs": [
+          0.1083,
+          0.5065,
+          0.899,
+          1.0
+        ]
+      },
+      "Antilock": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.2015,
+          1.0
+        ]
+      },
+      "DrivingSkill": {
+        "type": "categorical",
+        "categories": [
+          "SubStandard",
+          "Normal",
+          "Expert"
+        ],
+        "cum_probs": [
+          0.3243,
+          0.8948,
+          1.0
+        ]
+      },
+      "SeniorTrain": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.1153,
+          1.0
+        ]
+      },
+      "ThisCarCost": {
+        "type": "categorical",
+        "categories": [
+          "Thousand",
+          "TenThou",
+          "HundredThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.8222,
+          0.9531000000000001,
+          0.9991000000000001,
+          1.0
+        ]
+      },
+      "Theft": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.0013,
+          1.0
+        ]
+      },
+      "CarValue": {
+        "type": "categorical",
+        "categories": [
+          "FiveThou",
+          "TenThou",
+          "TwentyThou",
+          "FiftyThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.4227,
+          0.6589,
+          0.9011,
+          0.9958,
+          1.0
+        ]
+      },
+      "HomeBase": {
+        "type": "categorical",
+        "categories": [
+          "Secure",
+          "City",
+          "Suburb",
+          "Rural"
+        ],
+        "cum_probs": [
+          0.2557,
+          0.6355999999999999,
+          0.8845,
+          1.0
+        ]
+      },
+      "AntiTheft": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.412,
+          1.0
+        ]
+      },
+      "PropCost": {
+        "type": "categorical",
+        "categories": [
+          "Thousand",
+          "TenThou",
+          "HundredThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.5634,
+          0.8765000000000001,
+          0.9836,
+          1.0
+        ]
+      },
+      "OtherCarCost": {
+        "type": "categorical",
+        "categories": [
+          "Thousand",
+          "TenThou",
+          "HundredThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.8606,
+          0.931,
+          1.0,
+          1.0
+        ]
+      },
+      "OtherCar": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.6971,
+          1.0
+        ]
+      },
+      "MedCost": {
+        "type": "categorical",
+        "categories": [
+          "Thousand",
+          "TenThou",
+          "HundredThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.9272,
+          0.9610000000000001,
+          0.9842000000000001,
+          1.0
+        ]
+      },
+      "Cushioning": {
+        "type": "categorical",
+        "categories": [
+          "Poor",
+          "Fair",
+          "Good",
+          "Excellent"
+        ],
+        "cum_probs": [
+          0.3249,
+          0.5802,
+          0.8360000000000001,
+          1.0
+        ]
+      },
+      "Airbag": {
+        "type": "categorical",
+        "categories": [
+          "True",
+          "False"
+        ],
+        "cum_probs": [
+          0.4307,
+          1.0
+        ]
+      },
+      "ILiCost": {
+        "type": "categorical",
+        "categories": [
+          "Thousand",
+          "TenThou",
+          "HundredThou",
+          "Million"
+        ],
+        "cum_probs": [
+          0.9677,
+          0.9833,
+          0.9935999999999999,
+          0.9999999999999999
+        ]
+      },
+      "DrivHist": {
+        "type": "categorical",
+        "categories": [
+          "Zero",
+          "One",
+          "Many"
+        ],
+        "cum_probs": [
+          0.5677,
+          0.6899,
+          1.0
+        ]
+      }
+    },
+    "discretized_sachs": {
+      "praf": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.333779801768015,
+          0.668363246718457,
+          1.0
+        ]
+      },
+      "pmek": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3339137422984195,
+          0.6668899008840075,
+          1.0
+        ]
+      },
+      "plcg": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3344495044200375,
+          0.6695687114920975,
+          1.0
+        ]
+      },
+      "PIP2": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.333779801768015,
+          0.66755960353603,
+          1.0
+        ]
+      },
+      "PIP3": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.33605679078489153,
+          0.6684971872488615,
+          1.0
+        ]
+      },
+      "p44/42": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3355210286632735,
+          0.667827484596839,
+          1.0
+        ]
+      },
+      "pakts473": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3379319582105545,
+          0.6672917224752211,
+          1.0
+        ]
+      },
+      "PKA": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.340208947227431,
+          0.6682293061880524,
+          1.0
+        ]
+      },
+      "PKC": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3339137422984195,
+          0.668899008840075,
+          1.0
+        ]
+      },
+      "P38": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.3336458612376105,
+          0.6687650683096704,
+          0.9999999999999999
+        ]
+      },
+      "pjnk": {
+        "type": "categorical",
+        "categories": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "cum_probs": [
+          0.333779801768015,
+          0.668899008840075,
+          1.0
+        ]
+      }
+    }
+  }
+}

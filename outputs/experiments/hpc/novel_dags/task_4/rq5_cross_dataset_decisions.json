@@ -1,0 +1,14 @@
+{
+  "decisions": [
+    {
+      "node": "pmek",
+      "what": "edge praf->pmek",
+      "decision": "pairwise:sachs:praf->pmek"
+    },
+    {
+      "node": "dysp",
+      "what": "edge praf->dysp",
+      "decision": "pairwise:asia:bronc->dysp"
+    }
+  ]
+}

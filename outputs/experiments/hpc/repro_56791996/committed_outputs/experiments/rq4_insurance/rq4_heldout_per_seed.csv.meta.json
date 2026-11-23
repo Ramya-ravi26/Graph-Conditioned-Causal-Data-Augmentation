@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-11-11T10:00:31+00:00",
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+  "git_sha": "73a95c88dedd726e9d6a8b6212dcaa6e3eeee881+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/run_experiments.py",
+    "rq4",
+    "--graphs",
+    "insurance",
+    "--seeds",
+    "5",
+    "--out",
+    "outputs/experiments/rq4_insurance"
+  ],
+  "output": "rq4_heldout_per_seed.csv",
+  "networks": [
+    "insurance"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "train_seed": 10000
+}

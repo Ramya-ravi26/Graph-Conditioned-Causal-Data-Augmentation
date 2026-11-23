@@ -1,0 +1,19 @@
+name: gcda
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - networkx
+  - pip
+  - pip:
+      - pyvinecopulib
+      - pytest
+      - wandb
+      - pgmpy<1.3
+      - causal-learn
+      - pyyaml

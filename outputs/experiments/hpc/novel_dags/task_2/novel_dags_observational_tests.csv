@@ -1,0 +1,4 @@
+comparison,metric,mean_diff,ci_low,ci_high,wilcoxon_p,ttest_p,n
+learned_fitted_vine - learned_composed,shd,-0.05,-0.3,0.15,0.9836649672612962,0.6662641376986583,20
+learned_fitted_vine - gaussian_copula_fitted,shd,-0.15,-0.55,0.3,0.33144452781970113,0.5053824957746952,20
+learned_fitted_vine - baseline_fixed_rho,shd,2.65,0.75,4.55,0.02133614790813262,0.014930556946978731,20

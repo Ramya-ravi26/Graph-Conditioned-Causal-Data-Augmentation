@@ -1,0 +1,6 @@
+graph,comparison,metric,mean_diff,ci_low,ci_high,wilcoxon_p,ttest_p,n
+insurance,learned - baseline_fixed_rho,shd,-8.0,-11.4,-4.2,0.0625,0.01817908390790445,5
+insurance,learned - cpt_refit,shd,16.0,12.4,18.6,0.0625,0.0009707829090198835,5
+insurance,learned - gaussian_copula_fitted,shd,-5.6,-8.2,-2.8,0.125,0.028022858534053854,5
+insurance,learned - learned_native,shd,-23.4,-26.4,-20.6,0.0625,0.00015814177604712542,5
+insurance,learned - true_data,shd,16.6,13.8,19.0,0.0625,0.0003824331310126173,5

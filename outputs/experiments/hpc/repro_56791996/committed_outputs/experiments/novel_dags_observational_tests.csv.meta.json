@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-11-11T09:30:11+00:00",
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+  "git_sha": "90e8d533de21510e580a60b71d741cb8306c51d6+dirty",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "networkx": "3.7",
+    "pyvinecopulib": "1.0.1",
+    "pgmpy": "1.1.2",
+    "causal-learn": "0.1.4.8",
+    "scikit-learn": "1.9.1"
+  },
+  "argv": [
+    "scripts/run_experiments.py",
+    "composition",
+    "--n-dags",
+    "20",
+    "--seeds",
+    "10",
+    "--out",
+    "outputs/experiments"
+  ],
+  "output": "novel_dags_observational_tests.csv",
+  "n_dags": 20,
+  "sachs_rows": "observational"
+}

@@ -1,0 +1,46 @@
+# T6c/T7 hyperparameter sweep configuration (scripts/sweep_hyperparameters.py).
+#
+# Editing this file (rather than the sweep script) is how you change what
+# gets swept - which is also what makes a W&B run reproducible: the config
+# that produced it is a versioned file, not inline constants.
+
+family_sets:
+  gaussian_only: [gaussian]
+  parametric: [indep, gaussian, student, clayton, gumbel, frank, joe]
+
+selection_criteria: [aic, bic]
+
+# One 2-parent conditional-model target per dataset: child | parents, all
+# must already exist as columns in that dataset's loader.
+targets:
+  sachs:
+    child: pmek
+    parents: [praf, PKA]
+  uci_diabetes:
+    child: disease_progression
+    parents: [s5, bmi]
+  synthetic_scm:
+    child: x4
+    parents: [x1, x2]
+  asia:
+    child: dysp
+    parents: [bronc, either]
+  insurance:
+    child: DrivQuality
+    parents: [RiskAversion, DrivingSkill]
+
+# Baseline Gaussian sampler at increasing indegree. The per-parent
+# correlation is capped at sqrt(0.9 / k) so the baseline is a valid model at
+# every cap (rho = 0.5 with k = 4 independent parents is singular).
+indegree_sweep:
+  caps: [2, 3, 4, 5, 6]
+  baseline_rho: 0.5
+  n: 5000
+  seed: 0
+  repeats: 10
+
+# Stability guard (T6c "clipping/fallback settings"): epsilon used to keep
+# U-values inside [eps, 1 - eps] in the conditional sampler.
+clip_sweep:
+  datasets: [sachs, asia]
+  eps_values: [1.0e-10, 1.0e-6, 1.0e-3, 1.0e-2]

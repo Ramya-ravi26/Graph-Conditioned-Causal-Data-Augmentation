@@ -136,7 +136,7 @@ model, as most existing generators do, the approach learns a library of local
 dependencies -- one bivariate copula per variable pair, and one small vine
 copula per two-parent relationship -- directly from real datasets, and treats
 this library as a set of reusable building blocks. Given any user-specified
-directed acyclic graph, with a node in-degree bounded by two in the core
+directed acyclic graph, with a node indegree bounded by two in the core
 setting and up to four in an extension, the sampler composes the corresponding
 building blocks in topological order to synthesize a full dataset. The method is
 validated on held-out data in four steps. First, the strongest fitted
@@ -191,7 +191,7 @@ eine bivariate Copula pro Variablenpaar sowie eine kleine Vine-Copula pro
 Zwei-Eltern-Beziehung -- direkt aus realen Datensätzen und behandelt diese
 Bibliothek als eine Menge wiederverwendbarer Bausteine. Für einen
 beliebigen, vom Nutzer vorgegebenen gerichteten azyklischen Graphen (DAG),
-dessen Knoten-Ingrad im Kernumfang auf zwei und in einer Erweiterung auf
+dessen Eingangsgrad der Knoten im Kernumfang auf zwei und in einer Erweiterung auf
 bis zu vier begrenzt ist, setzt der Sampler die entsprechenden Bausteine in
 topologischer Reihenfolge zusammen, um einen vollständigen Datensatz zu
 synthetisieren. Die Methode wird auf zur\"uckgehaltenen Daten in vier Schritten
@@ -203,8 +203,8 @@ mit den gelernten Modellen dessen ungleichm\"a{\ss}iges Abh\"angigkeitsmuster,
 w\"ahrend eine generische Gau{\ss}-Baseline jede Kante auf dieselbe St\"arke
 reduziert. Drittens lassen sich die gelernten Bausteine auf Graphen
 \"ubertragen, die in den Ausgangsdaten nicht existieren: Kanten mit einem
-Elternknoten reproduzieren die Abh\"angigkeit ihrer Copula bis auf
-im Mittel $\Delta\tau \approx 0{,}007$, eine auf einem Datensatz gelernte Abh\"angigkeit
+Elternknoten reproduzieren die Abh\"angigkeit ihrer Copula im Mittel bis auf
+$\Delta\tau \approx 0{,}007$, eine auf einem Datensatz gelernte Abh\"angigkeit
 kann auf eine Kante zwischen Variablen eines anderen Datensatzes
 \"ubertragen werden, und die erzeugten Daten lassen sich nicht durch
 Sortieren nach der Varianz \"uberlisten. Viertens rekonstruiert der
@@ -249,11 +249,17 @@ angenommen werden.
 \addcontentsline{toc}{chapter}{List of Acronyms}
 \begin{description}
   \item[AIC] Akaike Information Criterion
+  \item[AUROC] Area Under the Receiver Operating Characteristic curve
+  \item[BDeu] Bayesian Dirichlet equivalent uniform (score)
   \item[BIC] Bayesian Information Criterion
+  \item[CDF] Cumulative Distribution Function
+  \item[CI] Confidence Interval
   \item[CPDAG] Completed Partially Directed Acyclic Graph
   \item[CPT] Conditional Probability Table
   \item[DAG] Directed Acyclic Graph
   \item[gcda] Graph-Conditioned Causal Data Augmentation (this thesis's software package)
+  \item[GES] Greedy Equivalence Search (score-based causal discovery)
+  \item[KS] Kolmogorov--Smirnov (distance or test)
   \item[MEC] Markov Equivalence Class
   \item[MMD] Maximum Mean Discrepancy
   \item[NMI] Normalized Mutual Information
@@ -353,7 +359,7 @@ generic dependence model. Concretely, the tool
   \item reuses these learned dependencies as interchangeable building blocks
     to sample data for any DAG the user supplies, including graphs that
     combine building blocks learned from different source datasets and graph
-    topologies that never occurred in any of them, with a node in-degree
+    topologies that never occurred in any of them, with a node indegree
     bounded by a small constant (two in the core scope, extended to three or
     four).
 \end{itemize}
@@ -466,6 +472,19 @@ is generally a Markov equivalence class -- a completed partially directed
 acyclic graph (CPDAG) -- rather than a single fully oriented DAG, since some
 edges cannot be oriented from observational data alone regardless of how much
 data is available.
+
+Greedy Equivalence Search (GES) \parencite{chickering2002} is the canonical
+score-based alternative. Instead of testing independences, it searches over
+Markov equivalence classes: starting from the empty graph, it adds the
+single edge that most improves a score of how well the graph fits the data,
+until no addition helps, and then removes edges in the same greedy way. The
+score rewards fit and penalizes complexity -- the Bayesian information
+criterion (BIC) for continuous data, and for discrete data the Bayesian
+Dirichlet equivalent uniform (BDeu) score \parencite{heckerman1995}, the
+marginal likelihood of the data under a uniform prior on the conditional
+probability tables. Like PC, GES returns a CPDAG. The two algorithms
+therefore rely on the data in different ways: PC on the outcome of many
+individual independence tests, GES on the overall fit of whole graphs.
 
 The standard way to score how well a discovered graph matches the truth is
 the Structural Hamming Distance (SHD): the number of edge insertions,
@@ -1142,7 +1161,7 @@ under the parent distribution of its source data; if the parents generated
 in a new graph are distributed differently, the child's generated uniforms
 are no longer uniform and mapping them through the stored marginal does not
 reproduce that marginal. The sampler therefore measures, for every node,
-the Kolmogorov--Smirnov distance of its generated uniforms from $U(0,1)$
+the Kolmogorov--Smirnov (KS) distance of its generated uniforms from $U(0,1)$
 and warns when it exceeds both 0.05 and the 0.1\% critical value. With the
 option \texttt{calibrate\_margins}, each node's uniforms are replaced by
 their normalized ranks before use: ranks, and hence the generated copula,
@@ -1519,10 +1538,11 @@ sampler's per-node counters, treating stability itself as a metric rather
 than an implementation detail.
 
 \emph{Downstream usability.} Structural Hamming Distance between the graph
-recovered by the PC algorithm \parencite{spirtes2000}, run via
+recovered by the PC algorithm \parencite{spirtes2000} or GES
+\parencite{chickering2002}, both run via
 \texttt{causal-learn} \parencite{zheng2024}, and the true DAG, computed for
 data generated by each method and for the real data itself, complemented by
-the number of edges PC finds and the precision, recall and $F_1$ score of
+the number of edges the algorithm finds and the precision, recall and $F_1$ score of
 its skeleton (adjacencies) against the true skeleton. This is the
 metric that most directly answers the thesis's stated goal, and is treated
 as the headline result in Chapter~\ref{chap:results} rather than a secondary
@@ -1605,7 +1625,10 @@ experimental conditions (Chapter~\ref{chap:setup}), the analysis is run both
 on all 7,466 rows and on the 853-row general-stimulation (observational)
 condition (the first 853 rows of the bundled file; verified row by row
 against an independent copy of the observational data, 853 of 853 rows
-identical). Table~\ref{tab:rq1} summarizes the result.
+identical). The ranking is scored by the area under the receiver operating
+characteristic curve (AUROC): the probability that a randomly chosen
+consensus edge is ranked above a randomly chosen non-edge, 0.5 for a random
+ranking and 1 for a perfect one. Table~\ref{tab:rq1} summarizes the result.
 
 \begin{table}[ht]
 \caption{RQ1: ranking the 55 Sachs pairs by $|\tau|$ of the fitted pairwise copula against the 17-edge consensus skeleton. Random ranking gives precision $17/55 = 0.31$ and AUROC 0.5; the $p$-value is the one-sided Mann--Whitney test that consensus pairs have larger $|\tau|$.}
@@ -2340,7 +2363,7 @@ The Sachs and Asia libraries were merged
 \emph{pmek}, \emph{praf} $\to$ \emph{dysp} was sampled, which exists in
 neither dataset: \emph{praf} and \emph{pmek} keep their Sachs marginals and
 the learned \emph{praf}--\emph{pmek} copula, \emph{dysp} keeps its Asia
-marginal, and the cross-dataset edge \emph{praf} $\to$ \emph{dysp} re-uses
+marginal, and the cross-dataset edge \emph{praf} $\to$ \emph{dysp} reuses
 the copula Asia learned for \emph{bronc} $\to$ \emph{dysp}, \emph{dysp}'s
 strongest parent (a Frank copula with $\tau = 0.339$; the graph
 specification format is given in Appendix~\ref{sec:cli}). The run uses strict
@@ -2823,7 +2846,7 @@ real data. Where a generator is reported as not significantly different
 from real data, this bounds the difference by the confidence interval but
 does not establish equivalence; no equivalence margin was specified in
 advance. The generated discrete data also do not reliably preserve the conditional independences of the supplied graph: with a discrete middle variable, chain and fork independences are violated by the copula generators (Section~\ref{sec:rq4-ci}), so on the observed scale their data are not Markov with respect to the supplied graph. Random-forest conditionals
-close most of this gap (Section~\ref{sec:rq6-forest}), but are fitted per
+close most of the discovery gap (Section~\ref{sec:rq6-forest}), but are fitted per
 node, parent set and dataset and therefore not reusable building blocks;
 they were evaluated only on the known graphs of RQ6.
 
@@ -2881,7 +2904,7 @@ real data (RQ6). The downstream claim is therefore limited to the small
 Asia network with PC: on Insurance and Alarm, data from the copula generator
 are not a substitute for real data when discovery algorithms are evaluated
 (PC: SHD 37.4 versus 23.2 and 30.6 versus 9.2; GES: 33.9 versus 22.6 and
-36.3 versus 11.3). On discrete data, the copula generators also violate the conditional independences of chains and forks with a discrete middle variable (rejected in 25\%--56\% of the tests, against 7\% for refitted CPTs and 7\% for random-forest conditionals; Section~\ref{sec:rq4-ci}).
+36.3 versus 11.3). On discrete data, the copula generators also violate the conditional independences of chains and forks with a discrete middle variable (rejected in 25\%--56\% of the tests, against 7\% for refitted CPTs and for random-forest conditionals; Section~\ref{sec:rq4-ci}).
 Random-forest conditionals fitted on the same data close most of the
 discovery gap on the known graphs, which is consistent with the explanation
 that it stems from non-monotone and interaction dependence that copula
@@ -2930,7 +2953,7 @@ commit of the development repository in which the result was produced.
 \textbf{Path} & \textbf{Contents} \\
 \midrule
 \texttt{gcda/data/} & Dataset loaders (incl.\ the bundled Sachs CSV as package data), dataset registry, preprocessing (continuous, jittered and native-discrete inputs). \\
-\texttt{gcda/dependency/} & Pairwise and conditional copula fitting, pairwise-composed multi-parent models, \texttt{DependencyLibrary} (merge, validation). \\
+\texttt{gcda/dependency/} & Pairwise and conditional copula fitting, pairwise-composed multi-parent models, random-forest conditionals, \texttt{DependencyLibrary} (merge, validation). \\
 \texttt{gcda/generation/} & \texttt{GraphSampler} (fallback counters, drift diagnostics, margin calibration) and the graph-specification layer used by the CLI. \\
 \texttt{gcda/evaluation/} & Realism (incl.\ unbiased energy distance/MMD and permutation tests), graph-conditioning, discrete metrics, PC/GES + SHD. \\
 \texttt{gcda/experiments/} & Hyperparameter sweep and the held-out, multi-seed experiments of Chapter~\ref{chap:results}. \\

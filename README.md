@@ -396,6 +396,14 @@ verifies that their shared sources equal the RQ6 runs and `scripts/rf_gap_table.
 prints the gap-closed table. A forest is fitted per node, parent set and dataset, so
 unlike the copula library it is not a reusable building block for new graphs.
 
+## Conditional independences of the supplied graph (thesis Sec. 6.4.2)
+
+`python scripts/run_experiments.py ci-checks --graphs asia mixed_scm --seeds 20` takes every
+induced chain, fork and collider of a network's DAG (at most 10 of each), supplies the
+three-node graph to the generator, and tests on the generated data whether the independence the
+graph implies holds (G-test; generalised covariance measure for a continuous conditioning
+variable) and whether the implied dependence is present. Results: `outputs/experiments/ci_checks/`.
+
 ## T8: writing + final deliverables
 
 - **T8a**, lab notebook: `LAB_NOTEBOOK.md` - a chronological record of

@@ -1,0 +1,15 @@
+network,structure,source,triples,tests,rejection_rate,mean_effect,dependence_detected
+mixed_scm,chain,baseline_fixed_rho,3,60,0.21666666666666667,0.00781802309860198,1.0
+mixed_scm,chain,learned,3,60,0.21666666666666667,0.007881562004099094,1.0
+mixed_scm,chain,learned_native,3,60,0.4,0.010206628473680228,1.0
+mixed_scm,chain,learned_rf,3,60,0.06666666666666667,0.009072615168071865,1.0
+mixed_scm,collider,baseline_fixed_rho,2,40,0.05,0.0011755219142034873,1.0
+mixed_scm,collider,learned,2,40,0.05,0.0011755219142034873,1.0
+mixed_scm,collider,learned_native,1,20,0.0,0.0007990803405897374,1.0
+mixed_scm,collider,learned_rf,2,40,0.05,0.0011755219142034873,0.55
+mixed_scm,collider,true_data,1,20,0.05,0.0016149044440869002,1.0
+mixed_scm,fork,baseline_fixed_rho,1,20,0.05,0.011971590745247913,1.0
+mixed_scm,fork,learned,1,20,0.1,0.014201342202619751,1.0
+mixed_scm,fork,learned_native,1,20,0.15,0.01240340350287889,1.0
+mixed_scm,fork,learned_rf,1,20,0.05,0.010836739813991969,1.0
+mixed_scm,fork,true_data,1,20,0.0,0.011089345827602274,1.0

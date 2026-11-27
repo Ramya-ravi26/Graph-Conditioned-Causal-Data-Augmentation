@@ -147,26 +147,32 @@ the learned models reproduces its non-uniform per-edge dependence, where a
 generic Gaussian baseline collapses every edge to the same strength.
 Third, the learned building blocks transfer to graphs that never existed
 in the source data: one-parent edges reproduce the dependence of the
-copula they were built from to within $\Delta\tau \le 0.006$, a dependence
+copula they were built from to within $\Delta\tau \approx 0.007$ on average, a dependence
 learned on one dataset can be transplanted onto an edge between variables
 of another, and the generated data cannot be gamed by sorting variables by
 their variance. Fourth, on the Asia network a structure-learning algorithm (PC) recovers
 the true graph from the generated data significantly better than from a
-fixed-correlation baseline or a fitted Gaussian copula and as well as from
-real data, but a score-based algorithm (GES) does markedly worse on the
+fixed-correlation baseline or a fitted Gaussian copula, with no significant
+difference from real data (which bounds, but does not rule out, a
+difference), but a score-based algorithm (GES) does markedly worse on the
 generated data than on real data, and on the larger Insurance and Alarm
 networks both algorithms fall far short of real data, so this usefulness
 does not yet extend to large discrete networks. In a prototype that
 replaces the copula conditionals with random-forest conditionals fitted on
-the same training data, both algorithms reach about the level of real data
-on Insurance and Alarm ($97$--$120\%$ of the gap between the
-baseline and real data closed), at the price that these conditionals are
+the same training data, both algorithms come within about three
+structural errors of real data on Insurance and Alarm ($97$--$120\%$ of
+the gap between the baseline and real data closed), at the price that these conditionals are
 tied to one graph and dataset rather than being reusable building blocks. The
 pipeline extends to discrete and mixed variables; continuizing categorical
 columns by jittering dilutes Kendall's $\tau$ to its $\tau_a$ value, which
 severely weakens dependence for skewed binary variables, and fitting the
 copulas with the native discrete likelihood instead reduces the error of
 reproduced edge dependence by up to two orders of magnitude on mixed data.
+On discrete data, however, the learned copula generators do not reliably preserve
+the conditional independences of the supplied graph: for chains and forks
+with a discrete middle variable, the implied independence is rejected in
+25--56\% of tests, against 5--7\% for real data, refitted conditional
+probability tables and random-forest conditionals.
 The result is a tested, reproducible generator of benchmark data for
 user-specified graphs whose local dependencies are learned from real
 data rather than assumed.
@@ -198,19 +204,21 @@ w\"ahrend eine generische Gau{\ss}-Baseline jede Kante auf dieselbe St\"arke
 reduziert. Drittens lassen sich die gelernten Bausteine auf Graphen
 \"ubertragen, die in den Ausgangsdaten nicht existieren: Kanten mit einem
 Elternknoten reproduzieren die Abh\"angigkeit ihrer Copula bis auf
-$\Delta\tau \le 0{,}006$, eine auf einem Datensatz gelernte Abh\"angigkeit
+im Mittel $\Delta\tau \approx 0{,}007$, eine auf einem Datensatz gelernte Abh\"angigkeit
 kann auf eine Kante zwischen Variablen eines anderen Datensatzes
 \"ubertragen werden, und die erzeugten Daten lassen sich nicht durch
 Sortieren nach der Varianz \"uberlisten. Viertens rekonstruiert der
 PC-Algorithmus das Asia-Netzwerk aus den erzeugten Daten signifikant besser
 als aus einer Baseline mit fester Korrelation oder einer angepassten
-Gau{\ss}-Copula und ebenso gut wie aus echten Daten; ein scorebasierter
+Gau{\ss}-Copula, ohne signifikanten Unterschied zu echten Daten (was einen
+Unterschied eingrenzt, aber nicht ausschlie{\ss}t); ein scorebasierter
 Algorithmus (GES) schneidet auf den erzeugten Daten jedoch deutlich
 schlechter ab als auf echten Daten, und bei den gr\"o{\ss}eren Netzwerken
 Insurance und Alarm bleiben beide Algorithmen deutlich hinter echten Daten
 zur\"uck. Ersetzt man in einem Prototyp die Copula-Bedingungsmodelle durch
 auf denselben Trainingsdaten angepasste Random-Forest-Modelle, erreichen
-beide Algorithmen auf Insurance und Alarm etwa das Niveau echter Daten
+beide Algorithmen auf Insurance und Alarm bis auf etwa drei strukturelle
+Fehler das Niveau echter Daten
 ($97$--$120\,\%$ der L\"ucke zwischen Baseline und echten Daten
 geschlossen); diese Modelle sind jedoch an einen Graphen und Datensatz
 gebunden und keine wiederverwendbaren Bausteine. Die Pipeline
@@ -218,7 +226,12 @@ wird auf diskrete und gemischte Variablen erweitert; das Kontinuisieren
 kategorialer Spalten durch Jittering verd\"unnt Kendalls $\tau$ auf seinen
 $\tau_a$-Wert, w\"ahrend die Anpassung mit der nativen diskreten Likelihood
 den Fehler der reproduzierten Kantenabh\"angigkeit bei gemischten Daten um
-bis zu zwei Gr\"o{\ss}enordnungen senkt. Das Ergebnis ist ein getesteter,
+bis zu zwei Gr\"o{\ss}enordnungen senkt. Bei diskreten Daten erhalten die
+gelernten Copula-Generatoren die bedingten Unabh\"angigkeiten des vorgegebenen Graphen
+jedoch nicht zuverl\"assig: F\"ur Ketten und Gabeln mit diskreter mittlerer
+Variable wird die implizierte Unabh\"angigkeit in 25--56\,\% der Tests
+verworfen, gegen\"uber 5--7\,\% f\"ur echte Daten, neu gesch\"atzte bedingte
+Wahrscheinlichkeitstabellen und Random-Forest-Modelle. Das Ergebnis ist ein getesteter,
 reproduzierbarer Generator von Benchmarkdaten f\"ur vom Nutzer vorgegebene
 Graphen, dessen lokale Abh\"angigkeiten aus echten Daten gelernt statt
 angenommen werden.
@@ -382,17 +395,24 @@ Concretely, this thesis makes the following contributions:
     algorithms (PC and GES, 100 seeds per graph), showing that on the Asia
     network the learned generator's data supports both significantly better
     than a fixed-correlation baseline and a fitted Gaussian copula, and PC
-    as well as real data, while on the larger Insurance and Alarm networks
+    with no significant difference from real data, while on the larger
+    Insurance and Alarm networks
     it falls clearly short of real data (Section~\ref{sec:closing-loop}).
   \item A demonstration, on a graph built from two datasets and on 200 novel
     graphs, that learned dependencies transfer to graph structures that
     never existed in any source dataset, reproducing the transplanted
     copulas and yielding benchmarks that are not variance-sortable
     (Section~\ref{sec:composition}).
+  \item A check, on the chains, forks and colliders of four networks, of
+    whether generated discrete and mixed data obey the conditional
+    independences of the supplied graph. With a discrete middle variable the
+    copula generators violate the chain and fork independences on the
+    observed scale, while refitted CPTs and random-forest conditionals do
+    not (Section~\ref{sec:rq4-ci}).
   \item A prototype of random-forest conditionals that work in the same
     pseudo-observation space and plug into the same sampler, which brings
-    structure recovery on Insurance and Alarm to about the level of real
-    data and thereby supports the explanation that the remaining gap stems
+    the structural error on Insurance and Alarm to within about three
+    edges of that on real data and thereby supports the explanation that the remaining gap stems
     from non-monotone and interaction dependence that copula conditionals
     cannot represent (Sections~\ref{sec:forest-method}
     and~\ref{sec:rq6-forest}).
@@ -1038,11 +1058,14 @@ validated those examples, not the space of cases the data can produce.
 Given a DAG (a \texttt{networkx.DiGraph}, indegree bounded at two by default
 and configurably higher) and a dependency library, \texttt{GraphSampler}
 draws an $n \times p$ dataset one node at a time in topological order.
-Root nodes (indegree zero) are drawn from a marginal -- the library's fitted
-\texttt{EmpiricalMarginal} if available, or a standard normal baseline
-otherwise. Indegree-one nodes are sampled via the corresponding pairwise
-copula's $h$-function inverse, falling back to a fixed-correlation Gaussian
-copula if no learned model exists for that pair. Indegree-two-or-more nodes
+All nodes are generated on the copula scale and mapped to their own units at
+the end, through the library's fitted marginal or a standard normal baseline
+marginal if none is given; a root node (indegree zero) is therefore an
+independent uniform draw. Indegree-one nodes are sampled via the
+corresponding pairwise copula's $h$-function inverse, falling back to a
+fixed-correlation Gaussian copula if no learned model exists for that pair;
+if the node has a conditional model instead of a pair copula (a random
+forest, Section~\ref{sec:forest-method}), that model is used. Indegree-two-or-more nodes
 use the conditional vine sampler from Section~\ref{sec:conditional} when a
 vine has been fitted for exactly that parent set (looked up by the
 \emph{set} of parents, so the order in which a user lists the edges does
@@ -1061,36 +1084,48 @@ $\rho = 0.5$ and $k \le 3$). Algorithm~\ref{alg:sampler} lays out the full
 loop, including where each fallback triggers.
 
 \begin{algorithm}
-\caption{\texttt{GraphSampler}: sampling a dataset for an arbitrary DAG}
+\caption{\texttt{GraphSampler}: sampling a dataset for an arbitrary DAG (as implemented in \texttt{GraphSampler.sample})}
 \label{alg:sampler}
 \begin{algorithmic}[1]
-\Require DAG $G$ with indegree $\le d_{\max}$, dependency library $\mathcal{L}$, sample size $n$
-\Ensure synthetic dataset $D \in \mathbb{R}^{n \times p}$
+\Require DAG $G$, for every node $v$ a marginal $F_v$ (standard normal if none) and an optional edge model from the library $\mathcal{L}$; sample size $n$; clipping bound $\varepsilon$; baseline correlation $\rho$
+\Ensure synthetic dataset $D$ with $n$ rows
 \For{node $v$ in topological order of $G$}
-  \State $\text{parents} \gets$ parents of $v$ in $G$
-  \State $\text{ok} \gets \textbf{false}$
-  \If{no exception occurs while sampling $v$ \textbf{and} the result is finite} \Comment{conceptually a try/except block}
-    \If{$|\text{parents}| = 0$}
-      \State draw column $v$ from $\mathcal{L}$'s marginal for $v$, or $\mathcal{N}(0,1)$ if none
-    \ElsIf{$|\text{parents}| = 1$}
-      \State draw column $v$ via the pairwise copula's $h^{-1}$ (Eq.~\ref{eq:hfunc}), or a fixed-correlation Gaussian fallback
+  \State $P \gets$ parents of $v$ in $G$, \quad $k \gets |P|$
+  \State \textbf{try}
+  \If{$k = 0$}
+    \State $u_v \gets n$ draws from $\text{Unif}(\varepsilon, 1-\varepsilon)$
+  \ElsIf{$k = 1$}
+    \If{$v$ has a conditional model but no pair copula} \Comment{e.g.\ a random forest}
+      \State $u_v \gets$ draw from that model given $u_P$
+    \ElsIf{$v$ has a pair copula $c$ (learned or bound)}
+      \State $u_v \gets h_c^{-1}(w \mid u_P)$, $w \sim \text{Unif}(\varepsilon,1-\varepsilon)$, in $c$'s column orientation (Eq.~\ref{eq:hfunc})
     \Else
-      \State draw column $v$ via Algorithm~\ref{alg:conditional} using $\mathcal{L}$'s conditional model, or a Gaussian-vine fallback
+      \State $u_v \gets h^{-1}(w \mid u_P)$ of a Gaussian copula with correlation $\rho$ \Comment{baseline}
     \EndIf
-    \State $\text{ok} \gets \textbf{true}$
+  \Else
+    \If{$v$ has a conditional model $M$ for the parent set $P$} \Comment{vine, composed, or forest}
+      \State $u_v \gets$ draw from $M$ given $u_P$ in $M$'s parent order (Algorithm~\ref{alg:conditional} for a vine)
+    \Else
+      \State baseline: Gaussian vine, correlation $\min(\rho, \sqrt{0.9/k})$ to each parent; draw via Algorithm~\ref{alg:conditional}
+    \EndIf
   \EndIf
-  \If{\textbf{not} $\text{ok}$}
-    \State draw column $v$ independently from $\text{Unif}(0,1)$
-    \State increment the fallback counter for $v$
+  \State \textbf{on exception:} $u_v \gets n$ draws from $\text{Unif}(\varepsilon,1-\varepsilon)$; fallback count of $v \gets n$
+  \State replace non-finite entries of $u_v$ by $\text{Unif}(\varepsilon,1-\varepsilon)$ draws and count them
+  \State $u_v \gets \text{clip}(u_v, \varepsilon, 1-\varepsilon)$
+  \If{$k > 0$}
+    \If{\texttt{calibrate\_margins}} \State $u_v \gets \text{rank}(u_v)/(n+1)$
+    \ElsIf{$\text{KS}(u_v, \text{Unif}(0,1)) > \max(0.05,\, 1.95/\sqrt{n})$} \State emit a marginal-drift warning
+    \EndIf
   \EndIf
 \EndFor
-\State \Return $D$, the assembled columns, mapped back to original units via each node's marginal inverse
+\State \Return $D$ with column $x_v = F_v^{-1}(u_v)$ for every node $v$
 \end{algorithmic}
 \end{algorithm}
 
 Every node's sampling step is wrapped in a try/except block with an explicit
-non-finite check, and falls back immediately to an independent uniform draw
-on failure rather than retrying. This design choice -- fail fast and move
+non-finite check, and falls back immediately to independent uniform draws
+rather than retrying: for the whole column if the step raises an exception,
+and for the affected rows only if some draws are not finite. This design choice -- fail fast and move
 on, rather than retry -- was made deliberately: a single unstable fit (for
 instance a near-degenerate conditional vine on a highly skewed discrete
 variable, the exact case surfaced in Phase 2) should not be allowed to abort
@@ -1540,6 +1575,12 @@ Bayesian network. Results are reported as means with 95\% bootstrap
 confidence intervals, and generators are compared with paired Wilcoxon
 signed-rank and paired $t$-tests over seeds. The library-fitting variance
 (a single training draw per experiment) is not resampled.
+A non-significant difference is not read as equivalence. No formal
+equivalence test with a pre-specified margin was performed; where a
+generator is compared with real data, the 95\% confidence interval of the
+paired difference is reported instead, and its bounds state how large a
+difference the results are still compatible with. Phrases such as ``no
+significant difference from real data'' are meant in exactly this sense.
 
 \chapter{Results}
 \label{chap:results}
@@ -1641,7 +1682,7 @@ $\tau$ is 0.0084 for the learned models versus
 0.0114 for a fitted Gaussian copula; the
 unbiased U-space energy distance to the true data is
 -0.00007 (95\% CI
-$[-0.00038, 0.00027]$, i.e.\ indistinguishable from
+$[-0.00038, 0.00027]$, i.e.\ not significantly different from
 zero) versus 0.0038, and a permutation test (run on the first
 ten seeds) rejects equality of the generated and the true distribution in
 0/10 seeds for the learned models versus 4/10 for the baseline. Because the
@@ -2189,6 +2230,104 @@ than the table alone.
 \end{figure}
 
 
+\subsection{Conditional Independences of the Supplied Graph}
+\label{sec:rq4-ci}
+Reproducing marginals and edge dependence does not guarantee that generated
+data obey the conditional independences the supplied graph implies, and for
+discrete variables this does not follow from the construction either. On
+the copula scale a child depends on its parent only through the parent's
+uniform $u_B$, so $A \perp C \mid u_B$ holds in a chain or fork by
+construction. A discrete $B$, however, reveals only the category slice in
+which $u_B$ lies, while $A$ and $C$ both still depend on where $u_B$ lies
+inside that slice; given the observed category of $B$, they can therefore
+remain dependent. This is the situation analysed by \textcite{sun2024}: when
+the middle variable is observed only in discretized form, a conditional
+independence that holds for the underlying continuous variables need not
+hold for the observations, and standard tests on the observations then
+reject it. Whether the generated data preserve the graph's independences
+therefore has to be checked. The check below deliberately tests them on the
+observed scale, because that is the scale on which discovery algorithms
+use the data; the networks' own conditional probability tables satisfy
+them there exactly.
+
+\emph{Protocol.} Every induced chain ($A \to B \to C$), fork
+($A \leftarrow B \to C$) and collider ($A \to B \leftarrow C$) of the true
+DAGs of Asia, Insurance, Alarm and the mixed SCM, with $A$ and $C$
+non-adjacent, was taken as a supplied three-node graph (at most ten per
+type and network, chosen at random; 77 in total). For each, the generators
+learned their building blocks from the training draw (seed 10{,}000) of the
+three columns and generated $n$ rows ($8{,}000$; $5{,}000$ for the mixed SCM)
+per evaluation seed. On every sample the implied independence was tested --
+$A \perp C \mid B$ for chains and forks, $A \perp C$ for colliders -- with a
+likelihood-ratio ($G$) test on the contingency table (continuous $A$ or $C$
+binned into five quantile classes, which keeps the null hypothesis valid)
+or, for a continuous $B$, the generalised covariance measure
+\parencite{shah2020}. The implied dependence ($A$--$C$ for chains and forks,
+$A$--$C \mid B$ for colliders) was tested in the same way. Under a true
+independence about 5\% of the tests reject. Two references calibrate the
+tests: refitted CPTs on the three-node graph (discrete triples), whose data
+satisfy the implied independences exactly, and real data wherever the full
+network implies the same statement ($d$-separation).
+
+\begin{table}[ht]
+\caption{Share of tests (\%) that reject the independence implied by the supplied three-node graph ($A \perp C \mid B$ for chains and forks, $A \perp C$ for colliders), $\alpha = 0.05$; about 5\% are expected when it holds. Number of evaluation seeds after the network, number of triples after the structure. CPT: refitted conditional probability tables; Cop.: the learned copula generator with jittered (J) or native discrete (N) fitting. --: not applicable (no CPT refit for continuous variables; real data only where the full network implies the statement).}
+\label{tab:ci-checks}
+\centering
+\small
+\begin{tabular}{llcccccc}
+\toprule
+\textbf{Network} & \textbf{Structure} & \textbf{Real} & \textbf{CPT} & \textbf{Baseline} & \textbf{Cop.\ (J)} & \textbf{Cop.\ (N)} & \textbf{Forest} \\
+\midrule
+Asia (20) & chain (7) & 4 & 6 & 80 & 17 & 44 & 3 \\
+ & fork (2) & 12 & 5 & 95 & 15 & 70 & 5 \\
+ & collider (2) & 5 & 2 & 8 & 8 & 8 & 8 \\
+\addlinespace
+Insurance (10) & chain (10) & -- & 7 & 56 & 18 & 29 & 7 \\
+ & fork (10) & 0 & 9 & 40 & 18 & 44 & 9 \\
+ & collider (10) & 10 & 9 & 9 & 9 & 9 & 9 \\
+\addlinespace
+Alarm (10) & chain (10) & 2 & 6 & 80 & 42 & 74 & 7 \\
+ & fork (10) & 5 & 5 & 97 & 32 & 78 & 14 \\
+ & collider (10) & 6 & 7 & 8 & 8 & 8 & 8 \\
+\addlinespace
+Mixed SCM (20) & chain (3) & -- & -- & 22 & 22 & 40 & 7 \\
+ & fork (1) & 0 & -- & 5 & 10 & 15 & 5 \\
+ & collider (2) & 5 & -- & 5 & 5 & 0 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:ci-checks} shows that the copula generators do \emph{not}
+reliably preserve the independences of chains and forks whose middle
+variable is discrete. Pooled over these 50 triples, the implied
+$A \perp C \mid B$ is rejected in 25\% of the tests for the learned
+generator with jittering, 56\% with native discrete fitting and 72\%
+for the fixed-$\rho$ baseline, against 7\% for refitted CPTs, 5\%
+for real data and 7\% for random-forest conditionals; the rejection
+rate exceeds one half for 18\%, 52\% and 68\% of these triples,
+respectively, and for none with CPTs or forests. The violations are small
+in size (median conditional mutual information below 0.003 nats) but
+systematic. Native fitting, which reproduces edge dependence far better
+(Section~\ref{sec:rq4}), violates them more often than jittering, which is
+consistent with the mechanism above: the stronger the latent dependence on
+$u_B$, the more information about $A$ and $C$ remains within a category of
+$B$. The forest does not have this problem, because it draws a
+discrete child from the parent's category alone. With a continuous middle
+variable, all generators stay close to the nominal level (8\% for the
+jittered copula, 8\% for the forest), and the marginal independence of
+the two parents of a collider holds for every generator (8\% of the tests
+reject for each, against 6\% for real data).
+
+The implied dependences are present in real data and CPT-refit data in
+94\% and 90\% of the tests on the discrete networks, but in only
+50\% for the jittered copula generator, whose dependence is diluted
+(Section~\ref{sec:rq4}), against 84\% with native fitting and 90\%
+for the forest. On discrete data, the copula generator therefore errs in
+both directions that matter to a constraint-based algorithm: it weakens
+dependences the graph implies and adds conditional dependences the graph
+excludes. This is consistent with the spurious and missing edges PC finds
+on its data for Insurance and Alarm (Section~\ref{sec:closing-loop}).
+
 \section{RQ5: Are the learned dependencies genuinely reusable across datasets and graphs?}
 \label{sec:composition}
 Every result so far reconstructs a dataset's \emph{own} graph. RQ5 tests
@@ -2209,8 +2348,8 @@ mode, i.e.\ no baseline model is involved. Over 30 seeds of $n = 10{,}000$
 rows: the marginals are reproduced (KS 0.008 for \emph{praf} and
 \emph{pmek}, TVD 0.005 for \emph{dysp}); the \emph{praf}--\emph{pmek}
 dependence matches its copula ($\tau = 0.669$ versus 0.666); and on the
-copula scale the transplanted edge reproduces its source copula exactly
-($\tau = 0.338 \pm 0.005$ versus 0.339). On the observable scale the
+copula scale the transplanted edge reproduces its source copula to within
+sampling error ($\tau = 0.338 \pm 0.005$ versus 0.339). On the observable scale the
 binary child attenuates it to $\tau_a = 0.243$ (versus $\tau_a = 0.334$ for
 \emph{bronc}--\emph{dysp} in Asia, where \emph{both} variables are
 discrete), which illustrates that a transplanted dependence is defined at
@@ -2254,13 +2393,15 @@ O & fixed $\rho$     & 11.47 & 0.79 & 0.008 & 0.017 & 0.51 \\
 \end{tabular}
 \end{table}
 
-Three findings stand out. First, the building blocks transfer faithfully
-to graphs that never existed: every one-parent edge reproduces the $\tau$ of
-the copula it was built from to within 0.007 on average, and the
-pairwise-composed two-parent model performs like a vine fitted specifically
-for that parent set (paired SHD difference
+Three findings stand out. First, the building blocks transfer to graphs
+that never existed: one-parent edges reproduce the $\tau$ of the copula they
+were built from to within 0.007 on average (95\% CI up to 0.008), and the
+pairwise-composed two-parent model shows no significant difference in SHD
+from a vine fitted specifically for that parent set (paired difference
 $+0.07$, $p = 0.75$, on the pooled and
-$+0.01$, $p = 0.90$, on the observational copulas).
+$+0.01$, $p = 0.90$, on the observational copulas). As in
+Section~\ref{sec:closing-loop}, this bounds the difference rather than
+showing that the two are equivalent.
 Second, \emph{how hard} the generated graph is to recover is inherited from
 the real data: with the observational copulas, most of which are weak, PC
 recovers only a third of the skeleton, whereas the fixed-$\rho$ baseline,
@@ -2390,16 +2531,18 @@ Alarm (46) & true data & 11.29 [10.08, 12.55] & 45.5 \\
 
 On the continuous SCM all sources sit at the floor of about one error
 (the one edge whose orientation is not identifiable from observational
-data) under both algorithms, and no source is distinguishable from another.
+data) under both algorithms, and no two sources differ significantly.
 
 \emph{Asia, PC.} The learned generator's data supports PC significantly
 better than the fixed-$\rho$ baseline (SHD difference
 $-1.62$, 95\% CI $[-1.98, -1.27]$, Wilcoxon
 $p < 10^{-4}$) and than a fitted Gaussian copula (difference
 $-1.12$, 95\% CI $[-1.34, -0.89]$, $p < 10^{-4}$), so the advantage is due to the learned
-non-Gaussian dependence, not merely to learned strengths, and it is not
-distinguishable from real data (difference
-$+0.19$, 95\% CI $[-0.01, 0.41]$, Wilcoxon $p = 0.15$). Refitted CPTs are
+non-Gaussian dependence, not merely to learned strengths. Its difference
+from real data is not significant (difference
+$+0.19$, 95\% CI $[-0.01, 0.41]$, Wilcoxon $p = 0.15$). This does not show
+that the two are equivalent; it shows that any excess error of the
+generated data is at most about 0.4 edges, the upper confidence bound. Refitted CPTs are
 slightly better still ($+0.35$, $p = 0.003$). The baseline's
 extra error comes from spurious edges: PC finds 12.5 edges on its data
 against 7.7 on the learned generator's and 5.7 on real data (the true
@@ -2409,17 +2552,17 @@ graph has 8).
 learned (6.37) before the fitted Gaussian copula
 (8.07) and the fixed-$\rho$ baseline (10.25), $p < 10^{-4}$ for both
 comparisons -- but GES recovers the graph far better from real data
-(3.10) than from the learned generator's data, so the near-parity with
-real data seen with PC does not carry over to a score-based method.
+(3.10) than from the learned generator's data, so the small difference
+from real data seen with PC does not carry over to a score-based method.
 
 \emph{Insurance and Alarm.} On the two larger networks the learned
 generator falls far short of real data under both algorithms (PC: SHD
 37.4 versus 23.2 on Insurance and 30.6 versus 9.2 on Alarm; GES:
 33.9 versus 22.6 and 36.3 versus 11.3; all $p < 10^{-4}$), while refitted
-CPTs match real data. Relative to the Gaussian alternatives the picture is
+CPTs come within about two edges of real data. Relative to the Gaussian alternatives the picture is
 mixed: with PC the learned generator beats both on Insurance
 ($-9.2$ and $-4.0$ SHD, $p < 10^{-4}$) and the fitted
-Gaussian copula on Alarm ($-6.9$), but is not distinguishable from the
+Gaussian copula on Alarm ($-6.9$), but is not significantly different from the
 fixed-$\rho$ baseline on Alarm ($-0.97$, Wilcoxon
 $p = 0.21$); with GES it beats both on Insurance but is \emph{worse} than the
 fixed-$\rho$ baseline on Alarm ($+11.7$ SHD, $p < 10^{-4}$), where it
@@ -2431,12 +2574,14 @@ discrete network (PC on Asia 8.58, Insurance 60.3, Alarm
 52.4); on Alarm it also produces many more adjacencies than exist
 (63.9 edges found with PC against 46 true edges), whereas on Asia and
 Insurance the number of edges found is about right but many of them are
-wrong. A plausible explanation
-is that it also reproduces near-deterministic relations such as Asia's
-\emph{either} = \emph{tub} OR \emph{lung}, which violate the faithfulness
-assumption the algorithms rely on, while pairwise and three-to-five-variable
-copula models do not reproduce the conditional independences these tests
-need precisely enough. Statistical fidelity and usefulness for a given
+wrong. Section~\ref{sec:rq4-ci} shows one reason directly: on the observed
+scale, native fitting violates the conditional independences of chains and
+forks with a discrete middle variable in 56\% of the tests, against 25\%
+with jittering and 7\% for refitted CPTs, so the tests PC and GES rely on
+find dependences the graph excludes. A further plausible contribution is
+that native fitting also reproduces near-deterministic relations such as
+Asia's \emph{either} = \emph{tub} OR \emph{lung}, which violate the
+faithfulness assumption the algorithms rely on. Statistical fidelity and usefulness for a given
 discovery algorithm are therefore related but not interchangeable, and
 producing data that is as usable for discovery as real data on large
 discrete networks remains an open problem for copula conditionals.
@@ -2473,19 +2618,20 @@ Alarm & GES & 24.60 & 36.32 & 8.79 & 9.98 & 11.29 & $-88\%$ & $119\%$ \\
 \end{table}
 
 On Insurance and Alarm, which the copula generator could not handle, the
-forest brings both algorithms to about the level of real data. With PC it
-is not distinguishable from real data on Insurance (difference
+forest brings both algorithms close to real data. With PC its difference
+from real data is not significant on Insurance (difference
 $-0.29$, 95\% CI $[-1.04, 0.48]$, Wilcoxon
-$p = 0.63$) and slightly worse on Alarm
+$p = 0.63$; i.e.\ within about one edge either way) and small but significant on Alarm
 ($+0.74$, 95\% CI $[0.15, 1.33]$). With GES it overshoots: its
 data yields a \emph{lower} SHD than real data on Insurance
 ($-2.68$, $p < 10^{-4}$) and Alarm
 ($-2.50$, $p = 0.0089$), which is a mismatch as
 well, if a smaller one than the copula generator's. On Asia the forest
-matches real data with GES ($-0.09$, $p = 0.57$) but
+shows no significant difference from real data with GES ($-0.09$,
+95\% CI $[-0.22, 0.01]$, $p = 0.57$) but
 overshoots with PC ($-1.13$, 95\% CI $[-1.37, -0.88]$), where the copula
 generator was closer to real data. On the continuous SCM, whose edges
-are all monotone, the forest is indistinguishable from the copula
+are all monotone, the forest does not differ significantly from the copula
 generator. Against the copula generator the forest lowers the SHD on every
 discrete network under both algorithms (PC: $-1.32$ on Asia,
 $-14.49$ on Insurance, $-20.67$ on Alarm; all
@@ -2671,7 +2817,12 @@ algorithm families, larger graphs, or supervised structure-learning
 methods trained on generated data. Generated data is only as close to
 reality as its building blocks: with GES on Asia, and with both algorithms
 on Insurance and Alarm, the graph is recovered markedly less well from
-the copula generator's data than from real data. Random-forest conditionals
+the copula generator's data than from real data, so for discrete networks
+of this size the copula generator should not be used as a stand-in for
+real data. Where a generator is reported as not significantly different
+from real data, this bounds the difference by the confidence interval but
+does not establish equivalence; no equivalence margin was specified in
+advance. The generated discrete data also do not reliably preserve the conditional independences of the supplied graph: with a discrete middle variable, chain and fork independences are violated by the copula generators (Section~\ref{sec:rq4-ci}), so on the observed scale their data are not Markov with respect to the supplied graph. Random-forest conditionals
 close most of this gap (Section~\ref{sec:rq6-forest}), but are fitted per
 node, parent set and dataset and therefore not reusable building blocks;
 they were evaluated only on the known graphs of RQ6.
@@ -2695,6 +2846,16 @@ uses random DAGs over one dataset's variables; transplanting dependencies
 between semantically unrelated variables is a modelling choice of the user
 whose plausibility the tool cannot judge.
 
+The conditional-independence check of Section~\ref{sec:rq4-ci} uses at most
+ten randomly chosen triples per structure and network and, for Insurance and
+Alarm, only ten seeds. Its $G$-test is slightly liberal on sparse
+contingency tables: on Insurance, data from refitted CPTs, for which the
+tested independences hold exactly, are rejected in 7--9\% of the tests
+rather than 5\%. The check is deliberately run on the observed variables,
+the scale on which discovery algorithms see the data, not on the latent
+continuous variables a discretization-aware test
+\parencite{sun2024} would target.
+
 \chapter{Conclusion and Future Work}
 \label{chap:conclusion}
 
@@ -2714,12 +2875,17 @@ building blocks transfer to graphs that never existed, including across
 datasets, and yield benchmarks that are not variance-sortable (RQ5); and on
 Asia, PC recovers the true graph significantly better from the learned
 generator's data than from a fixed-correlation baseline or a fitted
-Gaussian copula and as well as from real data, whereas GES on Asia, and both
+Gaussian copula, with no significant difference from real data, whereas GES on Asia, and both
 algorithms on the larger Insurance and Alarm networks, fall clearly short of
-real data (RQ6). Random-forest conditionals fitted on the same data close
-most of this gap on the known graphs, which locates its cause in the
-non-monotone and interaction dependence that copula conditionals cannot
-represent.
+real data (RQ6). The downstream claim is therefore limited to the small
+Asia network with PC: on Insurance and Alarm, data from the copula generator
+are not a substitute for real data when discovery algorithms are evaluated
+(PC: SHD 37.4 versus 23.2 and 30.6 versus 9.2; GES: 33.9 versus 22.6 and
+36.3 versus 11.3). On discrete data, the copula generators also violate the conditional independences of chains and forks with a discrete middle variable (rejected in 25\%--56\% of the tests, against 7\% for refitted CPTs and 7\% for random-forest conditionals; Section~\ref{sec:rq4-ci}).
+Random-forest conditionals fitted on the same data close most of the
+discovery gap on the known graphs, which is consistent with the explanation
+that it stems from non-monotone and interaction dependence that copula
+conditionals cannot represent; they were not evaluated on novel graphs.
 
 \section{Future Work}
 The main open problem is the gap to real data on larger discrete networks
@@ -2838,6 +3004,7 @@ clip_sweep:
 \end{lstlisting}
 
 \section{Environment}
+\label{sec:environment}
 \texttt{pyproject.toml} declares the direct dependencies with lower bounds
 (the oldest versions the results were produced with), the Python floor of
 3.10 (needed for the \texttt{X | Y} union type hints used throughout the
@@ -2874,40 +3041,68 @@ Table~\ref{tab:deps} lists the direct dependencies.
 
 \section{Reproducing These Results}
 \label{sec:reproduce}
-Concretely, the results in Chapter~\ref{chap:results} can be regenerated
-with the following sequence, matching the script names referenced
-throughout that chapter:
-\begin{enumerate}
-  \item \path{python scripts/build_dependency_library.py} -- fits the
-    Phase 1 pairwise/conditional models (Table~\ref{tab:sweep}'s ``families
-    selected'' column; RQ1, Section~\ref{sec:rq1}).
-  \item \path{python scripts/generate_graph_data.py} -- the baseline-vs-learned
-    comparison on the synthetic SCM's own graph (RQ2).
-  \item \path{python scripts/sweep_hyperparameters.py --config configs/sweep.yaml}
-    -- produces \path{outputs/sweep_dependency_models.csv} and
-    \path{outputs/sweep_indegree_cap.csv}, the source of
-    Table~\ref{tab:sweep}, Figure~\ref{fig:aic-improvement},
-    Figure~\ref{fig:tau-error}, Table~\ref{tab:indegree}, and
-    Figures~\ref{fig:indegree-tau}--\ref{fig:indegree-time} (RQ3).
-  \item \path{python scripts/build_discrete_library.py} followed by
-    \path{python scripts/evaluate_discrete_generation.py} and
-    \path{python scripts/evaluate_mixed_generation.py} -- the Asia,
-    Insurance, and mixed-SCM numbers behind Table~\ref{tab:jitter},
-    Figure~\ref{fig:dilution-scatter}, Table~\ref{tab:mixed}, and
-    Figure~\ref{fig:mixed-edges} (RQ4).
-  \item \path{python scripts/demo.py} -- the cross-dataset composition
-    check behind RQ5 (Section~\ref{sec:composition}).
-  \item \path{python scripts/evaluate_causal_discovery.py} -- Table~\ref{tab:shd}
-    (the original four-seed protocol, RQ6).
-  \item \path{python scripts/run_experiments.py <name>} with \texttt{<name>} one
-    of \texttt{rq1}, \texttt{rq2}, \texttt{rq4}, \texttt{rq5},
-    \texttt{composition}, \texttt{rq6}, \texttt{discrete-native},
-    \texttt{learned-indegree}, \texttt{rf} -- the held-out, multi-seed experiments added
-    to Chapter~\ref{chap:results}; the large-seed versions are run on the
-    Lichtenberg cluster with the job scripts in \texttt{slurm/} as described
-    in \texttt{docs/HPC\_RUNBOOK.md}.
-\end{enumerate}
-Every step above writes its numeric output to \texttt{outputs/} together with
+The results in Chapter~\ref{chap:results} are regenerated with the commands
+below, run from the repository root after installing the locked environment
+(Section~\ref{sec:environment}). Each command is followed by the results it
+produces.
+
+\medskip\noindent\textbf{Environment and tests.}
+{\footnotesize
+\begin{verbatim}
+pip install -r requirements-lock.txt
+pip install -e . --no-deps
+pytest -q
+\end{verbatim}
+}
+
+\noindent\textbf{Original pipeline} (RQ1--RQ6 as first reported;
+Tables~\ref{tab:sweep}, \ref{tab:indegree}, \ref{tab:jitter}, \ref{tab:mixed}
+and~\ref{tab:shd}).
+{\footnotesize
+\begin{verbatim}
+python scripts/build_dependency_library.py
+python scripts/generate_graph_data.py
+python scripts/sweep_hyperparameters.py --output-dir /tmp/sweep
+python scripts/check_reproduction.py /tmp/sweep/sweep_dependency_models.csv \
+    outputs/sweep_dependency_models.csv
+python scripts/build_discrete_library.py
+python scripts/evaluate_discrete_generation.py
+python scripts/evaluate_mixed_generation.py
+python scripts/demo.py
+python scripts/evaluate_causal_discovery.py
+\end{verbatim}
+}
+
+\noindent\textbf{Held-out, multi-seed experiments}
+(\path{scripts/run_experiments.py}; results in \path{outputs/experiments/}).
+{\footnotesize
+\begin{verbatim}
+python scripts/run_experiments.py rq1
+python scripts/run_experiments.py rq2 --seeds 100
+python scripts/run_experiments.py rq4 --seeds 50 \
+    --graphs asia insurance alarm mixed_scm
+python scripts/run_experiments.py rq5
+python scripts/run_experiments.py composition --n-dags 200 --seeds 30
+python scripts/run_experiments.py rq6 --algorithm pc --seeds 100 \
+    --graphs synthetic_scm asia insurance alarm
+python scripts/run_experiments.py rq6 --algorithm ges --seeds 100 \
+    --graphs synthetic_scm asia insurance alarm
+python scripts/run_experiments.py discrete-native
+python scripts/run_experiments.py learned-indegree --seeds 10
+python scripts/run_experiments.py rf --rf-algorithms pc ges --seeds 100 \
+    --graphs synthetic_scm asia insurance alarm
+python scripts/run_experiments.py ci-checks --graphs asia mixed_scm --seeds 20
+python scripts/run_experiments.py ci-checks --graphs insurance alarm --seeds 10
+\end{verbatim}
+}
+
+\noindent The 100-seed and 200-graph runs were split into Slurm array jobs
+on the Lichtenberg cluster (\path{slurm/*.slurm}, with
+\path{scripts/merge_results.py} combining the tasks; see
+\path{docs/HPC_RUNBOOK.md}). Their merged results are in
+\path{outputs/experiments/hpc/}.
+
+Every command above writes its numeric output to \texttt{outputs/} together with
 a provenance file, so that a later step -- or a reader checking a specific
 number against this thesis -- can consume a previous step's exact output
 rather than re-deriving it by eye from terminal text. These artifacts are
@@ -2940,6 +3135,7 @@ missed, not just a structural shape or type check.
 \texttt{test\_graph\_conditioning.py} & \texttt{dependence\_strength\_sweep}'s one-parent validation guard (Section~\ref{sec:bugs-discussion}); edge removal and monotonicity checks. \\
 \texttt{test\_remediation.py} & Regression tests for the corrections made after the audit: parent-order invariance of conditional lookups (library and CLI), library merge and namespace collisions, copula binding with orientation, cross-dataset CLI generation, strict mode, pairwise-composed conditionals against closed-form Gaussian theory, margin calibration and drift warnings, the valid baseline at four and five parents, per-node fallback counters, unbiased distances and permutation tests, library validation, marginal compression, parallel fitting, and the $\tau_a$ identity behind the dilution formula (Section~\ref{sec:rq4}). \\
 \texttt{test\_forest.py} & Random-forest conditionals (Section~\ref{sec:forest-method}): a logical OR child and a non-monotone continuous child reproduced, integration with the graph sampler for one and two parents, no replay of training rows. \\
+\texttt{test\_ci\_checks.py} & Chain/fork/collider detection and d-separation (Section~\ref{sec:rq4-ci}); the G-test and the generalised covariance measure hold their 5\% level under a true conditional independence, including step-shaped conditional means and repeated values of the conditioning variable. \\
 \texttt{test\_datasets.py} & Loaders, ordinal category orders, the Sachs condition boundaries and observational subset, the consensus DAG (Mek has three parents). \\
 \bottomrule
 \end{tabular}

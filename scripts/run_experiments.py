@@ -20,7 +20,7 @@ DEFAULT_OUT = Path(__file__).resolve().parent.parent / "outputs" / "experiments"
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("experiment", choices=["rf", "rq4", "rq6", "composition", "rq5", "rq1", "discrete-native", "learned-indegree", "rq2"])
+    p.add_argument("experiment", choices=["ci-checks", "rf", "rq4", "rq6", "composition", "rq5", "rq1", "discrete-native", "learned-indegree", "rq2"])
     p.add_argument("--graphs", nargs="+", default=["synthetic_scm", "asia", "insurance", "alarm"])
     p.add_argument("--seeds", type=int, default=30, help="number of evaluation seeds")
     p.add_argument("--seed-start", type=int, default=0, help="first evaluation seed (for Slurm array splits)")
@@ -32,7 +32,10 @@ if __name__ == "__main__":
     p.add_argument("--dag-start", type=int, default=0, help="first random-DAG index for composition (array splits)")
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     a = p.parse_args()
-    if a.experiment == "rf":
+    if a.experiment == "ci-checks":
+        from gcda.experiments.ci_checks import NETWORKS, main
+        main([g for g in a.graphs if g in NETWORKS] or list(NETWORKS), a.seeds, a.out, seed_start=a.seed_start)
+    elif a.experiment == "rf":
         from gcda.experiments.rf_eval import main
         main(a.graphs, a.seeds, a.out, algorithms=a.rf_algorithms, seed_start=a.seed_start)
     elif a.experiment == "rq4":
